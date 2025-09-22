@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soggiorno Lernwelt</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <div id="app-container">
+        <div id="region-view" class="view active">
+            <h1>Soggiorno Lernwelt</h1>
+            <svg id="region-map" viewBox="0 0 220 250"></svg>
+        </div>
+        <div id="journey-view" class="view">
+            <h1>Regionen-Reise</h1>
+            <svg id="journey-map" viewBox =" 0 0 220 250"></svg>
+
+            <button id="back-to-italy-btn">Zurück nach Italien</button>
+        </div>
+        <div id="lesson-panel">
+            <div id="lesson-panel-header">
+                <h2 id="lesson-panel-title"></h2>
+                <button id="lesson-panel-close-btn">x</button>
+            </div>
+            <div id="lesson-panel-content"></div>
+        </div>
+        <div id="modal-container">
+            <div id="modal-content">
+                
+            </div>
+        </div>
+    </div>
+    <script src="src/js/main.js" type="module"></script>
+</body>
+</html>
