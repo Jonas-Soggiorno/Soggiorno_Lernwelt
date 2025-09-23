@@ -1,3 +1,7 @@
+:root{
+    --primary-color: #0056b3;
+}
+
 * { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
 
 body {
@@ -28,25 +32,31 @@ H1{
 }
 
 .view {
-    display: none;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
 .view.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-
-.city-pin {
-    fill: #0056b3;
-    stroke: white;
-    stroke-width: 0px;
-    cursor: pointer;
+#region-view{
+    display: flex;
+    justify-content: start;
 }
 
 .journey-region-path {
@@ -83,6 +93,9 @@ H1{
     border-radius: 25px;
     cursor: pointer;
     display: block;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 10;
 }
 
 #back-to-italy-btn:hover {
@@ -104,6 +117,8 @@ H1{
     /* Wichtig: Standardmäßig nach unten aus dem Bild schieben */
     transform: translateY(100%);
     transition: transform 0.4s ease-in-out;
+
+    z-index: 11;
 }
 
 #lesson-panel.visible {
@@ -144,34 +159,6 @@ H1{
     justify-content: center;
 }
 
-#modal-container {
-    position: fixed; /* Bleibt an Ort und Stelle, auch beim Scrollen */
-    inset: 0; /* Moderne Kurzform für top, bottom, left, right = 0 */
-    background-color: rgba(0, 0, 0, 0.6); /* Schwarzer Vorhang mit 60% Transparenz */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /* Standardmäßig unsichtbar */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-#modal-container.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-#modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-   
-    width: 800px;
-    max-width: 90%;
-}
-
 .module-card {
     background-color: white;
     border-radius: 15px;
@@ -181,17 +168,6 @@ H1{
     margin-top: 10px;
 
     transition: all 0.2s ease-out;
-    cursor: pointer;
-}
-
-#modal-close-btn{
-    width: 30px;
-    height: 30px;
-    background-color: #e0e0e0;
-    border: none;
-    border-radius: 50%; /* Macht den Knopf rund */
-    font-size: 1.2rem;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -282,4 +258,213 @@ H1{
 .quiz-option.incorrect {
     border-color: #e74c3c; /* Rot */
     background-color: #fdedec;
+}
+
+#lesson-content{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 800px;
+    max-width: 90%;
+    margin-top: 20px;
+}
+
+.flashcard-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+#prev-card-btn,
+#next-card-btn {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* Zentriert den Pfeil im Kreis */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: background-color 0.2s ease;
+}
+
+#prev-card-btn:hover,
+#next-card-btn:hover {
+    background-color: #004a9e;
+}
+
+#prev-card-btn:disabled,
+#next-card-btn:disabled {
+    background-color: #cccccc; /* Grau */
+    cursor: not-allowed; /* Zeigt ein "Verboten"-Symbol */
+    opacity: 0.6;
+}
+
+#prev-card-btn svg,
+#next-card-btn svg {
+    fill: white; /* Färbt das SVG-Icon weiß */
+}
+
+.action-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#lesson-view{
+    position: relative;
+}
+
+#back-to-journey-btn {
+    position: absolute; /* Löst den Button aus dem normalen Layout-Fluss */
+    bottom: 30px;      /* 30px Abstand vom unteren Rand */
+    left: 30px;        /* 30px Abstand vom linken Rand */
+
+    width: auto;
+    margin: 0;
+}
+
+/* Ein abgeschlossener Pin */
+.completed .city-pin {
+    fill: #1abc9c; /* Grün */
+}
+
+
+.next-stop .city-pin {
+    fill: #ffa000; /* Orange */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Ein gesperrter Pin */
+.locked .city-pin {
+    fill: #cccccc; /* Grau */
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.journey-path.completed {
+    stroke-dasharray: none; /* Macht die Linie durchgezogen */
+    stroke: #0056b3; /* Dein Primär-Blau */
+}
+
+.city-pin {
+    fill: #0056b3;
+    stroke: white;
+    stroke-width: 0px;
+    cursor: pointer;
+}
+
+.next-stop .city-pin {
+    fill: #e0475b;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+    50% {
+        transform: scale(1.15);
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+}
+
+.test-form {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.test-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.test-question label {
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.test-input {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    text-align: right;
+    width: 60%;
+    transition: all 0.2s;
+}
+
+.test-input.correct {
+    border-color: #1abc9c; /* Grün */
+    background-color: #e8f8f5;
+}
+
+.test-input.incorrect {
+    border-color: #e74c3c; /* Rot */
+    background-color: #fdedec;
+}
+
+#test-feedback p {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.correct-feedback {
+    background-color: #e8f8f5;
+    color: #1abc9c;
+}
+
+.incorrect-feedback {
+    background-color: #fdedec;
+    color: #e74c3c;
+}
+
+#journey-view svg {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+#journey-view svg#journey-map {
+    width: 100%;
+    flex-grow: 1;
+    min-height: 0; /* Wichtiger Fix für Flexbox-Bugs */
+}
+
+#journey-view {
+    touch-action: manipulation;
 }

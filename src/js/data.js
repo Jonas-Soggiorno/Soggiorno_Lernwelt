@@ -10,26 +10,43 @@ export const worldData = {
             { id: 'venezia', name: 'venezia', pos: { x: 101, y: 47 } }
         ],
         content: {
-            trieste: {
-                vokabeln: {
-                    title: "Vokabeln",
-                    icon: "🗣️",
-                    cards: [
-                        { q: 'Ciao', a: 'Hallo / Tschüss' },
-                        { q: 'Grazie', a: 'Danke' },
-                        { q: 'Prego', a: 'Bitte / Gern geschehen' }
-                    ]
+            trieste: [ // Das ist jetzt ein Array!
+                { 
+                    type: 'vokabeln', 
+                    data: {
+                        title: "Vokabeln",
+                        icon: "🗣️",
+                        cards: [
+                            { q: 'Ciao', a: 'Hallo / Tschüss' },
+                            { q: 'Grazie', a: 'Danke' },
+                            { q: 'Prego', a: 'Bitte / Gern geschehen' }
+                        ]
+                    }
                 },
-                grammatik: {
-                    title: "Grammatik",
-                    icon: "✍️",
-                    text: "Der bestimmte Artikel im Singular: 'il' für die meisten maskulinen Wörter, 'lo' vor s+Konsonant, z, y, ... und 'la' für feminine Wörter.",
-                    question: "Welcher Artikel passt zu 'zaino' (Rucksack)?",
-                    options: ["il", "lo", "la"],
-                    correct: 1 // Die 2. Option ("lo") ist richtig (Index 1)
+                { 
+                    type: 'grammatik', 
+                    data: {
+                        title: "Grammatik",
+                        icon: "✍️",
+                        text: "...",
+                        question: "...",
+                        options: ["il", "lo", "la"],
+                        correct: 1
+                    }
                 },
-                stadt: { title: "Stadt-Info", icon: "🏛️" }
-            },
+                {
+                    type: 'test',
+                    data: {
+                        title: "Abschlusstest: Trieste",
+                        icon: "✏️",
+                        questions: [
+                            { q: 'Danke', a: 'Grazie' },
+                            { q: 'Hallo / Tschüss', a: 'Ciao' },
+                            { q: 'Bitte / Gern geschehen', a: 'Prego' }
+                        ]
+                    }
+                }
+            ]
         }
     },
     "A1_2": {
