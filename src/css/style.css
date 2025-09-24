@@ -17,16 +17,15 @@ body {
 #app-container{
     background-color: transparent;
     height: 100%;
-    max-width: 850px;
     width: 100%;
     display: flex;
     align-items: center;
-    padding-bottom: 30px;
+    justify-content: center;
 }
 
 H1{
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
@@ -98,7 +97,14 @@ H1{
     display: block;
     margin-bottom: 15px;
     position: relative;
+    opacity: 0;
 }
+
+#back-to-italy-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 #back-to-italy-btn:hover {
     background-color: #0056b3;
@@ -108,13 +114,19 @@ H1{
 #lesson-panel {
     position: absolute;
     bottom: 0;
-    left: 0;
+    /*left: 0;*/
     width: 100%;
     padding-bottom: 20px;
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 900px;
 
     /* Wichtig: Standardmäßig nach unten aus dem Bild schieben */
     transform: translateY(100%);
@@ -133,6 +145,7 @@ H1{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 #lesson-panel-title {
@@ -144,6 +157,7 @@ H1{
     display: grid;
     grid-template-columns: 1fr 1fr; /* Erstellt zwei gleich breite Spalten */
     gap: 15px; /* Definiert den Abstand zwischen den Karten */
+    max-width: 850px;
 }
 
 #lesson-panel-close-btn {
@@ -173,7 +187,7 @@ H1{
 /* =================================== */
 
 .module-card {
-    background-color: #fafafa;
+    background-color: #F0EFE8;
     border: 1px solid #e0e0e0;
     border-radius: 15px;
     padding: 20px;
@@ -184,7 +198,6 @@ H1{
 
 .module-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     border-color: var(--primary-color);
 }
 
@@ -209,7 +222,7 @@ H1{
 
 .journey-path {
     fill: none; /* Wichtig, damit die Linie keine Füllung hat */
-    stroke: rgb(163, 163, 163); /* Ein helles Grau */
+    stroke: rgba(163, 163, 163, 0.397); /* Ein helles Grau */
     stroke-width: 1; /* Eine gute Dicke */
     stroke-linecap: round;
     stroke-dasharray: 2 2; /* Magie: 5px Strich, 5px Lücke, wiederholend */
@@ -355,6 +368,7 @@ H1{
 #lesson-view{
     position: relative;
     background-color: #F0EFE8;
+    flex-grow: 1;
 }
 
 #back-to-journey-btn {
@@ -505,7 +519,6 @@ H1{
     display: flex;
     flex-direction: column; /* Stapelt H1, Wrapper und Button untereinander */
     height: 100%;
-    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -514,6 +527,25 @@ H1{
     flex-grow: 1; /* Sagt dem Wrapper: "Nimm allen übrigen Platz!" */
     width: 100%;
     min-height: 0; /* Verhindert Darstellungsfehler */
+    position: relative;
+}
+
+#map-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0; /* Deckt den gesamten Wrapper ab */
+
+    /* Der Trick: Ein Verlauf von der Hintergrundfarbe zu transparent und zurück */
+    background: linear-gradient(
+        to bottom,
+        #F0EFE8 0%,       /* Startet mit deiner Hintergrundfarbe oben */
+        transparent 10%,   /* Wird nach 15% komplett durchsichtig */
+        transparent 90%,   /* Bleibt bis 85% durchsichtig */
+        #F0EFE8 100%      /* Wird am Ende wieder zu deiner Hintergrundfarbe */
+    );
+
+    /* Stellt sicher, dass man durch das Overlay auf die Karte klicken kann */
+    pointer-events: none;
 }
 
 
@@ -524,4 +556,66 @@ H1{
 
 #regions-layer {
     flex-grow: 1;
+}
+
+#welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s ease;
+}
+
+#welcome-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Ein kleiner Schatten für bessere Lesbarkeit */
+#welcome-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.637);
+}
+
+.welcome-content {
+    position: relative; /* Stellt sicher, dass der Text über dem Schatten liegt */
+}
+
+#welcome-city-name {
+    font-size: 4rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.region-path.locked {
+    fill: #dcdcdc; /* Ein etwas dunkleres Grau */
+    cursor: default;
+}
+
+/* Verhindert den Hover-Effekt bei gesperrten Regionen */
+.region-path.locked:hover {
+    fill: #dcdcdc;
 }

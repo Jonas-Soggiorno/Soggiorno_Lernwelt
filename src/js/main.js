@@ -4,9 +4,35 @@ import {worldData} from './data.js';
 const levelOrder = ["A1_1", "A1_2", "A1_3"];
 let appState = {
     levels: {
-        "A1_1": { status: 'unlocked', completedChapters: 0},
-        "A1_2": { status: 'locked', completedChapters: 0},
-        "A1_3": { status: 'locked', completedChapters: 0}
+        "A1_1": { 
+            status: 'unlocked',
+            chapters:[
+                { id: 'trieste', visited: false},
+                { id: 'udine', visited: false},
+                { id: 'valdobbiadene', visited: false},
+                { id: 'bassano_del_grappa', visited: false},
+                { id: 'venezia', visited: false},
+                { id: 'vizenza', visited: false},
+                { id: 'verona', visited: false},
+                { id: 'sirmione', visited: false},
+                { id: 'monza', visited: false},
+                { id: 'milano', visited: false}
+            ]
+        },
+        "A1_2": {
+            status: 'locked',
+            chapters: [
+                { id: 'Torino', visited: false },
+                { id: 'Asti', visited: false }
+            ]
+        },
+        "A1_3": {
+            status: 'locked',
+            chapters: [
+                { id: 'parma', visited: false },
+                { id: 'ferrara', visited: false }
+            ]
+        },
     }
 };
 let mapCanvas = null;
@@ -38,8 +64,19 @@ function buildMap(){
         regionPath.setAttribute('id', `region-${levelId}`);
         regionPath.classList.add('region-path');
 
-        regionPath.addEventListener('click', () => showJourney(levelId));
+        if (appState.levels[levelId].status === 'locked'){
+            regionPath.classList.add('locked');
+        }
 
+        regionPath.addEventListener('click', () => {
+            if (appState.levels[levelId].status === 'locked') {
+                alert('Du musst erst die vorherige Region abschließen!');
+                return;
+            }
+            
+            // Dieser Code wird nur ausgeführt, wenn die Region freigeschaltet ist
+            showJourney(levelId);
+        });
         regionsLayer.appendChild(regionPath);
     }
 
@@ -76,8 +113,13 @@ function buildMap(){
             const svg_group = document.createElementNS('http://www.w3.org/2000/svg','g');
 
             const levelState = appState.levels[levelId];
-            const isCompleted = index < levelState.completedChapters;
-            const isNext = index === levelState.completedChapters;
+
+            // Finde heraus, wie viele Kapitel abgeschlossen sind, indem wir die letzte besuchte Stadt suchen
+            // Wir gehen davon aus, dass abgeschlossene Kapitel als "besucht" markiert sind.
+            const completedChaptersCount = levelState.chapters.filter(c => c.visited).length; 
+
+            const isCompleted = index < completedChaptersCount;
+            const isNext = index === completedChaptersCount;
 
             let nextCityPosition = null
 
@@ -141,8 +183,11 @@ function showJourney(levelId) {
         // Finde die nächste Stadt als unseren Fokuspunkt
         const levelState = appState.levels[levelId];
         const chapters = worldData[levelId].chapters;
-        const nextChapter = chapters[levelState.completedChapters] || chapters[chapters.length - 1];
-        const focalPoint = nextChapter.pos;
+
+        const nextChapterIndex = levelState.chapters.findIndex(c => c.visited === false);
+
+        const targetChapter = chapters[nextChapterIndex === -1 ? chapters.length -1 : nextChapterIndex];
+        const focalPoint = targetChapter.pos;
 
         // Vermesse die Region und die Leinwand für die Zoom-Berechnung
         const regionBBox = regionPath.getBBox();
@@ -170,9 +215,11 @@ function showJourney(levelId) {
             ease: "power2.inOut"
         });
 
+        document.getElementById('back-to-italy-btn').classList.add('visible');
+
         // --- SCHRITT 4: EBENEN UMSCHALTEN ---
         setTimeout(() => {
-            document.getElementById('regions-layer').classList.add('hidden');
+            //document.getElementById('regions-layer').classList.add('hidden');
             document.getElementById(`journey-${levelId}-layer`).classList.remove('hidden');
         }, 600);
     });
@@ -180,6 +227,8 @@ function showJourney(levelId) {
 
 
 function showRegions() {
+    document.getElementById('back-to-italy-btn').classList.remove('visible');
+
     // Animiere zurück zum gespeicherten Start-viewBox
     gsap.to(mapCanvas, {
         duration: 1.2,
@@ -190,7 +239,7 @@ function showRegions() {
     // Blende die Ebenen um
     setTimeout(() => {
         document.querySelectorAll('[id^="journey-"]').forEach(layer => layer.classList.add('hidden'));
-        document.getElementById('regions-layer').classList.remove('hidden');
+        //document.getElementById('regions-layer').classList.remove('hidden');
     }, 600);
 }
 
@@ -212,35 +261,67 @@ function openLessonPanel(levelId, chapterId){
     const lessonPanelTitel = document.getElementById('lesson-panel-title')
     const lessonPanelContent = document.getElementById('lesson-panel-content')
 
+    const chapterState = appState.levels[levelId].chapters.find(c => c.id === chapterId);
     const cityData = worldData[levelId].chapters.find(chap => chap.id === chapterId)
     const contentData = worldData[levelId].content[chapterId]
 
-    if (!contentData || contentData.length === 0){
-        alert(`Die Inhalte für ${cityData.name} sind noch nicht verfügbar.`);
-        return;
+    if (chapterState && !chapterState.visited) {
+        // --- JA, ERSTER BESUCH ---
+        chapterState.visited = true; // Setze den Status auf "besucht"
+        
+        // Hole die nötigen HTML-Elemente
+        const overlay = document.getElementById('welcome-overlay');
+        const cityNameEl = document.getElementById('welcome-city-name');
+
+        // Setze Inhalt und Hintergrundbild
+        cityNameEl.textContent = `Benvenuta a ${cityData.name}!`;
+        overlay.style.backgroundImage = `url(https://source.unsplash.com/1600x900/?${cityData.id},italy)`;
+        
+        // Zeige die Animation
+        overlay.classList.add('visible');
+
+        // Nach 3 Sekunden: Blende Animation aus und zeige das Panel
+        setTimeout(() => {
+            overlay.classList.remove('visible');
+            // Warte kurz, bis die Ausblend-Animation fertig ist
+            setTimeout(showPanel, 500);
+        }, 2000);
+
+    } else {
+        // --- NEIN, WIEDERHOLTER BESUCH ---
+        // Zeige das Panel sofort an
+        showPanel();
     }
 
-    lessonPanelTitel.textContent = cityData.name;
-    lessonPanelContent.innerHTML = ''
+    function showPanel(){
+        if (!contentData || contentData.length === 0){
+                alert(`Die Inhalte für ${cityData.name} sind noch nicht verfügbar.`);
+                return;
+        }
 
-    contentData.forEach((exercise, index) => {
-        const card = document.createElement('div');
-        card.className = 'module-card';
-        card.innerHTML = `
-            <div class="module-icon">${exercise.data.icon}</div>
-            <h3 class="module-title">${exercise.data.title}</h3>
-        `;
+        lessonPanelTitel.textContent = cityData.name;
+        lessonPanelContent.innerHTML = ''
 
-        card.addEventListener('click', function(){
-            lessonPanel.classList.remove('visible');
+        contentData.forEach((exercise, index) => {
+            const card = document.createElement('div');
+            card.className = 'module-card';
+            card.innerHTML = `
+                <div class="module-icon">${exercise.data.icon}</div>
+                <h3 class="module-title">${exercise.data.title}</h3>
+            `;
 
-            renderExercise(levelId, chapterId, index); 
+            card.addEventListener('click', function(){
+                lessonPanel.classList.remove('visible');
+
+                renderExercise(levelId, chapterId, index); 
+            });
+
+            lessonPanelContent.appendChild(card);
         });
 
-        lessonPanelContent.appendChild(card);
-    });
-
-    lessonPanel.classList.add('visible')
+        lessonPanel.classList.add('visible')
+    }
+    
 }
 
 
@@ -279,8 +360,11 @@ function updateJourneyLayer(levelId) {
             const svg_group = document.createElementNS('http://www.w3.org/2000/svg','g');
 
             const levelState = appState.levels[levelId];
-            const isCompleted = index < levelState.completedChapters;
-            const isNext = index === levelState.completedChapters;
+
+            const completedCount = levelState.chapters.filter(c => c.visited === true).length;
+
+            const isCompleted = index < completedCount;
+            const isNext = index === completedCount;
 
             let nextCityPosition = null
 
@@ -293,6 +377,7 @@ function updateJourneyLayer(levelId) {
                 if (svg_group.classList.contains('locked')) {
                     return; // Stoppt die Funktion sofort
                 }
+                panToCity(chapter.pos);
                 openLessonPanel(levelId, chapter.id);
             });
 
@@ -528,39 +613,39 @@ function renderExercise(levelId, chapterId, exerciseIndex){
     });
 }
 
-function completeChapter(levelId, chapterId){
-    const levelState = appState.levels[levelId]
-    const chapterIndex = worldData[levelId].chapters.findIndex(chap => chap.id === chapterId)
+function completeChapter(levelId, chapterId) {
+    const levelState = appState.levels[levelId];
 
-    if (chapterIndex === levelState.completedChapters){
-        levelState.completedChapters++;
+    // 1. FORTSCHRITT AKTUALISIEREN
+    // Finde das Kapitel im appState und markiere es als "besucht".
+    const chapterToUpdate = levelState.chapters.find(c => c.id === chapterId);
+    if (chapterToUpdate && !chapterToUpdate.visited) {
+        chapterToUpdate.visited = true;
     }
 
-    if (levelState.completedChapters === worldData[levelId].chapters.length){
-        levelState.status = 'completed';
-        const currentLevelIndex = levelOrder.indexOf(levelId)
-
-        if (currentLevelIndex +1 < levelOrder.length){
-            const nextLevelId = levelOrder[currentLevelIndex +1]
-            appState.levels[nextLevelId].status = 'unlocked';
-        }
-    }
-
+    // 2. UI AKTUALISIEREN
+    // Blende die Lern-Ansicht aus.
     document.getElementById('lesson-view').classList.remove('active');
-
+    
+    // Zeichne die Reise-Ebene neu, um den Pin grün zu färben.
     updateJourneyLayer(levelId);
-    const nextChapter = worldData[levelId].chapters[levelState.completedChapters];
+
+    // 3. NÄCHSTES ZIEL FINDEN
+    // Zähle, wie viele Kapitel jetzt besucht sind.
+    const completedCount = levelState.chapters.filter(c => c.visited === true).length;
+    // Das nächste Kapitel ist das an der Position des Zählers.
+    const nextChapter = worldData[levelId].chapters[completedCount];
+
+    // 4. ZUM ZIEL NAVIGIEREN
     if (nextChapter) {
-        // Kurze Verzögerung, damit die UI-Updates Zeit haben
+        // Wenn es eine nächste Stadt gibt, schwenke dorthin.
         setTimeout(() => {
             panToCity(nextChapter.pos);
-        }, 100);
+        }, 200); // Eine kleine Verzögerung für einen sauberen Übergang
     } else {
-        // Wenn das Level komplett fertig ist, zoome ganz raus
+        // Wenn alle Städte fertig sind, zoome zur Italien-Karte zurück.
         showRegions();
     }
-
-    document.getElementById('map-view').classList.add('active');
 }
 
 
