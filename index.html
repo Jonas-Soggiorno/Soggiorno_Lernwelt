@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soggiorno Lernwelt</title>
-    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
     <div id="app-container">
 
-        <div id="region-view" class="view active">
+        <div id="map-view" class ="view active">
             <h1>Soggiorno Lernwelt</h1>
-            <svg id="region-map" viewBox="0 0 220 250"></svg>
-        </div>
-
-        <div id="journey-view" class="view">
-            <h1>Regionen-Reise</h1>
-            <svg id="journey-map"></svg>
-
+            <div id="map-wrapper">
+                <svg id="map-canvas"></svg>
+            </div>
             <button id="back-to-italy-btn">Zurück nach Italien</button>
         </div>
 

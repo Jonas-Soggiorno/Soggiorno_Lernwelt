@@ -59,11 +59,17 @@ H1{
     justify-content: start;
 }
 
-.journey-region-path {
+.journey-layer {
     fill: #f0f0f0;
     stroke: #cccccc;
     stroke-width: 1px;
+}
 
+.map-city-name {
+    fill: black;
+    stroke: none;
+    font-size: 3px;
+    stroke-width: 2px;
 }
 
 
@@ -78,9 +84,6 @@ H1{
     fill: #2d559e;
 }
 
-.map-city-name{
-    font-size: 5px;
-}
 
 #back-to-italy-btn {
     padding: 9px 12px;
@@ -95,7 +98,6 @@ H1{
     display: block;
     margin-bottom: 15px;
     position: relative;
-    z-index: 10;
 }
 
 #back-to-italy-btn:hover {
@@ -137,6 +139,13 @@ H1{
     margin-left: 10px;
 }
 
+#lesson-panel-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Erstellt zwei gleich breite Spalten */
+    gap: 15px; /* Definiert den Abstand zwischen den Karten */
+}
+
 #lesson-panel-close-btn {
     /* Positionierung */
     position: absolute;
@@ -159,26 +168,36 @@ H1{
     justify-content: center;
 }
 
+/* =================================== */
+/* === STIL FÜR DIE MODUL-KARTEN    === */
+/* =================================== */
+
 .module-card {
-    background-color: white;
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     text-align: center;
-    margin-top: 10px;
-
     transition: all 0.2s ease-out;
     cursor: pointer;
 }
 
 .module-card:hover {
-    transform: translateY(-2px); /* Hebt die Karte um 5px an */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12); /* Macht den Schatten stärker */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .module-card .module-icon {
-    font-size: 2.5rem; /* Macht das Emoji größer */
+    font-size: 2.5rem;
     line-height: 1;
+}
+
+.module-card .module-title {
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
 }
 
 .module-card h3 {
@@ -190,7 +209,7 @@ H1{
 
 .journey-path {
     fill: none; /* Wichtig, damit die Linie keine Füllung hat */
-    stroke: #0056b3; /* Ein helles Grau */
+    stroke: rgb(163, 163, 163); /* Ein helles Grau */
     stroke-width: 1; /* Eine gute Dicke */
     stroke-linecap: round;
     stroke-dasharray: 2 2; /* Magie: 5px Strich, 5px Lücke, wiederholend */
@@ -335,6 +354,7 @@ H1{
 
 #lesson-view{
     position: relative;
+    background-color: #F0EFE8;
 }
 
 #back-to-journey-btn {
@@ -365,10 +385,7 @@ H1{
     pointer-events: none;
 }
 
-.journey-path.completed {
-    stroke-dasharray: none; /* Macht die Linie durchgezogen */
-    stroke: #0056b3; /* Dein Primär-Blau */
-}
+
 
 .city-pin {
     fill: #0056b3;
@@ -380,6 +397,11 @@ H1{
 .next-stop .city-pin {
     fill: #e0475b;
     animation: pulse 2s infinite ease-in-out;
+}
+
+.journey-path.completed {
+    stroke-dasharray: 2px 2px; /* Macht die Linie durchgezogen */
+    stroke: #0056b3; /* Dein Primär-Blau */
 }
 
 @keyframes pulse {
@@ -467,4 +489,39 @@ H1{
 
 #journey-view {
     touch-action: manipulation;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#map-canvas g.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#map-view {
+    display: flex;
+    flex-direction: column; /* Stapelt H1, Wrapper und Button untereinander */
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+#map-wrapper {
+    flex-grow: 1; /* Sagt dem Wrapper: "Nimm allen übrigen Platz!" */
+    width: 100%;
+    min-height: 0; /* Verhindert Darstellungsfehler */
+}
+
+
+#map-view h1,
+#map-view #back-to-italy-btn {
+    flex-shrink: 0; /* Verhindert, dass Titel und Button schrumpfen */
+}
+
+#regions-layer {
+    flex-grow: 1;
 }
