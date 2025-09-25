@@ -51,6 +51,10 @@ H1{
 .view.active {
     opacity: 1;
     pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
 }
 
 #region-view{
@@ -228,40 +232,66 @@ H1{
     stroke-dasharray: 2 2; /* Magie: 5px Strich, 5px Lücke, wiederholend */
 }
 
-#flashcard {
-    perspective: 1000px; /* Erzeugt den 3D-Raum */
-    height: 150px;
-    cursor: pointer;
+#card-stack-container {
+    position: relative;
+    width: 100%;
+    height: 40%;
+    margin: 20px 0;
+    
+    /* NEU: Lässt den Stapel wachsen, um den Platz auszufüllen */
+    flex-grow: 1; 
 }
 
-#flashcard-inner {
+/* Der äußere Container, der den 3D-Raum schafft */
+.card-stack-item {
+    position: absolute;
+    width: 95%;
+    max-width: 600px;
+    left: 2.5%;
+    perspective: 1000px;
+    height: 100%;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.3 ease;
+}
+
+/* Der innere Container, der sich tatsächlich dreht */
+.flashcard-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.6s;
-    transform-style: preserve-3d; /* Wichtig für den 3D-Effekt */
+    transform-style: preserve-3d;
 }
 
-#flashcard.is-flipped #flashcard-inner {
-    transform: rotateY(180deg); /* Dreht die Karte beim Klick */
+/* Die entscheidende Regel: Wenn der innere Container
+   die .is-flipped-Klasse bekommt, DANN dreht er sich */
+.flashcard-inner.is-flipped {
+    transform: rotateY(180deg);
 }
 
+/* Die Regeln für die Vorder- und Rückseite sind schon korrekt
+   und müssen nicht geändert werden, aber stelle sicher, dass sie da sind */
 .flashcard-face {
+    /* --- Positionierung & Animation --- */
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Versteckt die Rückseite der Karte */
+    backface-visibility: hidden; /* Versteckt die Rückseite */
+
+    /* --- Design & Inhalt (Das war der fehlende Teil) --- */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 600;
     border-radius: 10px;
-    background: #f0f0f0;
+    background: #f0f0f0; /* Die Hintergrundfarbe der Karte */
+    border: 1px solid #e0e0e0; /* Ein dezenter Rand */
 }
 
 .flashcard-back {
-    transform: rotateY(180deg); /* Legt die Rückseite schonmal gedreht hin */
+    transform: rotateY(180deg);
 }
 
 .quiz-option {
@@ -292,13 +322,18 @@ H1{
     background-color: #fdedec;
 }
 
-#lesson-content{
+#lesson-content {
     background: white;
     padding: 25px;
     border-radius: 15px;
-    width: 800px;
-    max-width: 90%;
+    width: 90%;
+    max-width: 800px;
     margin-top: 20px;
+
+    display: flex;          
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: calc(97vh - 120px);
 }
 
 .flashcard-controls{
@@ -373,7 +408,7 @@ H1{
 
 #back-to-journey-btn {
     position: absolute; /* Löst den Button aus dem normalen Layout-Fluss */
-    bottom: 30px;      /* 30px Abstand vom unteren Rand */
+    bottom: 70px;      /* 30px Abstand vom unteren Rand */
     left: 30px;        /* 30px Abstand vom linken Rand */
 
     width: auto;
@@ -618,4 +653,145 @@ H1{
 /* Verhindert den Hover-Effekt bei gesperrten Regionen */
 .region-path.locked:hover {
     fill: #dcdcdc;
+}
+
+/*MEMORY*/
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+.memory-card {
+    perspective: 1000px;
+    height: 80px;
+}
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+.memory-card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--light-grey);
+    border: 2px solid var(--grey);
+}
+.card-back {
+    background: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+.memory-card.is-matched {
+    opacity: 0.5;
+    cursor: default;
+}
+
+
+.lesson-layout {
+    display: flex;
+    align-items: flex-start; /* Richtet die Spalten oben aus */
+    gap: 20px; /* Abstand zwischen Seitenleiste und Inhalt */
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden; /* Verhindert, dass die Seitenleiste überläuft */
+}
+
+#lesson-sidebar {
+    flex-shrink: 0; /* Verhindert, dass die Seitenleiste schrumpft */
+    width: 200px;
+    position: sticky; /* Das ist die Magie! */
+    top: 20px; /* Hält 20px Abstand zum oberen Rand */
+}
+
+#lesson-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lesson-sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+#lesson-sidebar a.active,
+#lesson-sidebar a:hover {
+    background-color: var(--light-grey);
+    color: var(--primary-color);
+}
+
+#lesson-main-content {
+    flex-grow: 1; /* Sagt dem Inhalt, er soll den restlichen Platz einnehmen */
+    height: calc(100vh - 220px); /* Höhe berechnen, um Scrollen zu ermöglichen */
+    overflow-y: auto; /* Fügt den Scrollbalken nur hier hinzu */
+    padding-right: 15px; /* Platz für den Scrollbalken */
+}
+
+.lesson-section {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+/* =================================================== */
+/* === STILE FÜR KLEINE BILDSCHIRME (Handy)         === */
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+    /* --- GRAMMATIK-Lektionen --- */
+
+    .lesson-layout {
+        /* Stapelt Seitenleiste und Inhalt untereinander */
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #lesson-sidebar {
+        width: 100%; /* Seitenleiste nimmt volle Breite ein */
+        position: relative; /* Hebt 'sticky' für Mobilgeräte auf */
+        top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    #lesson-sidebar ul {
+        /* Zeigt die Links nebeneinander an */
+        display: flex;
+        overflow-x: auto; /* Ermöglicht horizontales Scrollen, falls nötig */
+        padding-bottom: 5px; /* Etwas Platz für die Scrollbar */
+    }
+
+    #lesson-sidebar li {
+        /* Verhindert, dass die Links umbrechen */
+        flex-shrink: 0;
+    }
+
+    #lesson-main-content {
+        /* Passt die Höhe an das neue Layout an */
+        height: auto;
+        max-height: calc(100vh - 250px); /* Höhe anpassen */
+        overflow-y: auto;
+    }
+
+
+    /* --- MODUL-Auswahl --- */
 }
