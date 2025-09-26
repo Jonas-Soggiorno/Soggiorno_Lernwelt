@@ -17,7 +17,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "ich", "a": "io" },
             { "q": "du", "a": "tu" },
@@ -67,7 +67,7 @@
             "type": "grammatik",
             "data": {
                 "title": "Grammatik",
-                "icon": "✍️",
+                "icon": "./src/images/Grammatik.png",
                 "exercises": [
                     {
                         "title": "Artikel für 'zaino'",
@@ -118,11 +118,18 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
-            { "q": "Danke", "a": "Grazie" },
-            { "q": "Hallo / Tschüss", "a": "Ciao" },
-            { "q": "Bitte / Gern geschehen", "a": "Prego" }
+            { "q": "Übersetze: Guten Abend?", "a":[ "buona sera" ] },
+            { "q": "Übersetze: wir", "a": ["noi"] },
+            { "q": "Übersetze: arrivederci", "a": ["Auf Wiedersehen"] },
+            { "q": "Ergänze: Ein Cappuccino = ___ cappucino", "a": ["un"]},
+            { "q": "Übersetze: acqua frizzante", "a": ["prickelndes Wasser", "Mineralwasser"] },
+            { "q": "Welcher Artikel passt zu zaino (Rucksack)?", "a": ["lo"]},
+            { "q": "Wie wird das c in cena ausgesprochen?", "a": ["tsch"] },
+            { "q": "Übersetze: Ich habe einen Kaffee", "a": ["Io ho un caffè"] },
+            { "q": "Welcher unbestimmte Artikel passt zu amica (Freundin)?", "a": ["un'"] },
+            { "q": "Wie stellst du dich auf Italienisch vor, wenn du David heißt?", "a": ["Mi chiamo David.", "Io sono David.", "Mi chiamo David", "Io sono David"] }
           ]
         }
       },
@@ -130,7 +137,7 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Triest ist berühmt für seine Kaffeehauskultur, die an Wien erinnert. Bestellt man einen 'caffè', erhält man hier einen 'nero'.",
           "image": "trieste,coffee"
         }
@@ -139,8 +146,9 @@
         "type": "geografie",
         "data": {
           "title": "Geografie-Info",
-          "icon": "🌍",
+          "icon": "./src/images/Location.png",
           "text": "Triest liegt an der Adria im äußersten Nordosten Italiens und grenzt direkt an Slowenien. Die Stadt ist von einer Karstlandschaft umgeben.",
+          "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d74487.55648533204!2d13.742462761971005!3d45.65231274573198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477b6b06e4edf533%3A0x666a2484d4dd2b50!2sTriest%2C%20Italien!5e1!3m2!1sde!2sat!4v1758892400928!5m2!1sde!2sat",
           "image": "trieste,adriatic"
         }
       },
@@ -148,7 +156,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Ciao", "Hallo",
             "Grazie", "Danke",

@@ -38,11 +38,20 @@ let appState = {
 let mapCanvas = null;
 let initialViewBox = "";
 let currentLevelData = null;
+let lastOpenedLevelId = null;
+let lastOpenedChapterId= null;
 
 //===APP START===
 document.addEventListener('DOMContentLoaded', initApp);
 
 function initApp(){
+    const setAppHeight = () => {
+        const doc = document.documentElement;
+        doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+    window.addEventListener('resize', setAppHeight);
+    setAppHeight(); // Einmal initial aufrufen
+
     buildMap();
     initEventListeners();
 }
@@ -57,6 +66,11 @@ function buildMap() {
     regionsLayer.id = 'regions-layer';
     mapCanvas.appendChild(regionsLayer);
 
+    const nextRegionId = levelOrder.find(id =>
+        appState.levels[id].status === 'unlocked' &&
+        !appState.levels[id].chapters.every(c => c.completed)
+    )
+
     // Erstellt nur noch die klickbaren Regionen der Italien-Karte
     for (const levelId in worldData) {
         const levelData = worldData[levelId];
@@ -65,7 +79,17 @@ function buildMap() {
         regionPath.setAttribute('id', `region-${levelId}`);
         regionPath.classList.add('region-path');
         
-        if (appState.levels[levelId].status === 'locked') {
+        const levelState = appState.levels[levelId];
+        const isCompleted = levelState.chapters.every(c => c.completed === true);
+
+        if (isCompleted) {
+            // Region ist vollständig abgeschlossen
+            regionPath.classList.add('completed');
+        } else if (levelId === nextRegionId) {
+            // Das ist die nächste, aktive Region
+            regionPath.classList.add('next-region');
+        } else if (levelState.status === 'locked') {
+            // Region ist noch gesperrt
             regionPath.classList.add('locked');
         }
 
@@ -73,7 +97,7 @@ function buildMap() {
         regionsLayer.appendChild(regionPath);
     }
     
-    // Setzt die initiale viewBox (dein Code von vorher)
+    // Setzt die initiale viewBox
     requestAnimationFrame(() => {
         const bbox = mapCanvas.getBBox();
         const padding = 20;
@@ -211,6 +235,20 @@ function initEventListeners(){
         backToItalyBtn.addEventListener('click', showRegions);
     }
 
+    // Erkennt, wenn ein Eingabefeld fokussiert wird (Tastatur erscheint)
+    document.addEventListener('focusin', (e) => {
+        if (e.target.matches('input[type="text"], textarea')) {
+            document.body.classList.add('keyboard-visible');
+        }
+    });
+
+    // Erkennt, wenn das Eingabefeld verlassen wird (Tastatur verschwindet)
+    document.addEventListener('focusout', (e) => {
+        if (e.target.matches('input[type="text"], textarea')) {
+            document.body.classList.remove('keyboard-visible');
+        }
+    });
+
     const lessonPanel = document.getElementById('lesson-panel');
     const lessonPanelClose_btn = document.getElementById('lesson-panel-close-btn');
     lessonPanelClose_btn.addEventListener('click', function() {
@@ -266,7 +304,12 @@ function openLessonPanel(levelId, chapterId) {
         contentData.forEach((exercise, index) => {
             const card = document.createElement('div');
             card.className = 'module-card';
-            card.innerHTML = `<div class="module-icon">${exercise.data.icon}</div><h3 class="module-title">${exercise.data.title}</h3>`;
+            card.innerHTML = `
+                    <div class="module-icon">
+                        <img src="${exercise.data.icon}" alt="${exercise.data.title}">
+                    </div>
+                    <h3 class="module-title">${exercise.data.title}</h3>
+                `;
             card.addEventListener('click', () => {
                 lessonPanel.classList.remove('visible');
                 document.getElementById('map-view').classList.remove('active');
@@ -297,9 +340,11 @@ function panToCity(cityPosition) {
 }
 
 function renderExercise(levelId, chapterId, exerciseIndex){
-    const exercise = currentLevelData.content[chapterId][exerciseIndex];
-    const moduleData = exercise.data
+    lastOpenedChapterId = chapterId;
+    lastOpenedLevelId = levelId;
 
+    const exercise = currentLevelData.content[chapterId][exerciseIndex];
+    
     const lesson_view = document.getElementById('lesson-view')
     const lesson_content = document.getElementById('lesson-content')
     const journey_view = document.getElementById('journey-view')
@@ -307,6 +352,10 @@ function renderExercise(levelId, chapterId, exerciseIndex){
     lesson_content.innerHTML = ''
     let contentHTML = ''
 
+    lesson_content.className = 'view-content';
+    lesson_content.classList.add(`${exercise.type}-layout`);
+
+    const moduleData = exercise.data
 
     //ContentHTML befüllen
     if (exercise.type === 'vokabeln'){
@@ -358,28 +407,49 @@ function renderExercise(levelId, chapterId, exerciseIndex){
         `;
     } else if (exercise.type === 'test') {
         contentHTML = `
-            <div class="modal-header">
-                <h2>${moduleData.title}</h2>
-            </div>
-            <div class="test-form">
-                <p>Übersetze die Vokabeln, um die Lektion abzuschließen:</p>
-                ${moduleData.questions.map((question, index) => `
-                    <div class="test-question">
-                        <label for="test-input-${index}">${question.q}</label>
-                        <input type="text" id="test-input-${index}" class="test-input" data-correct-answer="${question.a.toLowerCase()}">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <p id="quiz-progress-text"></p>
+                    
+                    <div id="quiz-progress-bar-container">
+                        <div id="quiz-progress-bar"></div>
                     </div>
-                `).join('')}
+                </div>
+                <div id="quiz-card">
+                    <div id="quiz-question-area">
+                        </div>
+                    <div id="quiz-answer-area">
+                        <label for="quiz-input" id="quiz-input-label">Deine Antwort</label>
+                        <input type="text" id="quiz-input" class="test-input" placeholder="Übersetzung eingeben...">
+                    </div>
+                </div>
+                <button id="quiz-next-btn" class="action-button">Weiter</button>
             </div>
-            <button id="check-test-btn" class="action-button">Antworten prüfen</button>
-            <div id="test-feedback"></div>
+            <div id="quiz-results-area">
+                </div>
         `;
     } else if (exercise.type === 'geografie'){
+        let mediaHTML = ''; // Eine leere Variable für unser Medium (Bild oder Karte)
+
+        // Prüfe, ob eine iframe-URL vorhanden ist
+        if (moduleData.iframeSrc) {
+            // Ja: Baue den iframe-Tag
+            mediaHTML = `
+                <div class="map-container">
+                    <iframe src="${moduleData.iframeSrc}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>`;
+        } else if (moduleData.image) {
+            // Nein, aber es gibt ein Bild: Baue den img-Tag (wie bisher)
+            mediaHTML = `<img src="https://source.unsplash.com/800x600/?${moduleData.image}" alt="${moduleData.title}">`;
+        }
+
+        // Setze das finale HTML zusammen
         contentHTML = `
             <div class="modal-header">
                 <h2>${moduleData.title}</h2>
             </div>
             <div class="info-content">
-                <img src="https://source.unsplash.com/800x600/?${moduleData.image}" alt="${moduleData.title}">
+                ${mediaHTML}
                 <p>${moduleData.text}</p>
             </div>
         `;
@@ -408,70 +478,97 @@ function renderExercise(levelId, chapterId, exerciseIndex){
         const cardsData = moduleData.cards;
         const allCards = [];
 
+        cardsData.sort(()=> Math.random() -0.5);
+
         // Baue die Karten von hinten nach vorne auf
-        cardsData.slice().reverse().forEach(cardInfo => {
+        cardsData.slice().forEach(cardInfo => {
             const cardEl = document.createElement('div');
             cardEl.className = 'card-stack-item';
             cardEl.innerHTML = `
                 <div class="flashcard-inner">
-                    <div class="flashcard-face flashcard-front">${cardInfo.q}</div>
-                    <div class="flashcard-face flashcard-back">${cardInfo.a}</div>
+                    <div class="flashcard-face flashcard-front">
+                        <span class="language-hint">DEUTSCH</span>
+                        <span class="card-text">${cardInfo.q}</span>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <span class="language-hint">ITALIENISCH</span>
+                        <span class="card-text">${cardInfo.a}</span>
+                    </div>
                 </div>`;
             stackContainer.appendChild(cardEl);
             allCards.push(cardEl);
         });
+ 
+        let isStackAnimating = false; // Die Sperre ist zurück und notwendig
 
         allCards.forEach(card => {
             const hammer = new Hammer(card);
             hammer.get('pan').set({ threshold: 10, direction: Hammer.DIRECTION_HORIZONTAL });
-            hammer.get('tap').requireFailure('pan');
 
-            // Tippen zum Umdrehen
             hammer.on('tap', () => {
+                if (isStackAnimating || card.classList.contains('is-flipping')) return;
+                card.classList.add('is-flipping');
                 card.querySelector('.flashcard-inner').classList.toggle('is-flipped');
+                setTimeout(() => {
+                    card.classList.remove('is-flipping');
+                }, 600);
             });
 
-            // Wischen
             hammer.on('pan', (e) => {
-                if (card.querySelector('.flashcard-inner').classList.contains('is-flipped')) return;
-                // BENUTZE GSAP, um die Position zu setzen, nicht style.transform
-                gsap.set(card, {
-                    x: e.deltaX,
-                    rotation: e.deltaX / 10
-                });
+                if (isStackAnimating || card.classList.contains('is-flipping')) return;
+                gsap.set(card, { x: e.deltaX, rotation: e.deltaX / 10 });
             });
 
-            // Loslassen
             hammer.on('panend', (e) => {
-                if (card.querySelector('.flashcard-inner').classList.contains('is-flipped')) return;
-
-                // Töte alle alten Animationen auf dieser Karte
+                if (isStackAnimating || card.classList.contains('is-flipping')) return;
                 gsap.killTweensOf(card);
 
                 if (Math.abs(e.deltaX) > 100) {
-                    // Weit genug gewischt: Wegfliegen lassen
-                    const flingDistance = e.velocityX * 300;
+                    isStackAnimating = true; // SPERRE AKTIVIEREN
+                    const parent = card.parentElement;
+
+                    // Phase 1: Animationen
                     gsap.to(card, {
-                        x: e.deltaX + flingDistance,
-                        rotation: (e.deltaX / 10) + (e.velocityX * 15),
-                        duration: 0.5,
+                        duration: 0.4, // Optional: Animation etwas beschleunigen
                         ease: "power1.out",
+                        x: e.deltaX + (e.velocityX * 300),
+                        rotation: (e.deltaX / 10) + (e.velocityX * 15),
                         onComplete: () => {
-                            // Karte für Wiederverwendung zurücksetzen
-                            gsap.set(card, { x: 0, y: 0, rotation: 0, display: 'none' });
-                            const parent = card.parentElement;
-                            parent.insertBefore(card, parent.firstChild);
-                            setTimeout(() => gsap.set(card, { display: 'block' }), 20);
+                            // Phase 2: Aufräumen & Zustand neu setzen
+                            parent.appendChild(card);
+                            const allCards = parent.querySelectorAll('.card-stack-item');
+                            allCards.forEach((c, index) => {
+                                gsap.set(c, { transition: 'none', zIndex: allCards.length - index });
+                                if (index === 0) {
+                                    gsap.set(c, { transform: 'none', opacity: 1, pointerEvents: 'auto' });
+                                } else if (index === 1) {
+                                    gsap.set(c, { transform: 'translateY(12px) rotate(4deg) scale(0.95)', opacity: 1, pointerEvents: 'none' });
+                                } else if (index === 2) {
+                                    gsap.set(c, { transform: 'translateY(24px) rotate(-5deg) scale(0.9)', opacity: 1, pointerEvents: 'none' });
+                                } else {
+                                    gsap.set(c, { opacity: 0, pointerEvents: 'none' });
+                                }
+                            });
+                            isStackAnimating = false; // SPERRE FREIGEBEN
                         }
                     });
+
+                    // Parallele Animation der nachrückenden Karten
+                    const secondCard = parent.querySelector('.card-stack-item:nth-child(2)');
+                    const thirdCard = parent.querySelector('.card-stack-item:nth-child(3)');
+                    const fourthCard = parent.querySelector('.card-stack-item:nth-child(4)');
+
+                    if (secondCard) {
+                        gsap.to(secondCard, { duration: 0.3, delay: 0.05, ease: 'power2.out', y: 0, rotation: 0, scale: 1 });
+                    }
+                    if (thirdCard) {
+                        gsap.to(thirdCard, { duration: 0.3, delay: 0.05, ease: 'power2.out', y: 12, rotation: 4, scale: 0.95 });
+                    }
+                    if (fourthCard) {
+                        gsap.to(fourthCard, { duration: 0.3, delay: 0.05, ease: 'power2.out', y: 24, rotation: -5, scale: 0.9, opacity: 1 });
+                    }
                 } else {
-                    // Nicht weit genug: Zurückschnappen lassen
-                    gsap.to(card, {
-                        x: 0,
-                        rotation: 0,
-                        duration: 0.4,
-                        ease: "elastic.out(1, 0.75)"
-                    });
+                    gsap.to(card, { duration: 0.4, ease: "elastic.out(1, 0.75)", x: 0, rotation: 0 });
                 }
             });
         });
@@ -547,75 +644,193 @@ function renderExercise(levelId, chapterId, exerciseIndex){
             });
         });
     }
-    if (exercise.type === 'test'){
-        const checkBtn = document.getElementById('check-test-btn')
-        const feedbackEl = document.getElementById('test-feedback')
-        const inputs = document.querySelectorAll('.test-input')
+    if (exercise.type === 'test') {
+        // --- VARIABLEN ZUR STEUERUNG DES QUIZ ---
+        let currentQuestionIndex = 0;
+        const questions = moduleData.questions;
+        const userAnswers = []; // Wir speichern die Antworten des Nutzers hier
 
-        checkBtn.addEventListener('click', () => {
-            let correctAnswers = 0;
-            inputs.forEach(input => {
-                const userAnswer = input.value.trim().toLowerCase()
-                const correctAnswer = input.dataset.correctAnswer
+        // --- ELEMENTE AUS DEM DOM HOLEN ---
+        const progressEl = document.getElementById('quiz-progress-text');
+        const questionAreaEl = document.getElementById('quiz-question-area');
+        const inputEl = document.getElementById('quiz-input');
+        const nextBtn = document.getElementById('quiz-next-btn');
+        const resultsAreaEl = document.getElementById('quiz-results-area');
 
-                input.classList.remove('correct', 'incorrect')
+        // --- FUNKTION, UM DIE AKTUELLE FRAGE ANZUZEIGEN ---
+        function displayCurrentQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const question = questions[currentQuestionIndex];
+                progressEl.textContent = `Frage ${currentQuestionIndex + 1} von ${questions.length}`;
+                questionAreaEl.innerHTML = `<label for="quiz-input">${question.q}</label>`;
+                const progressBar = document.getElementById('quiz-progress-bar');
+                progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`; 
+                inputEl.value = ''; // Eingabefeld leeren
+                inputEl.focus(); // Cursor direkt ins Feld setzen
+            }
+        }
 
-                if (userAnswer === correctAnswer){
-                    correctAnswers++
-                    input.classList.add('correct')
+        // --- FUNKTION, UM DIE ERGEBNISSE AM ENDE ANZUZEIGEN ---
+        function showResults() {
+            // Verstecke die Quiz-Elemente
+            document.getElementById('quiz-card').style.display = 'none';
+            document.getElementById('quiz-next-btn').style.display = 'none';
+            document.querySelector('.quiz-header').style.display = 'none'; // Versteckt den ganzen Header
+
+            let correctCount = 0;
+            let resultsHTML = '<h3>Ergebnisse</h3>';
+
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index].trim().toLowerCase();
+                const correctAnswers = question.a;
+                let isCorrect = false; // Standardmäßig als falsch annehmen
+
+                // NEUE PRÜFUNG: Ist die richtige Antwort ein Array?
+                if (Array.isArray(correctAnswers)) {
+                    // Ja: Prüfe, ob die Nutzerantwort im Array enthalten ist
+                    // Wir normalisieren auch die korrekten Antworten zu Kleinbuchstaben
+                    const lowerCaseCorrectAnswers = correctAnswers.map(ans => ans.toLowerCase());
+                    isCorrect = lowerCaseCorrectAnswers.includes(userAnswer);
                 } else {
-                    input.classList.add('incorrect')
+                    // Nein (altes Format): Mache einen einfachen String-Vergleich
+                    isCorrect = (userAnswer === correctAnswers.toLowerCase());
                 }
+
+                if (isCorrect) {
+                    correctCount++;
+                }
+
+                // Passe die Anzeige der richtigen Antwort an
+                let correctAnswerText = '';
+                if (Array.isArray(correctAnswers)) {
+                    correctAnswerText = correctAnswers.join(' / '); // Zeigt "ciao / salve"
+                } else {
+                    correctAnswerText = correctAnswers;
+                }
+
+                resultsHTML += `
+                    <div class="result-item ${isCorrect ? 'correct' : 'incorrect'}">
+                        <p><strong>Frage:</strong> ${question.q}</p>
+                        <p><strong>Deine Antwort:</strong> ${userAnswers[index]} ${isCorrect ? '✔' : '✘'}</p>
+                        ${!isCorrect ? `<p><strong>Mögliche Antworten:</strong> ${correctAnswerText}</p>` : ''}
+                    </div>
+                `;
             });
+            
+            resultsAreaEl.innerHTML = resultsHTML;
 
-            if (correctAnswers === inputs.length){
-                feedbackEl.innerHTML = '<p class="correct-feedback">Perfekt! Die Lektion ist abgeschlossen.</p>';
-                checkBtn.disabled = true;
-
+            // Prüfen, ob der Test bestanden wurde
+            if (correctCount === questions.length) {
+                resultsAreaEl.insertAdjacentHTML('afterbegin', '<p class="correct-feedback">Perfekt! Alles richtig.</p>');
+                // Lektion nach kurzer Verzögerung als abgeschlossen markieren
                 setTimeout(() => {
-                    completeChapter(levelId, chapterId)
-                }, 1500);
+                    completeChapter(levelId, chapterId);
+                }, 2000);
             } else {
-                feedbackEl.innerHTML = '<p class="incorrect-feedback">Einige Antworten sind noch nicht richtig. Versuche es erneut!</p>';
+                resultsAreaEl.insertAdjacentHTML('afterbegin', '<p class="incorrect-feedback">Schau dir die Fehler an und versuche es erneut!</p>');
+                // Optional: Button zum Wiederholen hinzufügen
+                const retryBtn = document.createElement('button');
+                retryBtn.textContent = 'Erneut versuchen';
+                retryBtn.className = 'action-button';
+                retryBtn.onclick = () => renderExercise(levelId, chapterId, exerciseIndex); // Startet die Übung neu
+                resultsAreaEl.appendChild(retryBtn);
+            }
+        }
+
+        // --- EVENT-LISTENER FÜR DEN "WEITER"-BUTTON ---
+        nextBtn.addEventListener('click', () => {
+            // Speichere die aktuelle Antwort
+            userAnswers.push(inputEl.value);
+            
+            // Gehe zur nächsten Frage
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                displayCurrentQuestion();
+            } else {
+                // Quiz ist zu Ende
+                showResults();
             }
         });
+        
+        inputEl.addEventListener('keydown', (event) => {
+            // Prüfen, ob die Enter-Taste gedrückt wurde
+            if (event.key === 'Enter') {
+                // Verhindert das Standardverhalten der Enter-Taste (z.B. Formular absenden)
+                event.preventDefault(); 
+                
+                // Simuliert einen Klick auf den "Weiter"-Button
+                nextBtn.click();
+            }
+        });
+        
+        // --- QUIZ STARTEN ---
+        displayCurrentQuestion(); // Zeige die erste Frage an
     }
+
     const back_to_journey_btn = document.getElementById('back-to-journey-btn');
     if (back_to_journey_btn) {
         back_to_journey_btn.addEventListener('click', function(){
             lesson_view.classList.remove('active');
             document.getElementById('map-view').classList.add('active');
+            if (lastOpenedChapterId && lastOpenedLevelId){
+                openLessonPanel(lastOpenedLevelId, lastOpenedChapterId);
+            }
         });
     }
 
 }
 
 function completeChapter(levelId, chapterId) {
-
     const levelState = appState.levels[levelId];
     const chapterToUpdate = levelState.chapters.find(c => c.id === chapterId);
     if (chapterToUpdate && !chapterToUpdate.completed) {
         chapterToUpdate.completed = true;
     }
 
-    document.getElementById('lesson-view').classList.remove('active');
-    document.getElementById('map-view').classList.add('active');
+    // Prüfen, ob alle Kapitel in diesem Level jetzt abgeschlossen sind
+    const allChaptersCompleted = levelState.chapters.every(c => c.completed === true);
 
-    buildJourneyLayer(levelId, currentLevelData);
+    if (allChaptersCompleted) {
+        // --- LEVEL ABGESCHLOSSEN ---
+        
+        // 1. Finde den Index des nächsten Levels
+        const currentLevelIndex = levelOrder.indexOf(levelId);
+        const nextLevelId = levelOrder[currentLevelIndex + 1];
 
-    const completedCount = levelState.chapters.filter(c => c.visited === true).length;
-    const nextChapter = currentLevelData.chapters[completedCount];
-    
+        // 2. Schalte das nächste Level frei, falls es existiert
+        if (nextLevelId && appState.levels[nextLevelId]) {
+            appState.levels[nextLevelId].status = 'unlocked';
+            // Optional: Eine kleine Erfolgsmeldung
+            //alert(`Glückwunsch! Du hast die Region ${levelId} abgeschlossen und ${nextLevelId} freigeschaltet!`);
+        }
 
-    if (nextChapter) {
-        setTimeout(() => {
-            panToCity(nextChapter.pos);
-        }, 200); 
-    } else {
+        // 3. Kehre zur Italien-Karte zurück
+        document.getElementById('lesson-view').classList.remove('active');
+        document.getElementById('map-view').classList.add('active');
         showRegions();
-    }
+        
+        // 4. Baue die Karte neu auf, damit die freigeschaltete Region klickbar wird
+        buildMap(); 
 
-    showJourney(levelId)
+    } else {
+        
+        // Verstecke die Lektionsansicht
+        document.getElementById('lesson-view').classList.remove('active');
+        document.getElementById('map-view').classList.add('active');
+
+        // Aktualisiere die visuelle Darstellung der Reise (Pins, Pfade)
+        buildJourneyLayer(levelId, currentLevelData);
+
+        // Finde das nächste unvollständige Kapitel, um dorthin zu schwenken
+        const nextChapterIndex = levelState.chapters.findIndex(c => !c.completed);
+        if (nextChapterIndex !== -1) {
+            const nextChapterData = currentLevelData.chapters[nextChapterIndex];
+            setTimeout(() => {
+                panToCity(nextChapterData.pos);
+            }, 200);
+        }
+    }
 }
 
 
@@ -631,6 +846,7 @@ function initMemoryGame(pairs) {
 
     let flippedCards = [];
     let lockBoard = false;
+    let matchedPairsCount = 0;
 
     cardsData.forEach(cardInfo => {
         const card = document.createElement('div');
@@ -654,6 +870,7 @@ function initMemoryGame(pairs) {
                     // Match!
                     flippedCards[0].classList.add('is-matched');
                     flippedCards[1].classList.add('is-matched');
+                    matchedPairsCount++;
                     flippedCards = [];
                     lockBoard = false;
                 } else {
@@ -665,6 +882,47 @@ function initMemoryGame(pairs) {
                         lockBoard = false;
                     }, 1000);
                 }
+            }
+
+            if (matchedPairsCount === pairs.length / 2) { // <- Hier wird erkannt, dass das Spiel gewonnen ist
+                const isDesktop = window.innerWidth > 768; // Prüfen, ob der Bildschirm breiter als 768px ist
+
+                if (isDesktop) {
+                    // **Desktop-Animation: Zwei Kanonen von unten**
+                    const duration = 2 * 1000; // 2 Sekunden
+                    const animationEnd = Date.now() + duration;
+                    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                    const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+                    const interval = setInterval(function() {
+                        const timeLeft = animationEnd - Date.now();
+                        if (timeLeft <= 0) {
+                            return clearInterval(interval);
+                        }
+                        const particleCount = 50 * (timeLeft / duration);
+                        // Linke Seite
+                        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                        // Rechte Seite
+                        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                    }, 250);
+
+                } else {
+                    // **Handy-Animation: Einzelner Schuss von oben (wie bisher, aber verbessert)**
+                    confetti({
+                        particleCount: 150,
+                        spread: 90,
+                        origin: { y: 0.6 },
+                        gravity: 0.8 // Lässt das Konfetti realistischer nach unten fallen
+                    });
+                }
+
+                setTimeout(() => {
+                    const backButton = document.getElementById('back-to-journey-btn');
+                    if (backButton) {
+                        backButton.click(); // Simuliert einen Klick auf den "Zurück zur Reise"-Button
+                    }
+                }, 2000); // 2000 Millisekunden = 2 Sekunden Verzögerung
             }
         });
         grid.appendChild(card);

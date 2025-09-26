@@ -10,9 +10,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: var(--app-height, 100vh);
     overflow: hidden;
 }
+
 
 #app-container{
     background-color: transparent;
@@ -31,32 +32,22 @@ H1{
 }
 
 .view {
+    display: none; 
+    
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-
-    pointer-events: none;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .view.active {
-    opacity: 1;
-    pointer-events: auto;
-    display: flex;
+    display: flex; 
+    
     flex-direction: column;
     align-items: center;
     justify-content: start;
 }
-
 #region-view{
     display: flex;
     justify-content: start;
@@ -75,17 +66,6 @@ H1{
     stroke-width: 2px;
 }
 
-
-.region-path{
-    fill: #f0f0f0;
-    stroke: #cccccc;
-    stroke-width: 1px;
-    cursor: pointer;
-}
-
-.region-path:hover{
-    fill: #2d559e;
-}
 
 
 #back-to-italy-btn {
@@ -126,7 +106,6 @@ H1{
     border-top-right-radius: 20px;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
 
-    display: flex;
     align-items: center;
     flex-direction: column;
 
@@ -134,14 +113,16 @@ H1{
 
     /* Wichtig: Standardmäßig nach unten aus dem Bild schieben */
     transform: translateY(100%);
-    transition: transform 0.4s ease-in-out;
 
     z-index: 11;
+
+    display: none;
 }
 
 #lesson-panel.visible {
     /* Wenn es die Klasse 'visible' hat, an die Normalposition schieben */
     transform: translateY(0);
+    display: flex;
 }
 
 #lesson-panel-header{
@@ -159,7 +140,7 @@ H1{
 #lesson-panel-content {
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Erstellt zwei gleich breite Spalten */
+    grid-template-columns: 1fr 1fr 1fr; /* Erstellt zwei gleich breite Spalten */
     gap: 15px; /* Definiert den Abstand zwischen den Karten */
     max-width: 850px;
 }
@@ -210,6 +191,12 @@ H1{
     line-height: 1;
 }
 
+.module-icon img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
 .module-card .module-title {
     margin: 10px 0 0 0;
     font-size: 1rem;
@@ -235,63 +222,128 @@ H1{
 #card-stack-container {
     position: relative;
     width: 100%;
-    height: 40%;
-    margin: 20px 0;
-    
-    /* NEU: Lässt den Stapel wachsen, um den Platz auszufüllen */
-    flex-grow: 1; 
+    max-width: 400px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    perspective: 1500px;
 }
 
-/* Der äußere Container, der den 3D-Raum schafft */
 .card-stack-item {
     position: absolute;
-    width: 95%;
-    max-width: 600px;
-    left: 2.5%;
-    perspective: 1000px;
-    height: 100%;
+    width: 90%;
+    height: 80%;
+    max-height: 450px;
     cursor: grab;
     user-select: none;
-    transition: transform 0.3 ease;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Übergang hinzugefügt */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
 }
 
-/* Der innere Container, der sich tatsächlich dreht */
+.card-stack-item:active {
+    cursor: grabbing;
+}
+
+/* --- KORRIGIERTE Z-INDEX LOGIK --- */
+/* Die oberste Karte bekommt den höchsten z-index */
+.card-stack-item:nth-child(1) {
+    z-index: 3;
+}
+
+/* Die zweite Karte liegt dahinter */
+.card-stack-item:nth-child(2) {
+    transform: translateY(12px) rotate(4deg) scale(0.95);
+    z-index: 2;
+}
+
+/* Die dritte Karte liegt ganz hinten */
+.card-stack-item:nth-child(3) {
+    transform: translateY(24px) rotate(-5deg) scale(0.9);
+    z-index: 1;
+}
+
+/* Alle weiteren Karten sind unsichtbar */
+.card-stack-item:nth-child(n+4) {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .flashcard-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    /* Eine "federnde" Animation für den Umdreh-Effekt */
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     transform-style: preserve-3d;
 }
 
-/* Die entscheidende Regel: Wenn der innere Container
-   die .is-flipped-Klasse bekommt, DANN dreht er sich */
 .flashcard-inner.is-flipped {
     transform: rotateY(180deg);
 }
 
-/* Die Regeln für die Vorder- und Rückseite sind schon korrekt
-   und müssen nicht geändert werden, aber stelle sicher, dass sie da sind */
 .flashcard-face {
-    /* --- Positionierung & Animation --- */
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Versteckt die Rückseite */
-
-    /* --- Design & Inhalt (Das war der fehlende Teil) --- */
+    backface-visibility: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    border-radius: 10px;
-    background: #f0f0f0; /* Die Hintergrundfarbe der Karte */
-    border: 1px solid #e0e0e0; /* Ein dezenter Rand */
+    padding: 25px;
+    background: #FFFFFF; /* Reines Weiß für die Karte */
+    border-radius: 20px;
+    border: 1px solid #EAEAEA;
+    overflow: hidden; /* Verhindert, dass der farbige Rand übersteht */
+}
+
+.flashcard-face::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.flashcard-front::before {
+    background-color: var(--primary-color); /* Blau für die Frage */
 }
 
 .flashcard-back {
     transform: rotateY(180deg);
+}
+
+.flashcard-face .language-hint {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.flashcard-face .card-text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+/* Anleitung unter dem Stapel */
+.card-stack-instructions {
+    text-align: center;
+    color: #777;
+    flex-shrink: 0;
+    margin-bottom: 60px;
+}
+.card-stack-instructions p {
+    margin: 5px 0;
 }
 
 .quiz-option {
@@ -323,18 +375,134 @@ H1{
 }
 
 #lesson-content {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 800px;
-    margin-top: 20px;
-
-    display: flex;          
+    display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    max-height: calc(97vh - 120px);
+    justify-content: start; /* Verteilt den Platz */
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 900px;
 }
+
+.view-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert horizontal */
+    justify-content: flex-start; /* RICHTET INHALT OBEN AUS */
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    padding: 20px 20px 80px 20px; /* Puffer unten für den "Zurück"-Button */
+    box-sizing: border-box;
+}
+
+.vokabeln-layout {
+    justify-content: center;
+}
+
+.test-layout{
+    overflow-y: auto;
+}
+
+.quiz-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#quiz-progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e8f8f5;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#quiz-progress-text {
+    color: #A0A4B8;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#quiz-progress-bar {
+    height: 100%;
+    width: 0%; /* Startet bei 0, wird per JS aktualisiert */
+    background-color: #20C475; /* Helles Grün */
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* --- QUIZ KARTE & INHALT --- */
+#quiz-card {
+    background-color: #3055a0;
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    border: 1px solid #3055a0;
+    margin-bottom: 30px;
+}
+
+#quiz-question-area {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    min-height: 80px; /* Gibt der Frage etwas Platz */
+    text-align: left;
+}
+
+#quiz-answer-area {
+    text-align: left;
+}
+
+#quiz-input-label {
+    color: #A0A4B8;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#quiz-input {
+    background-color: #1A1E2E;
+    border: 1px solid #3055a0;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Wichtig für korrektes Padding */
+}
+
+#quiz-input::placeholder {
+    color: #6A708B;
+}
+
+/* --- BUTTONS --- */
+#quiz-next-btn {
+    background-color: #3055a0;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    margin-top: 0;
+}
+
+#quiz-next-btn:hover {
+    background-color: transparent;
+    border-color: #004a9e;
+    border-style: solid;
+    border-radius: 25px;
+    color: #004a9e;
+}
+
 
 .flashcard-controls{
     display: flex;
@@ -385,30 +553,32 @@ H1{
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: 600;
-    background-color: transparent;
+    background-color: #f1eee8;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
     border-radius: 25px;
     cursor: pointer;
-    margin: 20px auto;
+    margin: 20px 0 20px auto;
     display: block;
     transition: all 0.2s ease-in-out;
+    align-self: self-end;
 }
 
 .action-button:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color :#0056b3;
+    color:#f1eee8;
 }
 
 #lesson-view{
     position: relative;
     background-color: #F0EFE8;
     flex-grow: 1;
+    overflow: hidden;
 }
 
 #back-to-journey-btn {
     position: absolute; /* Löst den Button aus dem normalen Layout-Fluss */
-    bottom: 70px;      /* 30px Abstand vom unteren Rand */
+    bottom: 70px;      /* 70px Abstand vom unteren Rand */
     left: 30px;        /* 30px Abstand vom linken Rand */
 
     width: auto;
@@ -490,9 +660,10 @@ H1{
     border-radius: 8px;
     padding: 8px;
     font-size: 1rem;
-    text-align: right;
+    text-align: left;
     width: 60%;
     transition: all 0.2s;
+    background-color: #004a9e;
 }
 
 .test-input.correct {
@@ -516,11 +687,15 @@ H1{
 .correct-feedback {
     background-color: #e8f8f5;
     color: #1abc9c;
+    padding:10px;
+    border-radius: 15px;
 }
 
 .incorrect-feedback {
     background-color: #fdedec;
     color: #e74c3c;
+    padding:10px;
+    border-radius: 15px;
 }
 
 #journey-view svg {
@@ -645,27 +820,86 @@ H1{
     }
 }
 
+.region-path {
+    fill: #f0f0f0; 
+    stroke: #cccccc;
+    stroke-width: 1px;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.region-path:hover {
+    fill: #ddeeff;
+}
+
+.region-path.completed {
+    fill: #d4edda;
+    stroke: #89b392;
+}
+.region-path.completed:hover {
+    fill: #c3e6cb;
+}
+
+
+.region-path.next-region {
+    fill: #fff3cd;
+    stroke: #e4c161;
+    animation: pulse-region-animation 2s infinite ease-in-out;
+}
+
 .region-path.locked {
-    fill: #dcdcdc; /* Ein etwas dunkleres Grau */
-    cursor: default;
+    fill: #e9ecef;
+    stroke: #ced4da;
+    cursor: not-allowed;
 }
-
-/* Verhindert den Hover-Effekt bei gesperrten Regionen */
 .region-path.locked:hover {
-    fill: #dcdcdc;
+    fill: #e9ecef;
 }
 
-/*MEMORY*/
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 20px;
+
+@keyframes pulse-region-animation {
+    0% {
+        fill: #fff3cd;
+    }
+    50% {
+        fill: #ffe085;
+    }
+    100% {
+        fill: #fff3cd;
+    }
 }
+
+#memory-grid {
+    display: grid;
+    gap: 10px; /* Der Abstand zwischen den Karten */
+    width: 100%;
+    margin-top: 20px;
+
+    /* * Die Magie für das responsive Gitter:
+     * - auto-fit: Erstellt so viele Spalten, wie in den Container passen.
+     * - minmax(80px, 1fr): Jede Spalte ist mindestens 80px breit,
+     * dehnt sich aber aus (1fr), um den verfügbaren Platz zu füllen.
+     * Bei wenig Platz werden es automatisch weniger Spalten.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+@media (max-width: 768px) {
+    #memory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    }
+}
+
 .memory-card {
     perspective: 1000px;
-    height: 80px;
+    
+    /* * Sorgt dafür, dass die Karten immer quadratisch sind (Verhältnis 1:1).
+     * Die Höhe passt sich automatisch an die dynamische Breite an.
+     * Ersetzt die alte feste Höhe von "height: 80px".
+    */
+    aspect-ratio: 1 / 1;
 }
+
 .card-inner {
     position: relative;
     width: 100%;
@@ -674,9 +908,16 @@ H1{
     transform-style: preserve-3d;
     cursor: pointer;
 }
+
 .memory-card.is-flipped .card-inner {
     transform: rotateY(180deg);
 }
+
+.card-front{
+    color: #e1475a;
+    font-size: 3rem;
+}
+
 .card-front, .card-back {
     position: absolute;
     width: 100%;
@@ -686,17 +927,24 @@ H1{
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: var(--light-grey);
-    border: 2px solid var(--grey);
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    font-weight: bold;
 }
+
 .card-back {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
     transform: rotateY(180deg);
+    font-size: 1.5rem; /* Größere Schrift für bessere Lesbarkeit */
 }
+
 .memory-card.is-matched {
     opacity: 0.5;
     cursor: default;
+    /* Optional: Eine leichte Animation für gefundene Paare */
+    transform: scale(0.95);
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 
@@ -788,10 +1036,64 @@ H1{
     #lesson-main-content {
         /* Passt die Höhe an das neue Layout an */
         height: auto;
-        max-height: calc(100vh - 250px); /* Höhe anpassen */
+        max-height: 75vh; /* Höhe anpassen */
         overflow-y: auto;
     }
 
+    #lesson-panel-content {
+    grid-template-columns: 1fr 1fr;
+    }
 
-    /* --- MODUL-Auswahl --- */
+    #lesson-content {
+        padding-bottom: 80px;
+    }
+
+    #quiz-question-area {
+        color: #FFFFFF;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        min-height: 30px;
+        text-align: left;
+    }
+
+
+}
+
+.result-item {
+    border-left: 4px solid #ccc;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.result-item.correct {
+    border-left-color: #28a745; /* Grün */
+}
+
+.result-item.incorrect {
+    border-left-color: #dc3545; /* Rot */
+}
+
+.result-item p {
+    margin: 5px 0;
+}
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Sorgt für ein 16:9 Seitenverhältnis, passe es bei Bedarf an */
+    padding-top: 56.25%; 
+    border-radius: 12px; /* Schöne abgerundete Ecken */
+    margin-bottom: 15px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
