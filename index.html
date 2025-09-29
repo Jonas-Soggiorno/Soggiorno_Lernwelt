@@ -12,11 +12,16 @@
     <div id="app-container">
 
         <div id="map-view" class ="view active">
-            <h1>Soggiorno Lernwelt</h1>
+            <h1 id="main-app-title">Soggiorno Lernwelt</h1>
             <div id="map-wrapper">
                 <svg id="map-canvas"></svg>
             </div>
             <button id="back-to-italy-btn">Zurück zur Übersicht</button>
+
+            <div id="city-nav-container" class="hidden">
+                <h2 id="journey-title-display"></h2>
+                <select id="city-select-dropdown"></select>
+            </div>
         </div>
 
         <div id="lesson-view" class="view">

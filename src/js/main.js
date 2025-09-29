@@ -1,4 +1,5 @@
 import {worldData} from './world.js';
+import {overviewPaths} from './overviewPaths.js'
 
 //===GLOBALE VARIABLEN===
 const levelOrder = ["A1_1", "A1_2", "A1_3"];
@@ -22,17 +23,78 @@ let appState = {
         "A1_2": {
             status: 'locked',
             chapters: [
-                { id: 'Torino', visited: false, completed: false },
-                { id: 'Asti', visited: false, completed: false }
+                { id: 'torino', visited: false, completed: false },
+                { id: 'asti', visited: false, completed: false },
+                { id: 'alba', visited: false, completed: false },
+                { id: 'acqui terme', visited: false, completed: false },
+                { id: 'sanremo', visited: false, completed: false },
+                { id: 'imperia', visited: false, completed: false },
+                { id: 'genova', visited: false, completed: false },
+                { id: 'camogli', visited: false, completed: false },
+                { id: 'la spezia', visited: false, completed: false },
+                { id: 'riomaggiore', visited: false, completed: false }
             ]
         },
         "A1_3": {
             status: 'locked',
             chapters: [
                 { id: 'parma', visited: false, completed: false },
-                { id: 'ferrara', visited: false, completed: false}
+                { id: 'ferrara', visited: false, completed: false},
+                { id: 'bologna', visited: false, completed: false },
+                { id: 'rimini', visited: false, completed: false },
+                { id: 'san marino', visited: false, completed: false },
+                { id: 'arezzo', visited: false, completed: false },
+                { id: 'firenze', visited: false, completed: false },
+                { id: 'montecatini terme', visited: false, completed: false },
+                { id: 'lucca', visited: false, completed: false },
+                { id: 'pisa', visited: false, completed: false }
             ]
         },
+        "A2_1": {
+            status: 'locked',
+            chapters: [
+                { id: 'san gimignano', visited: false, completed: false },
+                { id: 'siena', visited: false, completed: false},
+                { id: 'perugia', visited: false, completed: false },
+                { id: 'assissi', visited: false, completed: false },
+                { id: 'spoleto', visited: false, completed: false },
+                { id: 'l aquila', visited: false, completed: false },
+                { id: 'sulmona', visited: false, completed: false },
+                { id: 'pescara', visited: false, completed: false },
+                { id: 'città di vaticano', visited: false, completed: false },
+                { id: 'roma', visited: false, completed: false }
+            ]
+        },
+        "A2_2": {
+            status: 'locked',
+            chapters: [
+                { id: 'napoli', visited: false, completed: false },
+                { id: 'pompei', visited: false, completed: false},
+                { id: 'sorrento', visited: false, completed: false },
+                { id: 'capri', visited: false, completed: false },
+                { id: 'positano', visited: false, completed: false },
+                { id: 'ravello', visited: false, completed: false },
+                { id: 'salerno', visited: false, completed: false },
+                { id: 'bari', visited: false, completed: false },
+                { id: 'ostuni', visited: false, completed: false },
+                { id: 'lecce', visited: false, completed: false }
+            ]
+        },
+        "A2_3": {
+            status: 'locked',
+            chapters: [
+                { id: 'matera', visited: false, completed: false },
+                { id: 'maratea', visited: false, completed: false},
+                { id: 'tropea', visited: false, completed: false },
+                { id: 'reggio calabria', visited: false, completed: false },
+                { id: 'messina', visited: false, completed: false },
+                { id: 'taormina', visited: false, completed: false },
+                { id: 'catania', visited: false, completed: false },
+                { id: 'syrakus', visited: false, completed: false },
+                { id: 'cefalù', visited: false, completed: false },
+                { id: 'palermo', visited: false, completed: false }
+            ]
+        }
     }
 };
 let mapCanvas = null;
@@ -44,16 +106,28 @@ let lastOpenedChapterId= null;
 //===APP START===
 document.addEventListener('DOMContentLoaded', initApp);
 
-function initApp(){
-    const setAppHeight = () => {
-        const doc = document.documentElement;
-        doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-    };
-    window.addEventListener('resize', setAppHeight);
-    setAppHeight(); // Einmal initial aufrufen
+function initApp() {
+    // Prüfe, ob ein Level als Parameter in der URL übergeben wurde
+    const urlParams = new URLSearchParams(window.location.search);
+    const debugLevel = urlParams.get('level'); // z.B. holt sich "A1_1" aus "?level=A1_1"
 
-    buildMap();
-    initEventListeners();
+    initEventListeners(); 
+
+    if (debugLevel && worldData[debugLevel]) {
+        // --- DEBUG-MODUS: Lade direkt das angegebene Level ---
+        console.warn(`DEBUG-MODUS: Lade direkt das Level "${debugLevel}"`);
+        
+        // Wir müssen die Karte trotzdem im Hintergrund bauen, damit Referenzen existieren,
+        // machen sie aber nicht sichtbar.
+        buildMap(); 
+        
+        // Lade und zeige die Reise für das in der URL angegebene Level
+        showJourney(debugLevel);
+
+    } else {
+        // --- NORMALER MODUS: Starte mit der Italien-Karte ---
+        buildMap();
+    }
 }
 
 
@@ -62,9 +136,22 @@ function buildMap() {
     mapCanvas = document.getElementById('map-canvas');
     mapCanvas.innerHTML = '';
 
+
     const regionsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     regionsLayer.id = 'regions-layer';
     mapCanvas.appendChild(regionsLayer);
+
+    const overviewPathsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    overviewPathsLayer.id = 'overview-paths-layer';
+
+    for (const levelId in overviewPaths) {
+        const pathData = overviewPaths[levelId];
+        const overviewPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        overviewPath.setAttribute('d', pathData);
+        overviewPath.classList.add('overview-path');
+        overviewPathsLayer.appendChild(overviewPath);
+    }
+    mapCanvas.appendChild(overviewPathsLayer);
 
     const nextRegionId = levelOrder.find(id =>
         appState.levels[id].status === 'unlocked' &&
@@ -114,6 +201,8 @@ async function showJourney(levelId) {
     }
 
     document.getElementById('back-to-italy-btn').classList.add('visible');
+    document.getElementById('city-nav-container').classList.add('visible');
+    document.getElementById('main-app-title').classList.add('hidden-by-nav');
 
     try {
         const response = await fetch(`./data/${levelId}.json`);
@@ -132,13 +221,14 @@ async function showJourney(levelId) {
             const levelState = appState.levels[levelId];
             const nextChapterIndex = levelState.chapters.findIndex(c => !c.visited);
             const targetChapterIndex = (nextChapterIndex === -1) ? currentLevelData.chapters.length - 1 : nextChapterIndex;
+            updateCityDropdownSelection(targetChapterIndex);
             const targetChapter = currentLevelData.chapters[targetChapterIndex];
             const focalPoint = targetChapter.pos;
 
             // --- ZIEL-VIEWBOX BERECHNEN ---
             const regionBBox = regionPath.getBBox();
             const canvasRect = mapCanvas.getBoundingClientRect();
-            const targetViewBoxHeight = regionBBox.height / 0.7;
+            const targetViewBoxHeight = regionBBox.height / 0.6;
             const targetViewBoxWidth = targetViewBoxHeight * (canvasRect.width / canvasRect.height);
             const targetViewBoxX = focalPoint.x - (targetViewBoxWidth / 2);
             const targetViewBoxY = focalPoint.y - (targetViewBoxHeight / 2);
@@ -172,21 +262,97 @@ function buildJourneyLayer(levelId, levelData) {
     bgPath.classList.add('journey-region-path');
     journeyLayer.appendChild(bgPath);
 
+    // --- LOGIK FÜR GEKRÜMMTE PFADE STARTET HIER ---
+
+    // Passe diesen Wert an, um die Stärke der Krümmung zu ändern
+    const curveFactor = 0.2; 
+
     levelData.chapters.forEach((chapter, index) => {
-        if (chapter.path) {
+        // Wir brauchen einen Start- und einen Endpunkt, also beginnen wir beim zweiten Kapitel
+        if (index > 0) {
+            const startPoint = levelData.chapters[index - 1].pos;
+            const endPoint = chapter.pos;
+
+            // 1. Mittelpunkt zwischen den beiden Städten finden
+            const midX = (startPoint.x + endPoint.x) / 2;
+            const midY = (startPoint.y + endPoint.y) / 2;
+
+            // 2. Einen Kontrollpunkt für die Kurve berechnen,
+            //    der senkrecht zur direkten Verbindungslinie liegt.
+            const dx = endPoint.x - startPoint.x;
+            const dy = endPoint.y - startPoint.y;
+            const controlX = midX + curveFactor * dy; // Verschiebung auf der X-Achse
+            const controlY = midY - curveFactor * dx; // Verschiebung auf der Y-Achse
+
+            // 3. Den SVG-Pfadstring für die Kurve erstellen
+            const pathString = `M ${startPoint.x} ${startPoint.y} Q ${controlX} ${controlY} ${endPoint.x} ${endPoint.y}`;
+
+            // 4. Das <path>-Element erstellen und hinzufügen
             const journeyPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            journeyPath.setAttribute('d', chapter.path);
+            journeyPath.setAttribute('d', pathString);
             journeyPath.classList.add('journey-path');
-            if (index < appState.levels[levelId].chapters.filter(c => c.completed).length) {
+            
+            // Prüfen, ob der Pfad als "abgeschlossen" markiert werden soll
+            if (index <= appState.levels[levelId].chapters.filter(c => c.completed).length) {
                 journeyPath.classList.add('completed');
             }
             journeyLayer.appendChild(journeyPath);
         }
     });
+    
+    // --- ENDE LOGIK FÜR PFADE ---
+
+
+    const cityDropdown = document.getElementById('city-select-dropdown');
+    const journeyTitle = document.getElementById('journey-title-display');
+    cityDropdown.innerHTML = ''; // Leere alte Einträge
+
+    journeyTitle.textContent = levelId.replace('_', '.');
+
+    // Erster Eintrag als Titel
+    const titleOption = document.createElement('option');
+    titleOption.textContent = "Wähle eine Stadt...";
+    titleOption.disabled = true;
+    titleOption.selected = true;
+    cityDropdown.appendChild(titleOption);
+
+    const levelState = appState.levels[levelId];
+    const completedCount = levelState.chapters.filter(c => c.completed).length;
+
+    // Fülle das Dropdown mit den Städten
+    levelData.chapters.forEach((chapter, index) => {
+        const option = document.createElement('option');
+        option.value = index; // Wir speichern den Index der Stadt
+        option.textContent = chapter.name;
+
+        // Logik: Nur bereits besuchte Städte + die nächste freigeschaltete sind klickbar
+        if (index > completedCount) {
+            option.disabled = true;
+        }
+
+        cityDropdown.appendChild(option);
+    });
+
+    // Event-Listener, der auf eine Auswahl im Dropdown reagiert
+    cityDropdown.addEventListener('change', (event) => {
+        const selectedIndex = parseInt(event.target.value, 10);
+        const selectedCity = levelData.chapters[selectedIndex];
+        
+        if (selectedCity) {
+            // Zentriere die Kamera auf die ausgewählte Stadt
+            panToCity(selectedCity.pos);
+        }
+    });
+
+    //====Stadt-Pins=====
+
+    const pinWidth = 12.5;
+    const pinHeight = 12.5;
 
     levelData.chapters.forEach((chapter, index) => {
         const svg_group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         const levelState = appState.levels[levelId];
+        // ... (deine Logik für isCompleted, isNext bleibt gleich) ...
         const completedCount = levelState.chapters.filter(c => c.completed === true).length;
         const isCompleted = index < completedCount;
         const isNext = index === completedCount;
@@ -195,25 +361,47 @@ function buildJourneyLayer(levelId, levelData) {
         else if (isNext) { svg_group.classList.add('next-stop'); }
         else { svg_group.classList.add('locked'); }
 
-        const svg_circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        svg_circle.setAttribute('cx', chapter.pos.x);
-        svg_circle.setAttribute('cy', chapter.pos.y);
-        svg_circle.setAttribute('r', 3);
-        svg_circle.classList.add('city-pin');
+        // --- ANPASSUNG: <use> DURCH <image> ERSETZEN ---
+
+        const svg_pin = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+        let pinFile = './src/images/pin-locked.svg'; // Standard ist gesperrt
+        if (isCompleted) {
+            pinFile = './src/images/pin-completed.svg';
+        } else if (isNext) {
+            pinFile = './src/images/pin-next.svg';
+        }
+
+        svg_pin.setAttribute('href', pinFile);
+        svg_pin.classList.add('city-pin');
+
+        const finalX = chapter.pos.x - (pinWidth / 2);
+        const finalY = chapter.pos.y - pinHeight;
+
+        svg_pin.setAttribute('x', finalX);
+        svg_pin.setAttribute('y', finalY);
+
+        svg_pin.setAttribute('width', pinWidth);
+        svg_pin.setAttribute('height', pinHeight);
+
+
         
         svg_group.addEventListener('click', function() {
             if (svg_group.classList.contains('locked')) return;
+            updateCityDropdownSelection(index);
             panToCity(chapter.pos);
             openLessonPanel(levelId, chapter.id);
         });
 
-        svg_group.appendChild(svg_circle);
+        svg_group.appendChild(svg_pin);
         journeyLayer.appendChild(svg_group);
     });
+
 }
 
 function showRegions() {
     document.getElementById('back-to-italy-btn').classList.remove('visible');
+    document.getElementById('city-nav-container').classList.remove('visible');
+    document.getElementById('main-app-title').classList.remove('hidden-by-nav');
 
     // Animiere zurück zum gespeicherten Start-viewBox
     gsap.to(mapCanvas, {
@@ -233,6 +421,7 @@ function initEventListeners(){
     const backToItalyBtn = document.getElementById('back-to-italy-btn');
     if (backToItalyBtn){
         backToItalyBtn.addEventListener('click', showRegions);
+        document.getElementById('city-nav-container').classList.add('hidden');
     }
 
     // Erkennt, wenn ein Eingabefeld fokussiert wird (Tastatur erscheint)
@@ -253,6 +442,16 @@ function initEventListeners(){
     const lessonPanelClose_btn = document.getElementById('lesson-panel-close-btn');
     lessonPanelClose_btn.addEventListener('click', function() {
         lessonPanel.classList.remove('visible');
+    });
+
+    lessonPanel.addEventListener('transitionend', (event) => {
+        // Stelle sicher, dass wir auf die richtige Transition hören
+        if (event.propertyName === 'transform') {
+            // Nur wenn das Panel NICHT sichtbar ist, soll es versteckt werden
+            if (!lessonPanel.classList.contains('visible')) {
+                lessonPanel.style.display = 'none';
+            }
+        }
     });
 }
 
@@ -311,14 +510,19 @@ function openLessonPanel(levelId, chapterId) {
                     <h3 class="module-title">${exercise.data.title}</h3>
                 `;
             card.addEventListener('click', () => {
+                document.getElementById('city-nav-container').classList.remove('visible');
                 lessonPanel.classList.remove('visible');
                 document.getElementById('map-view').classList.remove('active');
                 renderExercise(levelId, chapterId, index);
             });
             lessonPanelContent.appendChild(card);
         });
+
+        lessonPanel.style.display = '';
         
-        lessonPanel.classList.add('visible');
+        setTimeout(() => {
+            lessonPanel.classList.add('visible');
+        }, 10);
     }
 }
 
@@ -827,6 +1031,7 @@ function completeChapter(levelId, chapterId) {
         if (nextChapterIndex !== -1) {
             const nextChapterData = currentLevelData.chapters[nextChapterIndex];
             setTimeout(() => {
+                updateCityDropdownSelection(nextChapterIndex);
                 panToCity(nextChapterData.pos);
             }, 200);
         }
@@ -927,4 +1132,12 @@ function initMemoryGame(pairs) {
         });
         grid.appendChild(card);
     });
+}
+
+function updateCityDropdownSelection(cityIndex) {
+    const cityDropdown = document.getElementById('city-select-dropdown');
+    // Überprüft, ob das Dropdown existiert, und setzt dann den ausgewählten Wert
+    if (cityDropdown) {
+        cityDropdown.value = cityIndex;
+    }
 }

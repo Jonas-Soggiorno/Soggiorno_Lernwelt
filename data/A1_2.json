@@ -1,0 +1,279 @@
+{
+  "chapters": [
+    { "id": "torino", "name": "Torino", "pos": { "x": 300, "y": 70 }, "path": "M 300 70 L 280 60" },
+    { "id": "asti", "name": "Asti", "pos": { "x": 280, "y": 60 }, "path": "M 280 60 L 260 65" },
+    { "id": "alba", "name": "Alba", "pos": { "x": 260, "y": 65 }, "path": "M 260 65 L 245 68" },
+    { "id": "acqui_terme", "name": "Acqui Terme", "pos": { "x": 245, "y": 68 }, "path": "M 245 68 L 230 72" },
+    { "id": "sanremo", "name": "Sanremo", "pos": { "x": 230, "y": 72 }, "path": "M 230 72 L 215 75" },
+    { "id": "imperia", "name": "Imperia", "pos": { "x": 215, "y": 75 }, "path": "M 215 75 L 200 78" },
+    { "id": "genova", "name": "Genova", "pos": { "x": 200, "y": 78 }, "path": "M 200 78 L 185 80" },
+    { "id": "camogli", "name": "Camogli", "pos": { "x": 185, "y": 80 }, "path": "M 185 80 L 170 82" },
+    { "id": "la_spezia", "name": "La Spezia", "pos": { "x": 170, "y": 82 }, "path": "M 170 82 L 155 85" },
+    { "id": "riomaggiore", "name": "Riomaggiore", "pos": { "x": 155, "y": 85 } }
+  ],
+  "content": {
+    "torino": [
+      {
+        "type": "vokabeln",
+        "data": { 
+            "title": "Vokabeln",
+            "icon": "./src/images/Mund_für_Tippsprechblase.png",
+            "cards": [ 
+                { "q": "Reservierung", "a": "prenotazione" },
+                { "q": "Zimmer", "a": "camera" },
+                { "q": "Hotel", "a": "albergo" } 
+            ] 
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Wochentage", "text": "Die Wochentage auf Italienisch: lunedì, martedì, ...", "question": "Welcher Tag ist Montag?", "options": ["lunedì", "martedì", "mercoledì"], "correct": 0 } ] }
+      },
+      {
+        "type": "test",
+        "data": { "title": "Abschlusstest", "icon": "./src/images/Icon_Aufgabe.png", "questions": [ { "q": "Übersetze: Zimmer", "a": ["camera"] } ] }
+      },
+      {
+        "type": "kultur",
+        "data": { "title": "Kultur-Einblick", "icon": "./src/images/Icon_Lerneffekt.png", "text": "Torino ist berühmt für seine barocke Architektur und Schokolade.", "image": "torino,city" }
+      },
+      {
+        "type": "geografie",
+        "data": { "title": "Geografie-Info", "icon": "./src/images/Location.png", "text": "Torino liegt am Po, umgeben von den Alpen.", "image": "torino,river" }
+      },
+      {
+        "type": "spiel",
+        "data": { "title": "Spielecke: Memory", "icon": "./src/images/Icon_Ziel.png", "pairs": ["Zimmer", "camera", "Hotel", "albergo"] }
+      }
+    ],
+    "asti": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Schön", "a": "bello" }, { "q": "Sauber", "a": "pulito" }, { "q": "Bequem", "a": "comodo" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "C’è / Ci sono", "text": "C’è = es gibt (Singular), Ci sono = es gibt (Plural).", "question": "Welches benutzt man für mehrere Zimmer?", "options": ["C’è", "Ci sono"], "correct": 1 } ] }
+      },
+      {
+        "type": "test",
+        "data": { "title": "Abschlusstest", "icon": "./src/images/Icon_Aufgabe.png", "questions": [ { "q": "Übersetze: sauber", "a": ["pulito"] } ] }
+      },
+      {
+        "type": "kultur",
+        "data": { "title": "Kultur-Einblick", "icon": "./src/images/Icon_Lerneffekt.png", "text": "Asti ist berühmt für seinen Wein und das jährliche Palio-Rennen.", "image": "asti,city" }
+      },
+      {
+        "type": "geografie",
+        "data": { "title": "Geografie-Info", "icon": "./src/images/Location.png", "text": "Asti liegt in der Region Piemont, umgeben von Weinbergen.", "image": "asti,hills" }
+      },
+      {
+        "type": "spiel",
+        "data": { "title": "Spielecke: Memory", "icon": "./src/images/Icon_Ziel.png", "pairs": ["Schön", "bello", "Bequem", "comodo"] }
+      }
+    ],
+    "alba": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Beschwerde", "a": "reclamo" }, { "q": "Problem", "a": "problema" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Preposizioni articolate", "text": "Präposition + bestimmter Artikel: z.B. di + il = del", "question": "Wie sagt man 'vom Hotel'?", "options": ["del hotel", "di la hotel", "da il hotel"], "correct": 0 } ] }
+      }
+    ],
+    "acqui_terme": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Januar", "a": "gennaio" }, { "q": "Sommer", "a": "estate" }, { "q": "Ferien", "a": "vacanze" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Regelmäßige Verben", "text": "z.B. parlare: io parlo, tu parli, lui parla", "question": "Wie konjugiert man 'lavorare' für 'io'?", "options": ["lavoro", "lavora", "lavori"], "correct": 0 } ] }
+      }
+    ],
+    "sanremo": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Ort", "a": "luogo" }, { "q": "Stadt", "a": "città" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Teilungsartikel im Plural", "text": "z.B. degli amici", "question": "Welcher Teilungsartikel passt zu 'amici'?", "options": ["dei", "degli", "delle"], "correct": 1 } ] }
+      }
+    ],
+    "imperia": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Markt", "a": "mercato" }, { "q": "Obst", "a": "frutta" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "molto / molta / molti / molte", "text": "Verwendung je nach Genus und Numerus", "question": "Wie sagt man 'viel Obst'?", "options": ["molto frutta", "molti frutta"], "correct": 0 } ] }
+      }
+    ],
+    "genova": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Zug fahren", "a": "prendere il treno" }, { "q": "Reise", "a": "viaggio" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "dov’è / dove sono", "text": "Fragen nach Ort(e)", "question": "Wie fragt man 'Wo ist der Bahnhof?'", "options": ["Dov’è la stazione?", "Dove sono la stazione?"], "correct": 0 } ] }
+      }
+    ],
+    "camogli": [
+      {
+        "type": "vokabeln",
+        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "gestern", "a": "ieri" }, { "q": "gegangen", "a": "andato" } ] }
+      },
+      {
+        "type": "grammatik",
+        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Passato prossimo", "text": "Formen mit avere / essere", "question": "Wie sagt man 'Ich bin gegangen'?", "options": ["Io sono andato", "Io ho andato"], "correct": 0 } ] }
+      }
+    ],
+        "la_spezia": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "Wetter", "a": "Il tempo" },
+            { "q": "Sonne", "a": "Sole" },
+            { "q": "Regnen", "a": "Piove" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Zeitangaben",
+              "text": "Die wichtigsten Zeitangaben: oggi, domani, ieri, stamattina, stasera.",
+              "question": "Wie sagt man 'heute Morgen' auf Italienisch?",
+              "options": ["oggi mattina", "ieri mattina", "domani mattina"],
+              "correct": 0
+            }
+          ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: Sonne", "a": ["Sole"] },
+            { "q": "Übersetze: regnen", "a": ["Piove"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+          "title": "Kultur-Einblick",
+          "icon": "./src/images/Icon_Lerneffekt.png",
+          "text": "La Spezia liegt an der ligurischen Küste und ist bekannt als Tor zu den Cinque Terre.",
+          "image": "la_spezia,coast"
+        }
+      },
+      {
+        "type": "geografie",
+        "data": {
+          "title": "Geografie-Info",
+          "icon": "./src/images/Location.png",
+          "text": "Die Stadt liegt in Ligurien zwischen Meer und Hügeln und hat einen wichtigen Hafen.",
+          "image": "la_spezia,harbor"
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Sole", "Sonne",
+            "Piove", "Regnen",
+            "Il tempo", "Wetter"
+          ]
+        }
+      }
+    ],
+
+    "riomaggiore": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "Nie", "a": "Mai" },
+            { "q": "Sehr", "a": "Molto" },
+            { "q": "Superlativ", "a": "Superlativo" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Mehrteilige Verneinung",
+              "text": "In Italienisch kann man mehrteilige Verneinungen mit 'non… mai', 'non… più', 'non… niente' bilden.",
+              "question": "Wie sagt man 'Ich habe nie gegessen' auf Italienisch?",
+              "options": ["Non ho mai mangiato", "Non ho mangiato", "Non mai mangiato"],
+              "correct": 0
+            }
+          ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: sehr", "a": ["Molto"] },
+            { "q": "Übersetze: nie", "a": ["Mai"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+          "title": "Kultur-Einblick",
+          "icon": "./src/images/Icon_Lerneffekt.png",
+          "text": "Riomaggiore ist ein malerisches Fischerdorf der Cinque Terre mit bunten Häusern am Meer.",
+          "image": "riomaggiore,village"
+        }
+      },
+      {
+        "type": "geografie",
+        "data": {
+          "title": "Geografie-Info",
+          "icon": "./src/images/Location.png",
+          "text": "Das Dorf liegt an der ligurischen Küste zwischen den Bergen und dem Meer.",
+          "image": "riomaggiore,coast"
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Mai", "Nie",
+            "Molto", "Sehr",
+            "Superlativo", "Superlativ"
+          ]
+        }
+      }
+    ]
+  }
+}

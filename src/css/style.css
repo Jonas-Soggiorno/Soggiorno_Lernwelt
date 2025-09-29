@@ -55,7 +55,7 @@ H1{
 
 .journey-layer {
     fill: #f0f0f0;
-    stroke: #cccccc;
+    stroke: black;
     stroke-width: 1px;
 }
 
@@ -98,31 +98,34 @@ H1{
 #lesson-panel {
     position: absolute;
     bottom: 0;
-    /*left: 0;*/
     width: 100%;
+    max-width: 900px;
     padding-bottom: 20px;
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-
-    align-items: center;
-    flex-direction: column;
-
-    max-width: 900px;
-
-    /* Wichtig: Standardmäßig nach unten aus dem Bild schieben */
-    transform: translateY(100%);
-
     z-index: 11;
 
-    display: none;
+    display: flex; /* Bleibt immer ein Flex-Container */
+    flex-direction: column;
+    align-items: center;
+
+    /* Standard-Zustand: Aus dem Bild geschoben & unsichtbar */
+    transform: translateY(100%);
+    visibility: hidden;
+    
+    /* Animiert BEIDE Eigenschaften */
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
 }
 
 #lesson-panel.visible {
-    /* Wenn es die Klasse 'visible' hat, an die Normalposition schieben */
+    /* Sichtbarer Zustand: Im Bild & sichtbar */
     transform: translateY(0);
-    display: flex;
+    visibility: visible;
+    
+    /* Wichtig: Hebt die Verzögerung für das Sichtbarwerden auf */
+    transition: transform 0.4s ease-in-out, visibility 0s 0s;
 }
 
 #lesson-panel-header{
@@ -217,6 +220,18 @@ H1{
     stroke-width: 1; /* Eine gute Dicke */
     stroke-linecap: round;
     stroke-dasharray: 2 2; /* Magie: 5px Strich, 5px Lücke, wiederholend */
+}
+.journey-region-path {
+    fill: white;
+}
+
+.overview-path {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+    stroke-dasharray: 2 2;
+    stroke-linecap: round;
+    pointer-events: none;
 }
 
 #card-stack-container {
@@ -585,56 +600,43 @@ H1{
     margin: 0;
 }
 
+
+
+
+.city-pin {
+    stroke: white;
+    stroke-width: 0px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.city-pin:hover{
+
+}
+
+
 /* Ein abgeschlossener Pin */
 .completed .city-pin {
-    fill: #1abc9c; /* Grün */
+    
 }
-
 
 .next-stop .city-pin {
-    fill: #ffa000; /* Orange */
-    animation: pulse 2s infinite ease-in-out;
+
 }
 
-/* Ein gesperrter Pin */
 .locked .city-pin {
-    fill: #cccccc; /* Grau */
     opacity: 0.7;
     cursor: not-allowed;
     pointer-events: none;
 }
 
 
-
-.city-pin {
-    fill: #0056b3;
-    stroke: white;
-    stroke-width: 0px;
-    cursor: pointer;
-}
-
-.next-stop .city-pin {
-    fill: #e0475b;
-    animation: pulse 2s infinite ease-in-out;
-}
-
 .journey-path.completed {
     stroke-dasharray: 2px 2px; /* Macht die Linie durchgezogen */
     stroke: #0056b3; /* Dein Primär-Blau */
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        transform-origin: center;
-        transform-box: fill-box;
-    }
-    50% {
-        transform: scale(1.15);
-        transform-origin: center;
-        transform-box: fill-box;
-    }
-}
+
 
 .test-form {
     width: 100%;
@@ -732,6 +734,15 @@ H1{
     box-sizing: border-box;
 }
 
+#map-view > h1 {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#map-view > h1.hidden-by-nav {
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 #map-wrapper {
     flex-grow: 1; /* Sagt dem Wrapper: "Nimm allen übrigen Platz!" */
@@ -821,35 +832,35 @@ H1{
 }
 
 .region-path {
-    fill: #f0f0f0; 
-    stroke: #cccccc;
+    fill: #B39A2A; 
+    stroke: black;
     stroke-width: 1px;
     cursor: pointer;
     transition: fill 0.3s ease;
 }
 
 .region-path:hover {
-    fill: #ddeeff;
+    fill: #b39a2a67;
 }
 
 .region-path.completed {
-    fill: #d4edda;
-    stroke: #89b392;
+    fill: #004a9e;
+    stroke: black;
 }
 .region-path.completed:hover {
-    fill: #c3e6cb;
+    fill: #004a9e;
 }
 
 
 .region-path.next-region {
-    fill: #fff3cd;
-    stroke: #e4c161;
+    fill: #e1475a;
+    stroke: black;
     animation: pulse-region-animation 2s infinite ease-in-out;
 }
 
 .region-path.locked {
-    fill: #e9ecef;
-    stroke: #ced4da;
+    fill: white;
+    stroke: black;
     cursor: not-allowed;
 }
 .region-path.locked:hover {
@@ -859,13 +870,13 @@ H1{
 
 @keyframes pulse-region-animation {
     0% {
-        fill: #fff3cd;
+        fill: #dc3545;
     }
     50% {
-        fill: #ffe085;
+        fill: #dc354679;
     }
     100% {
-        fill: #fff3cd;
+        fill: #dc3545;
     }
 }
 
@@ -1096,4 +1107,69 @@ H1{
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/*=======Navigation für Städte=======*/
+#city-nav-container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Zentriert das Element horizontal */
+    z-index: 10;
+    
+    display: flex; /* Ordnet Titel und Dropdown nebeneinander an */
+    align-items: center;
+    gap: 8px; /* Kleiner Abstand zwischen Titel und Dropdown */
+    
+    background-color: rgba(255, 255, 255, 0.9); /* Leicht durchsichtiger Hintergrund */
+    padding: 8px 16px;
+    border-radius: 25px; /* Macht es zu einer "Pille" */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+#city-nav-container.visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+#journey-title-display {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+#city-select-dropdown {
+    /* Setzt den Standard-Look des Browsers zurück */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Eigener Stil */
+    border: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    padding-right: 20px; /* Platz für den Pfeil */
+
+    /* Eigener Pfeil */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0px center;
+}
+
+#city-select-dropdown:focus {
+    outline: none; /* Entfernt den blauen Rahmen bei Klick */
+}
+
+/* Stil für deaktivierte Optionen in der Liste */
+#city-select-dropdown option:disabled {
+    color: #aaa;
 }

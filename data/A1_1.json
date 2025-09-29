@@ -1,15 +1,15 @@
 {
-    "chapters": [
-        { "id": "trieste", "name": "Trieste", "pos": { "x": 125, "y": 40 }, "path": "M 125 40 L 115 32"},
-        { "id": "udine", "name": "Udine", "pos": { "x": 115, "y": 32 }, "path": "M 115 32 L 95 35"},
-        { "id": "valdobbiadene", "name": "Valdobbiadene", "pos": { "x": 95, "y": 35 }, "path": "M 95 35 L 90 40" },
-        { "id": "bassano_del_grappa", "name": "Bassano del Grappa", "pos": { "x": 90, "y": 40 }, "path": "M 90 40 L 101 47" },
-        { "id": "venezia", "name": "Venezia", "pos": { "x": 101, "y": 47 }, "path": "M 101 47 L 85 48" },
-        { "id": "vicenza", "name": "Vicenza", "pos": { "x": 85, "y": 48 }, "path": "M 85 48 L 72 45" },
-        { "id": "verona", "name": "Verona", "pos": { "x": 72, "y": 45 }, "path": "M 72 45 L 65 44" },
-        { "id": "sirmione", "name": "Sirmione", "pos": { "x": 65, "y": 44 }, "path": "M 65 44 L 43 40" },
-        { "id": "monza", "name": "Monza", "pos": { "x": 43, "y": 40 }, "path": "M 43 40 L 41 46" },
-        { "id": "milano", "name": "Milano", "pos": { "x": 41, "y": 46 } }
+  "chapters": [
+      { "id": "trieste", "name": "Trieste", "pos": { "x": 295, "y": 71 }, "path": "M 295 71 L 278 50" },
+      { "id": "udine", "name": "Udine", "pos": { "x": 278, "y": 50 }, "path": "M 278 50 L 240 58" },
+      { "id": "valdobbiadene", "name": "Valdobbiadene", "pos": { "x": 240, "y": 58 }, "path": "M 240 58 L 230 64" },
+      { "id": "bassano_del_grappa", "name": "Bassano del Grappa", "pos": { "x": 230, "y": 64 }, "path": "M 230 64 L 250 79" },
+      { "id": "venezia", "name": "Venezia", "pos": { "x": 250, "y": 79 }, "path": "M 250 79 L 225 76" },
+      { "id": "vicenza", "name": "Vicenza", "pos": { "x": 225, "y": 76 }, "path": "M 225 76 L 203 78" },
+      { "id": "verona", "name": "Verona", "pos": { "x": 203, "y": 78 }, "path": "M 203 78 L 190 76" },
+      { "id": "sirmione", "name": "Sirmione", "pos": { "x": 190, "y": 76 }, "path": "M 190 76 L 141 66" },
+      { "id": "monza", "name": "Monza", "pos": { "x": 141, "y": 66 }, "path": "M 141 66 L 139 71" },
+      { "id": "milano", "name": "Milano", "pos": { "x": 139, "y": 71 } }
     ],
   "content": {
     "trieste": [
