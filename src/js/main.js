@@ -130,8 +130,6 @@ function initApp() {
     }
 }
 
-
-
 function buildMap() {
     mapCanvas = document.getElementById('map-canvas');
     mapCanvas.innerHTML = '';
@@ -1038,7 +1036,6 @@ function completeChapter(levelId, chapterId) {
         }
     }
 }
-
 
 function initMemoryGame(pairs) {
     const grid = document.getElementById('memory-grid');
