@@ -977,6 +977,7 @@ function renderExercise(levelId, chapterId, exerciseIndex){
         back_to_journey_btn.addEventListener('click', function(){
             lesson_view.classList.remove('active');
             document.getElementById('map-view').classList.add('active');
+            document.getElementById('city-nav-container').classList.add('visible');
             if (lastOpenedChapterId && lastOpenedLevelId){
                 openLessonPanel(lastOpenedLevelId, lastOpenedChapterId);
             }
