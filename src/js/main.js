@@ -1,98 +1,100 @@
 import {worldData} from './world.js';
 import {overviewPaths} from './overviewPaths.js'
+import { journeyEndpoints } from './journeyEndpoints.js';
 
 //===GLOBALE VARIABLEN===
-const levelOrder = ["A1_1", "A1_2", "A1_3"];
+const levelOrder = ["A1_1", "A1_2", "A1_3", "A2_1", "A2_2", "A2_3"];
+const DEBUG_MODE = true;
 let appState = {
     levels: {
         "A1_1": { 
             status: 'unlocked',
             chapters:[
-                { id: 'trieste', visited: false, completed: false},
-                { id: 'udine', visited: false, completed: false},
-                { id: 'valdobbiadene', visited: false, completed: false},
-                { id: 'bassano_del_grappa', visited: false, completed: false},
-                { id: 'venezia', visited: false, completed: false},
-                { id: 'vicenza', visited: false, completed: false},
-                { id: 'verona', visited: false, completed: false},
-                { id: 'sirmione', visited: false, completed: false},
-                { id: 'monza', visited: false, completed: false},
-                { id: 'milano', visited: false, completed: false}
+                { id: 'trieste',  completed: false},
+                { id: 'udine',  completed: false},
+                { id: 'valdobbiadene',  completed: false},
+                { id: 'bassano_del_grappa',  completed: false},
+                { id: 'venezia',  completed: false},
+                { id: 'vicenza',  completed: false},
+                { id: 'verona',  completed: false},
+                { id: 'sirmione',  completed: false},
+                { id: 'monza',  completed: false},
+                { id: 'milano',  completed: false}
             ]
         },
         "A1_2": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
-                { id: 'torino', visited: false, completed: false },
-                { id: 'asti', visited: false, completed: false },
-                { id: 'alba', visited: false, completed: false },
-                { id: 'acqui terme', visited: false, completed: false },
-                { id: 'sanremo', visited: false, completed: false },
-                { id: 'imperia', visited: false, completed: false },
-                { id: 'genova', visited: false, completed: false },
-                { id: 'camogli', visited: false, completed: false },
-                { id: 'la spezia', visited: false, completed: false },
-                { id: 'riomaggiore', visited: false, completed: false }
+                { id: 'torino',  completed: false },
+                { id: 'asti',  completed: false },
+                { id: 'alba',  completed: false },
+                { id: 'acqui terme',  completed: false },
+                { id: 'sanremo',  completed: false },
+                { id: 'imperia',  completed: false },
+                { id: 'genova',  completed: false },
+                { id: 'camogli',  completed: false },
+                { id: 'la spezia',  completed: false },
+                { id: 'riomaggiore',  completed: false }
             ]
         },
         "A1_3": {
             status: 'locked',
             chapters: [
-                { id: 'parma', visited: false, completed: false },
-                { id: 'ferrara', visited: false, completed: false},
-                { id: 'bologna', visited: false, completed: false },
-                { id: 'rimini', visited: false, completed: false },
-                { id: 'san marino', visited: false, completed: false },
-                { id: 'arezzo', visited: false, completed: false },
-                { id: 'firenze', visited: false, completed: false },
-                { id: 'montecatini terme', visited: false, completed: false },
-                { id: 'lucca', visited: false, completed: false },
-                { id: 'pisa', visited: false, completed: false }
+                { id: 'parma',  completed: false },
+                { id: 'ferrara',  completed: false},
+                { id: 'bologna',  completed: false },
+                { id: 'rimini',  completed: false },
+                { id: 'san marino',  completed: false },
+                { id: 'arezzo',  completed: false },
+                { id: 'firenze',  completed: false },
+                { id: 'montecatini terme',  completed: false },
+                { id: 'lucca',  completed: false },
+                { id: 'pisa',  completed: false }
             ]
         },
         "A2_1": {
             status: 'locked',
             chapters: [
-                { id: 'san gimignano', visited: false, completed: false },
-                { id: 'siena', visited: false, completed: false},
-                { id: 'perugia', visited: false, completed: false },
-                { id: 'assissi', visited: false, completed: false },
-                { id: 'spoleto', visited: false, completed: false },
-                { id: 'l aquila', visited: false, completed: false },
-                { id: 'sulmona', visited: false, completed: false },
-                { id: 'pescara', visited: false, completed: false },
-                { id: 'città di vaticano', visited: false, completed: false },
-                { id: 'roma', visited: false, completed: false }
+                { id: 'san gimignano',  completed: false },
+                { id: 'siena',  completed: false},
+                { id: 'perugia',  completed: false },
+                { id: 'assissi',  completed: false },
+                { id: 'spoleto',  completed: false },
+                { id: 'l aquila',  completed: false },
+                { id: 'sulmona',  completed: false },
+                { id: 'pescara',  completed: false },
+                { id: 'città di vaticano',  completed: false },
+                { id: 'roma',  completed: false }
             ]
         },
         "A2_2": {
             status: 'locked',
             chapters: [
-                { id: 'napoli', visited: false, completed: false },
-                { id: 'pompei', visited: false, completed: false},
-                { id: 'sorrento', visited: false, completed: false },
-                { id: 'capri', visited: false, completed: false },
-                { id: 'positano', visited: false, completed: false },
-                { id: 'ravello', visited: false, completed: false },
-                { id: 'salerno', visited: false, completed: false },
-                { id: 'bari', visited: false, completed: false },
-                { id: 'ostuni', visited: false, completed: false },
-                { id: 'lecce', visited: false, completed: false }
+                { id: 'napoli',  completed: false },
+                { id: 'pompei',  completed: false},
+                { id: 'sorrento',  completed: false },
+                { id: 'capri',  completed: false },
+                { id: 'positano',  completed: false },
+                { id: 'ravello',  completed: false },
+                { id: 'salerno',  completed: false },
+                { id: 'bari',  completed: false },
+                { id: 'ostuni',  completed: false },
+                { id: 'lecce',  completed: false }
             ]
         },
         "A2_3": {
             status: 'locked',
             chapters: [
-                { id: 'matera', visited: false, completed: false },
-                { id: 'maratea', visited: false, completed: false},
-                { id: 'tropea', visited: false, completed: false },
-                { id: 'reggio calabria', visited: false, completed: false },
-                { id: 'messina', visited: false, completed: false },
-                { id: 'taormina', visited: false, completed: false },
-                { id: 'catania', visited: false, completed: false },
-                { id: 'syrakus', visited: false, completed: false },
-                { id: 'cefalù', visited: false, completed: false },
-                { id: 'palermo', visited: false, completed: false }
+                { id: 'matera',  completed: false },
+                { id: 'maratea',  completed: false},
+                { id: 'tropea',  completed: false },
+                { id: 'reggio calabria',  completed: false },
+                { id: 'messina',  completed: false },
+                { id: 'taormina',  completed: false },
+                { id: 'catania',  completed: false },
+                { id: 'syrakus',  completed: false },
+                { id: 'cefalù',  completed: false },
+                { id: 'palermo',  completed: false }
             ]
         }
     }
@@ -134,10 +136,11 @@ function buildMap() {
     mapCanvas = document.getElementById('map-canvas');
     mapCanvas.innerHTML = '';
 
+    const regionsShadowLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    regionsShadowLayer.id = 'regions-shadow-layer';
 
     const regionsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     regionsLayer.id = 'regions-layer';
-    mapCanvas.appendChild(regionsLayer);
 
     const overviewPathsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     overviewPathsLayer.id = 'overview-paths-layer';
@@ -149,12 +152,38 @@ function buildMap() {
         overviewPath.classList.add('overview-path');
         overviewPathsLayer.appendChild(overviewPath);
     }
-    mapCanvas.appendChild(overviewPathsLayer);
 
     const nextRegionId = levelOrder.find(id =>
         appState.levels[id].status === 'unlocked' &&
         !appState.levels[id].chapters.every(c => c.completed)
     )
+
+    const interRegionCurveFactor = 0.3; 
+
+    for (let i = 0; i < levelOrder.length - 1; i++) {
+        const currentLevelId = levelOrder[i];
+        const nextLevelId = levelOrder[i + 1];
+
+        if (journeyEndpoints[currentLevelId] && journeyEndpoints[nextLevelId] && journeyEndpoints[nextLevelId].start.x != 0) {
+            const startPoint = journeyEndpoints[currentLevelId].end;
+            const endPoint = journeyEndpoints[nextLevelId].start;
+
+
+            const midX = (startPoint.x + endPoint.x) / 2;
+            const midY = (startPoint.y + endPoint.y) / 2;
+            const dx = endPoint.x - startPoint.x;
+            const dy = endPoint.y - startPoint.y;
+            const controlX = midX + interRegionCurveFactor * dy;
+            const controlY = midY - interRegionCurveFactor * dx;
+
+            const pathString = `M ${startPoint.x} ${startPoint.y} Q ${controlX} ${controlY} ${endPoint.x} ${endPoint.y}`;
+
+            const interRegionPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            interRegionPath.setAttribute('d', pathString);
+            interRegionPath.classList.add('inter-region-path');
+            overviewPathsLayer.appendChild(interRegionPath);
+        }
+    }
 
     // Erstellt nur noch die klickbaren Regionen der Italien-Karte
     for (const levelId in worldData) {
@@ -163,6 +192,8 @@ function buildMap() {
         regionPath.setAttribute('d', levelData.regionPathData);
         regionPath.setAttribute('id', `region-${levelId}`);
         regionPath.classList.add('region-path');
+
+        const shadowPath = regionPath.cloneNode(true);
         
         const levelState = appState.levels[levelId];
         const isCompleted = levelState.chapters.every(c => c.completed === true);
@@ -179,8 +210,14 @@ function buildMap() {
         }
 
         regionPath.addEventListener('click', () => showJourney(levelId));
+        regionsLayer.appendChild(shadowPath);
         regionsLayer.appendChild(regionPath);
+
     }
+
+    mapCanvas.appendChild(regionsShadowLayer);
+    mapCanvas.appendChild(regionsLayer);
+    //mapCanvas.appendChild(overviewPathsLayer);
     
     // Setzt die initiale viewBox
     requestAnimationFrame(() => {
@@ -197,6 +234,13 @@ async function showJourney(levelId) {
         alert('Du musst erst die vorherige Region abschließen!');
         return;
     }
+
+    const allRegions = document.querySelectorAll('#regions-layer .region-path');
+    allRegions.forEach(region => {
+        if (region.id !== `region-${levelId}`) {
+            region.classList.add('is-inactive');
+        }
+    })
 
     document.getElementById('back-to-italy-btn').classList.add('visible');
     document.getElementById('city-nav-container').classList.add('visible');
@@ -217,7 +261,7 @@ async function showJourney(levelId) {
         requestAnimationFrame(() => {
             // --- ZIEL IDENTIFIZIEREN ---
             const levelState = appState.levels[levelId];
-            const nextChapterIndex = levelState.chapters.findIndex(c => !c.visited);
+            const nextChapterIndex = levelState.chapters.findIndex(c => !c.completed);
             const targetChapterIndex = (nextChapterIndex === -1) ? currentLevelData.chapters.length - 1 : nextChapterIndex;
             updateCityDropdownSelection(targetChapterIndex);
             const targetChapter = currentLevelData.chapters[targetChapterIndex];
@@ -299,47 +343,40 @@ function buildJourneyLayer(levelId, levelData) {
     });
     
     // --- ENDE LOGIK FÜR PFADE ---
+    //--- ANFAG LOGIK STÄDTE NAGIGATION DROPDOWN---
 
-
-    const cityDropdown = document.getElementById('city-select-dropdown');
-    const journeyTitle = document.getElementById('journey-title-display');
-    cityDropdown.innerHTML = ''; // Leere alte Einträge
-
-    journeyTitle.textContent = levelId.replace('_', '.');
-
-    // Erster Eintrag als Titel
-    const titleOption = document.createElement('option');
-    titleOption.textContent = "Wähle eine Stadt...";
-    titleOption.disabled = true;
-    titleOption.selected = true;
-    cityDropdown.appendChild(titleOption);
+    const customSelect = document.getElementById('custom-city-select');
+    const selectedItemDisplay = document.getElementById('select-selected-item');
+    const itemsContainer = document.getElementById('select-items-container');
+    itemsContainer.innerHTML = '';
 
     const levelState = appState.levels[levelId];
     const completedCount = levelState.chapters.filter(c => c.completed).length;
 
-    // Fülle das Dropdown mit den Städten
     levelData.chapters.forEach((chapter, index) => {
-        const option = document.createElement('option');
-        option.value = index; // Wir speichern den Index der Stadt
-        option.textContent = chapter.name;
+        const optionDiv = document.createElement('div');
+        optionDiv.textContent = chapter.name;
+        optionDiv.classList.add('select-item');
 
-        // Logik: Nur bereits besuchte Städte + die nächste freigeschaltete sind klickbar
         if (index > completedCount) {
-            option.disabled = true;
+            optionDiv.classList.add('disabled');
+        } else {
+            optionDiv.addEventListener('click', function() {
+                selectedItemDisplay.textContent = this.textContent;
+                updateCityDropdownSelection(index);
+                panToCity(chapter.pos);
+                itemsContainer.classList.add('select-hide');
+                selectedItemDisplay.classList.remove('select-arrow-active');
+            });
         }
-
-        cityDropdown.appendChild(option);
+        itemsContainer.appendChild(optionDiv);
     });
 
-    // Event-Listener, der auf eine Auswahl im Dropdown reagiert
-    cityDropdown.addEventListener('change', (event) => {
-        const selectedIndex = parseInt(event.target.value, 10);
-        const selectedCity = levelData.chapters[selectedIndex];
-        
-        if (selectedCity) {
-            // Zentriere die Kamera auf die ausgewählte Stadt
-            panToCity(selectedCity.pos);
-        }
+
+    selectedItemDisplay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        itemsContainer.classList.toggle('select-hide');
+        this.classList.toggle('select-arrow-active');
     });
 
     //====Stadt-Pins=====
@@ -349,6 +386,7 @@ function buildJourneyLayer(levelId, levelData) {
 
     levelData.chapters.forEach((chapter, index) => {
         const svg_group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        svg_group.classList.add('pin-container');
         const levelState = appState.levels[levelId];
         // ... (deine Logik für isCompleted, isNext bleibt gleich) ...
         const completedCount = levelState.chapters.filter(c => c.completed === true).length;
@@ -401,6 +439,11 @@ function showRegions() {
     document.getElementById('city-nav-container').classList.remove('visible');
     document.getElementById('main-app-title').classList.remove('hidden-by-nav');
 
+    const allRegions = document.querySelectorAll('#regions-layer .region-path');
+    allRegions.forEach(region => {
+        region.classList.remove('is-inactive');
+    });
+
     // Animiere zurück zum gespeicherten Start-viewBox
     gsap.to(mapCanvas, {
         duration: 1.2,
@@ -443,7 +486,6 @@ function initEventListeners(){
     });
 
     lessonPanel.addEventListener('transitionend', (event) => {
-        // Stelle sicher, dass wir auf die richtige Transition hören
         if (event.propertyName === 'transform') {
             // Nur wenn das Panel NICHT sichtbar ist, soll es versteckt werden
             if (!lessonPanel.classList.contains('visible')) {
@@ -451,9 +493,18 @@ function initEventListeners(){
             }
         }
     });
+
+    window.addEventListener('click', function() {
+        const itemsContainer = document.getElementById('select-items-container');
+        const selectedItemDisplay = document.getElementById('select-selected-item');
+        if (itemsContainer && !itemsContainer.classList.contains('select-hide')) {
+            itemsContainer.classList.add('select-hide');
+            selectedItemDisplay.classList.remove('select-arrow-active');
+        }
+    });
 }
 
-function openLessonPanel(levelId, chapterId) {
+function openLessonPanel(levelId, chapterId, showWelcome = true) {
     const lessonPanel = document.getElementById('lesson-panel');
     const lessonPanelTitel = document.getElementById('lesson-panel-title');
     const lessonPanelContent = document.getElementById('lesson-panel-content');
@@ -461,18 +512,13 @@ function openLessonPanel(levelId, chapterId) {
     const cityData = currentLevelData.chapters.find(chap => chap.id === chapterId);
     const contentData = currentLevelData.content[chapterId];
 
-    // Finde den Zustand der angeklickten Stadt im appState
-    const chapterState = appState.levels[levelId].chapters.find(c => c.id === chapterId);
-
-    if (chapterState && !chapterState.visited) {
-        // --- JA, ERSTER BESUCH ---
-        chapterState.visited = true; // Setze den Status auf "besucht"
-        
+    if (showWelcome)
+    {
         const overlay = document.getElementById('welcome-overlay');
         const cityNameEl = document.getElementById('welcome-city-name');
 
-        cityNameEl.textContent = `Benvenuta a ${cityData.name}!`;
-        overlay.style.backgroundImage = `url(https://source.unsplash.com/1600x900/?${cityData.id},italy)`;
+        cityNameEl.textContent = `Benvenuti a ${cityData.name}!`;
+        overlay.style.backgroundImage = `url(./src/images/${cityData.name}1.webp)`;
         
         overlay.classList.add('visible');
 
@@ -481,12 +527,10 @@ function openLessonPanel(levelId, chapterId) {
             overlay.classList.remove('visible');
             setTimeout(showPanel, 500); // Kurze Pause für den Übergang
         }, 2000);
-
     } else {
-        // --- NEIN, WIEDERHOLTER BESUCH ---
-        // Zeige das Panel sofort an
         showPanel();
     }
+    
 
     // Hilfsfunktion, um doppelten Code zu vermeiden
     function showPanel() {
@@ -612,14 +656,11 @@ function renderExercise(levelId, chapterId, exerciseIndex){
             <div class="quiz-container">
                 <div class="quiz-header">
                     <p id="quiz-progress-text"></p>
-                    
-                    <div id="quiz-progress-bar-container">
-                        <div id="quiz-progress-bar"></div>
-                    </div>
+                    <div id="quiz-progress-bar-container"><div id="quiz-progress-bar"></div></div>
+                    ${DEBUG_MODE ? `<button id="debug-skip-test-btn" title="Test sofort bestehen">Überspringen</button>` : ''}
                 </div>
                 <div id="quiz-card">
-                    <div id="quiz-question-area">
-                        </div>
+                    <div id="quiz-question-area"></div>
                     <div id="quiz-answer-area">
                         <label for="quiz-input" id="quiz-input-label">Deine Antwort</label>
                         <input type="text" id="quiz-input" class="test-input" placeholder="Übersetzung eingeben...">
@@ -627,33 +668,45 @@ function renderExercise(levelId, chapterId, exerciseIndex){
                 </div>
                 <button id="quiz-next-btn" class="action-button">Weiter</button>
             </div>
-            <div id="quiz-results-area">
-                </div>
+            <div id="quiz-results-area"></div>
         `;
-    } else if (exercise.type === 'geografie'){
-        let mediaHTML = ''; // Eine leere Variable für unser Medium (Bild oder Karte)
-
-        // Prüfe, ob eine iframe-URL vorhanden ist
-        if (moduleData.iframeSrc) {
-            // Ja: Baue den iframe-Tag
-            mediaHTML = `
-                <div class="map-container">
-                    <iframe src="${moduleData.iframeSrc}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>`;
-        } else if (moduleData.image) {
-            // Nein, aber es gibt ein Bild: Baue den img-Tag (wie bisher)
-            mediaHTML = `<img src="https://source.unsplash.com/800x600/?${moduleData.image}" alt="${moduleData.title}">`;
+    } else if (exercise.type === 'region') {
+        // Erstelle den HTML-Code für den Text-Teil
+        let textHTML = '';
+        if (Array.isArray(moduleData.text)) {
+            textHTML = moduleData.text.map(p => `<p>${p}</p>`).join('');
+        } else {
+            textHTML = `<p>${moduleData.text}</p>`;
         }
 
-        // Setze das finale HTML zusammen
+        // Erstelle den HTML-Code für die Karte, falls vorhanden
+        let mapHTML = '';
+        if (moduleData.iframeSrc) {
+            mapHTML = `
+                <div class="map-container">
+                    <iframe src="${moduleData.iframeSrc}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>`;
+        }
+
         contentHTML = `
-            <div class="modal-header">
-                <h2>${moduleData.title}</h2>
+            <div class="region-header" style="background-image: url('${moduleData.headerImage}')">
+                <h1>${moduleData.title}</h1>
             </div>
-            <div class="info-content">
-                ${mediaHTML}
-                <p>${moduleData.text}</p>
-            </div>
+            <article class="region-article">
+                <div class="region-text">
+                    ${textHTML}
+                </div>
+                
+                ${mapHTML}
+
+                ${moduleData.funFact ? `
+                    <div class="fun-fact-box">
+                        <div class="fun-fact-icon">🌐</div>
+                        <h3>Wusstest du schon?</h3>
+                        <p>${moduleData.funFact}</p>
+                    </div>
+                ` : ''}
+            </article>
         `;
     } else if (exercise.type === 'spiel'){
         contentHTML = `
@@ -663,18 +716,44 @@ function renderExercise(levelId, chapterId, exerciseIndex){
             <p>Finde die passenden Paare!</p>
             <div id="memory-grid"></div>
         `;
-    } else if (exercise.type === 'kultur'){
-        contentHTML = `Kultur. JUHU`
+    } else if (exercise.type === 'kultur') {
+        contentHTML = `
+            <div class="kultur-header" style="background-image: url('${moduleData.headerImage}')">
+                <h1>${moduleData.title}</h1>
+            </div>
+            <article class="kultur-article">
+                <div class="kultur-text">
+                    ${moduleData.text.map((p, index) => {
+                        if (index === 1) {
+                            return `<p>${p}</p><img class="kultur-inline-image" src="${moduleData.inlineImage}" inline">`;
+                        }
+                        return `<p>${p}</p>`;
+                    }).join('')}
+                </div>
+
+                ${moduleData.quote ? `
+                    <blockquote class="kultur-quote">
+                        <p>"${moduleData.quote}"</p>
+                        <footer>${moduleData.quoteAuthor}</footer>
+                    </blockquote>
+                ` : ''}
+
+                <div class="kultur-fun-fact">
+                    <div class="fun-fact-icon">💡</div>
+                    <h3>Wusstest du schon?</h3>
+                    <p>${moduleData.funFact}</p>
+                </div>
+            </article>
+        `;
     }
 
     lesson_content.innerHTML = contentHTML
     lesson_view.classList.add('active')
+
     if (exercise.type === 'spiel') {
         initMemoryGame(moduleData.pairs);
     }   
     
-
-
    if (exercise.type === 'vokabeln') {
         const stackContainer = document.getElementById('card-stack-container');
         const cardsData = moduleData.cards;
@@ -847,6 +926,15 @@ function renderExercise(levelId, chapterId, exerciseIndex){
         });
     }
     if (exercise.type === 'test') {
+        if (DEBUG_MODE) {
+            const skipButton = document.getElementById('debug-skip-test-btn');
+            if (skipButton) {
+                skipButton.addEventListener('click', () => {
+                    console.warn("DEBUG: Test übersprungen.");
+                    completeChapter(levelId, chapterId);
+                });
+            }
+        }
         // --- VARIABLEN ZUR STEUERUNG DES QUIZ ---
         let currentQuestionIndex = 0;
         const questions = moduleData.questions;
@@ -977,7 +1065,7 @@ function renderExercise(levelId, chapterId, exerciseIndex){
             document.getElementById('map-view').classList.add('active');
             document.getElementById('city-nav-container').classList.add('visible');
             if (lastOpenedChapterId && lastOpenedLevelId){
-                openLessonPanel(lastOpenedLevelId, lastOpenedChapterId);
+                openLessonPanel(lastOpenedLevelId, lastOpenedChapterId, false);
             }
         });
     }
@@ -1014,16 +1102,25 @@ function completeChapter(levelId, chapterId) {
         showRegions();
         
         // 4. Baue die Karte neu auf, damit die freigeschaltete Region klickbar wird
-        buildMap(); 
+        setTimeout(() => {
+            buildMap(); 
+        }, 800);
 
     } else {
         
         // Verstecke die Lektionsansicht
         document.getElementById('lesson-view').classList.remove('active');
+        document.getElementById('city-nav-container').classList.add('visible');
         document.getElementById('map-view').classList.add('active');
+        buildJourneyLayer(levelId, currentLevelData);
 
         // Aktualisiere die visuelle Darstellung der Reise (Pins, Pfade)
         buildJourneyLayer(levelId, currentLevelData);
+
+        const journeyLayer = document.getElementById(`journey-${levelId}-layer`);
+            if (journeyLayer) {
+                journeyLayer.classList.remove('hidden');
+            }
 
         // Finde das nächste unvollständige Kapitel, um dorthin zu schwenken
         const nextChapterIndex = levelState.chapters.findIndex(c => !c.completed);
@@ -1133,9 +1230,11 @@ function initMemoryGame(pairs) {
 }
 
 function updateCityDropdownSelection(cityIndex) {
-    const cityDropdown = document.getElementById('city-select-dropdown');
-    // Überprüft, ob das Dropdown existiert, und setzt dann den ausgewählten Wert
-    if (cityDropdown) {
-        cityDropdown.value = cityIndex;
+    const selectedDisplay = document.getElementById('select-selected-item');
+    if (selectedDisplay && currentLevelData && currentLevelData.chapters[cityIndex]) {
+        selectedDisplay.textContent = currentLevelData.chapters[cityIndex].name;
+    } else if (selectedDisplay) {
+        // Fallback, falls keine Stadt ausgewählt ist
+        selectedDisplay.textContent = "Wähle eine Stadt...";
     }
 }

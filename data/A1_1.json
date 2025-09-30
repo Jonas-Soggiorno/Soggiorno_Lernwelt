@@ -136,20 +136,35 @@
       {
         "type": "kultur",
         "data": {
-          "title": "Kultur-Einblick",
-          "icon": "./src/images/Icon_Lerneffekt.png",
-          "text": "Triest ist berühmt für seine Kaffeehauskultur, die an Wien erinnert. Bestellt man einen 'caffè', erhält man hier einen 'nero'.",
-          "image": "trieste,coffee"
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "headerImage": "./src/images/Trieste4.webp",
+            "inlineImage": "./src/images/Trieste2.webp",
+            "text": [
+            "Kaffee ist in Italien weit mehr als nur ein Getränk – es ist ein tägliches Ritual und das Herzstück des sozialen Alltags. Der klassische 'caffè' (ein Espresso) wird meist schnell und im Stehen 'al banco' (an der Theke) getrunken. Es ist ein kurzer, intensiver Genussmoment, der den Tag strukturiert: morgens, zwischen Terminen oder nach dem Essen.",
+            "Triest nimmt dabei eine Sonderstellung in der italienischen Kaffeewelt ein. Als wichtigster Kaffeehafen des alten österreichisch-ungarischen Reiches hat die Stadt eine tiefe Verbindung zur Wiener Kaffeehauskultur. Diese Mischung aus österreichischer Gemütlichkeit und italienischer Leidenschaft für Kaffee schafft eine einzigartige Atmosphäre.",
+            "Die Stadt hat sogar ihre eigene Kaffeesprache entwickelt, die für Außenstehende verwirrend sein kann. Bestellt man in Triest einen 'caffè', erhält man oft einen Cappuccino. Einen Espresso bestellt man hingegen als 'un nero'. Ein Espresso Macchiato wird zu einem 'capo in b', wenn er im Glas serviert wird. Diese Traditionen spiegeln den Stolz und die lange Geschichte der Stadt als Kaffee-Metropole wider.",
+            "Die historischen Kaffeehäuser wie das berühmte 'Caffè San Marco' sind nicht nur Orte des Genusses, sondern auch literarische und intellektuelle Treffpunkte. Hier saßen schon Schriftsteller wie James Joyce und Italo Svevo und fanden Inspiration – ein Geist, der in den eleganten, alten Räumen bis heute spürbar ist."
+            ],
+            "quote": "Meine Seele ist in Triest.",
+            "quoteAuthor": "James Joyce",
+            "funFact": "Der irische Schriftsteller James Joyce lebte über 10 Jahre in Triest. Er unterrichtete hier nicht nur Englisch, sondern schrieb auch große Teile seines weltberühmten Romans ‚Ulysses‘."
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
+          "title": "Region",
           "icon": "./src/images/Location.png",
-          "text": "Triest liegt an der Adria im äußersten Nordosten Italiens und grenzt direkt an Slowenien. Die Stadt ist von einer Karstlandschaft umgeben.",
+          "headerImage": "./src/images/Trieste3.webp",
+          "text": [
+            "Triest hat eine einzigartige geografische Lage am nordöstlichsten Punkt der Adria, direkt an der Grenze zu Slowenien. Diese Position als Schnittpunkt zwischen dem Mittelmeer, dem Balkan und Mitteleuropa machte die Stadt historisch zu einer der wichtigsten Hafenstädte Europas.",
+            "Die Stadt schmiegt sich an die Küste und wird von den rauen Hängen des Karstgebirges umgeben. Diese Topografie prägt das Stadtbild: Vom berühmten Platz 'Piazza Unità d'Italia', der sich direkt am Meer öffnet, bis hin zu den Hügeln, auf denen die Kathedrale San Giusto thront. Wanderwege wie der Rilke-Weg oder die Strada Napoleonica bieten spektakuläre Ausblicke über den Golf von Triest.",
+            "Ein besonderes Naturphänomen ist die 'Bora'. Dieser extrem starke, kalte Fallwind kann unvermittelt vom Karstplateau herab in die Stadt pfeifen und erreicht dabei Geschwindigkeiten, die es einem schwer machen, auf den Beinen zu bleiben."
+          ],
           "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d74487.55648533204!2d13.742462761971005!3d45.65231274573198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477b6b06e4edf533%3A0x666a2484d4dd2b50!2sTriest%2C%20Italien!5e1!3m2!1sde!2sat!4v1758892400928!5m2!1sde!2sat",
-          "image": "trieste,adriatic"
+          "image": "trieste,adriatic",
+          "funFact": "Nur wenige Kilometer von Triest entfernt befindet sich die 'Grotta Gigante'. Mit einer Höhe von fast 100 Metern ist sie eine der größten öffentlich zugänglichen Höhlen der Welt."
         }
       },
       {
@@ -172,7 +187,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Buongiorno", "a": "Guten Morgen" },
             { "q": "Buonasera", "a": "Guten Abend" },
@@ -184,7 +199,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Substantive, die mit einem Vokal beginnen, verwenden den Artikel 'l' im Singular.",
           "question": "Welcher Artikel passt zu 'amico' (Freund)?",
           "options": ["il", "lo", "l'"],
@@ -195,7 +210,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Guten Morgen", "a": "Buongiorno" },
             { "q": "Entschuldigung", "a": "Scusa" }
@@ -206,16 +221,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Udine ist für seine venezianisch geprägte Altstadt bekannt und gilt als Herz der Region Friaul mit einer lebendigen Weinkultur.",
           "image": "udine,city"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Udine liegt zwischen den Julischen Alpen und der Adria und ist ein wichtiger Knotenpunkt im Nordosten Italiens.",
           "image": "udine,alps"
         }
@@ -224,7 +239,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Buongiorno", "Guten Morgen",
             "Buonasera", "Guten Abend",
@@ -239,7 +254,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Vino", "a": "Wein" },
             { "q": "Acqua", "a": "Wasser" },
@@ -251,7 +266,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Im Plural ändern sich die bestimmten Artikel: 'il' → 'i', 'lo' → 'gli', 'la' → 'le'.",
           "question": "Welcher Plural-Artikel passt zu 'amici' (Freunde)?",
           "options": ["i", "gli", "le"],
@@ -262,7 +277,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Wein", "a": "Vino" },
             { "q": "Brot", "a": "Pane" }
@@ -273,16 +288,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Valdobbiadene ist die Heimat des berühmten Prosecco-Schaumweins, der in den umliegenden Hügeln angebaut wird.",
           "image": "valdobbiadene,wine"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt in Venetien, umgeben von sanften Weinbergen am Fuße der Dolomiten.",
           "image": "valdobbiadene,hills"
         }
@@ -291,7 +306,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Vino", "Wein",
             "Acqua", "Wasser",
@@ -306,7 +321,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Grappa", "a": "Schnaps" },
             { "q": "Tavolo", "a": "Tisch" },
@@ -318,7 +333,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Bei maskulinen Substantiven auf -o wird der Plural mit -i gebildet.",
           "question": "Wie lautet der Plural von 'tavolo' (Tisch)?",
           "options": ["tavoli", "tavole", "tavola"],
@@ -329,7 +344,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Schnaps", "a": "Grappa" },
             { "q": "Stuhl", "a": "Sedia" }
@@ -340,16 +355,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Bassano del Grappa ist berühmt für die historische Holzbrücke Ponte Vecchio und die Herstellung des Grappa-Schnapses.",
           "image": "bassano,bridge"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt am Fuße der Alpen im Veneto, durchflossen vom Fluss Brenta.",
           "image": "bassano,river"
         }
@@ -358,7 +373,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Grappa", "Schnaps",
             "Tavolo", "Tisch",
@@ -373,7 +388,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Gondola", "a": "Gondel" },
             { "q": "Canale", "a": "Kanal" },
@@ -385,7 +400,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Feminine Substantive auf -a bilden den Plural auf -e.",
           "question": "Wie lautet der Plural von 'gondola' (Gondel)?",
           "options": ["gondoli", "gondole", "gondoliere"],
@@ -396,7 +411,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Kanal", "a": "Canale" },
             { "q": "Platz", "a": "Piazza" }
@@ -407,16 +422,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Venedig ist weltberühmt für seine Kanäle, den Karneval und die prächtigen Paläste am Canal Grande.",
           "image": "venezia,canal"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt in einer Lagune der Adria und besteht aus über 100 Inseln, die durch Brücken verbunden sind.",
           "image": "venezia,lagoon"
         }
@@ -425,7 +440,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Gondola", "Gondel",
             "Canale", "Kanal",
@@ -440,7 +455,7 @@
         "type": "vokabeln",
         "data": {
         "title": "Vokabeln",
-        "icon": "🗣️",
+        "icon": "./src/images/Mund_für_Tippsprechblase.png",
         "cards": [
             { "q": "Scuola", "a": "Schule" },
             { "q": "Studente", "a": "Schüler" },
@@ -452,7 +467,7 @@
         "type": "grammatik",
         "data": {
         "title": "Grammatik",
-        "icon": "✍️",
+        "icon": "./src/images/Grammatik.png",
         "text": "Viele Substantive auf -e sind im Plural unregelmäßig und ändern zu -i, unabhängig vom Genus.",
         "question": "Wie lautet der Plural von 'studente' (Schüler)?",
         "options": ["studenti", "studenta", "studentei"],
@@ -463,7 +478,7 @@
         "type": "test",
         "data": {
         "title": "Abschlusstest",
-        "icon": "✏️",
+        "icon": "./src/images/Icon_Aufgabe.png",
         "questions": [
             { "q": "Schule", "a": "Scuola" },
             { "q": "Buch", "a": "Libro" }
@@ -474,16 +489,16 @@
         "type": "kultur",
         "data": {
         "title": "Kultur-Einblick",
-        "icon": "🎭",
+        "icon": "./src/images/Icon_Lerneffekt.png",
         "text": "Vicenza ist bekannt für die Palazzi des Architekten Andrea Palladio, die heute zum UNESCO-Weltkulturerbe zählen.",
         "image": "vicenza,palladio"
         }
     },
     {
-        "type": "geografie",
+        "type": "region",
         "data": {
-        "title": "Geografie-Info",
-        "icon": "🌍",
+        "title": "region-Info",
+        "icon": "./src/images/Location.png",
         "text": "Die Stadt liegt zwischen Verona und Venedig in der fruchtbaren Po-Ebene.",
         "image": "vicenza,plain"
         }
@@ -492,7 +507,7 @@
         "type": "spiel",
         "data": {
         "title": "Spielecke: Memory",
-        "icon": "🎮",
+        "icon": "./src/images/Icon_Ziel.png",
         "pairs": [
             "Scuola", "Schule",
             "Studente", "Schüler",
@@ -507,7 +522,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Amore", "a": "Liebe" },
             { "q": "Casa", "a": "Haus" },
@@ -519,7 +534,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Das Verb 'essere' (sein) wird unregelmäßig konjugiert: io sono, tu sei, lui/lei è.",
           "question": "Welche Form passt zu 'noi' (wir)?",
           "options": ["siete", "siamo", "sono"],
@@ -530,7 +545,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Liebe", "a": "Amore" },
             { "q": "Haus", "a": "Casa" }
@@ -541,16 +556,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Verona ist weltberühmt als Schauplatz von Shakespeares 'Romeo und Julia' und für die antike Arena, in der Opern aufgeführt werden.",
           "image": "verona,arena"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt an der Etsch und unweit des Gardasees, umgeben von Weinbergen.",
           "image": "verona,river"
         }
@@ -559,7 +574,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Amore", "Liebe",
             "Casa", "Haus",
@@ -574,7 +589,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Lago", "a": "See" },
             { "q": "Castello", "a": "Burg" },
@@ -586,7 +601,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Maskuline Substantive auf -o haben im Plural meist die Endung -i.",
           "question": "Wie lautet der Plural von 'lago' (See)?",
           "options": ["laghi", "lagi", "lage"],
@@ -597,7 +612,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "See", "a": "Lago" },
             { "q": "Insel", "a": "Isola" }
@@ -608,16 +623,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Sirmione ist berühmt für die Scaligerburg und die römischen Ruinen der Grotten des Catull.",
           "image": "sirmione,castle"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt auf einer Halbinsel im Süden des Gardasees.",
           "image": "sirmione,garda"
         }
@@ -626,7 +641,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Lago", "See",
             "Castello", "Burg",
@@ -641,7 +656,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Auto", "a": "Auto" },
             { "q": "Corsa", "a": "Rennen" },
@@ -653,7 +668,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Substantive auf -à bleiben im Plural oft unverändert.",
           "question": "Wie lautet der Plural von 'velocità' (Geschwindigkeit)?",
           "options": ["velocità", "velocitè", "velociti"],
@@ -664,7 +679,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Rennen", "a": "Corsa" },
             { "q": "Geschwindigkeit", "a": "Velocità" }
@@ -675,16 +690,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Monza ist weltbekannt für seine Formel-1-Rennstrecke, den Autodromo Nazionale Monza.",
           "image": "monza,race"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt in der Lombardei, nördlich von Mailand, und wird vom Fluss Lambro durchquert.",
           "image": "monza,river"
         }
@@ -693,7 +708,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Auto", "Auto",
             "Corsa", "Rennen",
@@ -708,7 +723,7 @@
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
-          "icon": "🗣️",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
             { "q": "Moda", "a": "Mode" },
             { "q": "Duomo", "a": "Dom" },
@@ -720,7 +735,7 @@
         "type": "grammatik",
         "data": {
           "title": "Grammatik",
-          "icon": "✍️",
+          "icon": "./src/images/Grammatik.png",
           "text": "Bei Substantiven auf -ma (meist maskulin) lautet der Plural oft auf -mi.",
           "question": "Wie lautet der Plural von 'programma' (Programm)?",
           "options": ["programmi", "programmas", "programmie"],
@@ -731,7 +746,7 @@
         "type": "test",
         "data": {
           "title": "Abschlusstest",
-          "icon": "✏️",
+          "icon": "./src/images/Icon_Aufgabe.png",
           "questions": [
             { "q": "Mode", "a": "Moda" },
             { "q": "Dom", "a": "Duomo" }
@@ -742,16 +757,16 @@
         "type": "kultur",
         "data": {
           "title": "Kultur-Einblick",
-          "icon": "🎭",
+          "icon": "./src/images/Icon_Lerneffekt.png",
           "text": "Mailand gilt als Mode- und Designhauptstadt und beherbergt weltberühmte Opernhäuser wie die Scala.",
           "image": "milano,duomo"
         }
       },
       {
-        "type": "geografie",
+        "type": "region",
         "data": {
-          "title": "Geografie-Info",
-          "icon": "🌍",
+          "title": "region-Info",
+          "icon": "./src/images/Location.png",
           "text": "Die Stadt liegt in der Po-Ebene in der Lombardei und ist ein wichtiges Wirtschafts- und Finanzzentrum Italiens.",
           "image": "milano,city"
         }
@@ -760,7 +775,7 @@
         "type": "spiel",
         "data": {
           "title": "Spielecke: Memory",
-          "icon": "🎮",
+          "icon": "./src/images/Icon_Ziel.png",
           "pairs": [
             "Moda", "Mode",
             "Duomo", "Dom",

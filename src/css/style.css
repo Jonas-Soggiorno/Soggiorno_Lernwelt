@@ -80,7 +80,8 @@ H1{
     cursor: pointer;
     display: block;
     margin-bottom: 15px;
-    position: relative;
+    position: absolute;
+    bottom: 20px;
     opacity: 0;
 }
 
@@ -225,11 +226,20 @@ H1{
     fill: white;
 }
 
+.inter-region-path {
+    fill: none;
+    stroke: rgba(82, 80, 80, 0.247);
+    stroke-width: 2px;
+    stroke-dasharray: 5 5;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
 .overview-path {
     fill: none;
-    stroke: black;
-    stroke-width: 1px;
-    stroke-dasharray: 2 2;
+    stroke: rgba(82, 80, 80, 0.247);
+    stroke-width: 2px;
+    stroke-dasharray: 5 5;
     stroke-linecap: round;
     pointer-events: none;
 }
@@ -360,6 +370,36 @@ H1{
 .card-stack-instructions p {
     margin: 5px 0;
 }
+
+/* Styling für den neuen Header, um den Button zu platzieren */
+.quiz-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+.quiz-header #quiz-progress-text,
+.quiz-header #quiz-progress-bar-container {
+    flex-grow: 1; /* Nimmt den meisten Platz ein */
+}
+
+/* Styling für den Debug-Button selbst */
+#debug-skip-test-btn {
+    background-color: #7f8c8d; /* Graue Farbe */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    flex-shrink: 0; /* Verhindert, dass der Button schrumpft */
+}
+#debug-skip-test-btn:hover {
+    opacity: 1;
+}
+
 
 .quiz-option {
     display: block;
@@ -592,15 +632,13 @@ H1{
 }
 
 #back-to-journey-btn {
-    position: absolute; /* Löst den Button aus dem normalen Layout-Fluss */
-    bottom: 70px;      /* 70px Abstand vom unteren Rand */
-    left: 30px;        /* 30px Abstand vom linken Rand */
+    position: absolute;
+    bottom: 70px;
+    left: 30px;
 
     width: auto;
     margin: 0;
 }
-
-
 
 
 .city-pin {
@@ -608,6 +646,14 @@ H1{
     stroke-width: 0px;
     cursor: pointer;
     transition: all 1s;
+
+    filter: drop-shadow(
+        0px
+        2px 
+        1px 
+        rgba(0, 0, 0, 0.644) 
+    );
+    transform: translateZ(0);
 }
 
 .city-pin:hover{
@@ -621,7 +667,45 @@ H1{
 }
 
 .next-stop .city-pin {
+        filter: drop-shadow(
+        0px 
+        0px
+        0px     
+        rgba(0, 0, 0, 0) 
+    );
+    animation: pinPulse 2s ease-in-out infinite;
+}
 
+
+@keyframes pinPulse{
+    0% {
+        transform: translateY(0);
+        filter: drop-shadow(
+            0px 
+            2px  
+            1px
+            rgba(0, 0, 0, 0.644) 
+        );
+    }
+    50% {
+        transform: translateY(-5px);
+        filter: drop-shadow(
+            0px
+            3px
+            2px
+            rgb(0, 0, 0, 0.664)
+        );
+    transform: translateY(-1px);
+    }
+    100% {
+        transform: translateY(0);
+        filter: drop-shadow(
+            0px 
+            2px  
+            1px  
+            rgba(0, 0, 0, 0.644) 
+        );
+    }
 }
 
 .locked .city-pin {
@@ -728,10 +812,10 @@ H1{
 }
 
 #map-view {
-    display: flex;
     flex-direction: column; /* Stapelt H1, Wrapper und Button untereinander */
     height: 100%;
     box-sizing: border-box;
+    position: relative;
 }
 
 #map-view > h1 {
@@ -828,55 +912,6 @@ H1{
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-.region-path {
-    fill: #B39A2A; 
-    stroke: black;
-    stroke-width: 1px;
-    cursor: pointer;
-    transition: fill 0.3s ease;
-}
-
-.region-path:hover {
-    fill: #b39a2a67;
-}
-
-.region-path.completed {
-    fill: #004a9e;
-    stroke: black;
-}
-.region-path.completed:hover {
-    fill: #004a9e;
-}
-
-
-.region-path.next-region {
-    fill: #e1475a;
-    stroke: black;
-    animation: pulse-region-animation 2s infinite ease-in-out;
-}
-
-.region-path.locked {
-    fill: white;
-    stroke: black;
-    cursor: not-allowed;
-}
-.region-path.locked:hover {
-    fill: #e9ecef;
-}
-
-
-@keyframes pulse-region-animation {
-    0% {
-        fill: #dc3545;
-    }
-    50% {
-        fill: #dc354679;
-    }
-    100% {
-        fill: #dc3545;
     }
 }
 
@@ -1110,24 +1145,105 @@ H1{
 }
 
 /*=======Navigation für Städte=======*/
-#city-nav-container {
+/* Styling für das neue, benutzerdefinierte Dropdown-Menü */
+.custom-select {
+    position: relative;
+    font-family: system-ui, sans-serif;
+    min-width: 220px;
+}
+
+/* Die Box, die den aktuell ausgewählten Wert anzeigt */
+.select-selected {
+    background-color: transparent;
+    color: #555;
+    padding: 8px 16px;
+    padding-right: 30px; /* Platz für den Pfeil */
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    user-select: none;
+    position: relative;
+}
+
+/* Der Pfeil nach unten */
+.select-selected::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: #555 transparent transparent transparent;
+    transform: translateY(-25%);
+}
+
+
+.select-selected.select-arrow-active::after {
+    border-color: transparent transparent #555 transparent;
+    transform: translateY(-75%);
+}
+
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 110%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div {
+    color: black;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+.select-items div:last-child {
+    border-bottom: none;
+}
+
+.select-items div:hover {
+    background-color: #f5f5f5;
+}
+
+.select-items div.disabled {
+    color: #aaa;
+    cursor: not-allowed;
+    background-color: #fafafa;
+}
+
+#city-nav-container{
     position: absolute;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Zentriert das Element horizontal */
+    transform: translateX(-50%);
     z-index: 10;
-    
-    display: flex; /* Ordnet Titel und Dropdown nebeneinander an */
+
+    display: flex;
     align-items: center;
-    gap: 8px; /* Kleiner Abstand zwischen Titel und Dropdown */
+    gap: 8px;
     
-    background-color: rgba(255, 255, 255, 0.9); /* Leicht durchsichtiger Hintergrund */
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 8px 16px;
-    border-radius: 25px; /* Macht es zu einer "Pille" */
+    border-radius: 25px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     
+    /* --- DIESE ZEILEN SIND ENTSCHEIDEND --- */
+    /* Standardmäßig ist das Menü unsichtbar und durchsichtig */
     opacity: 0;
     visibility: hidden;
+    
+    /* Definiert die Animation für das Ein- und Ausblenden */
     transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 
@@ -1137,39 +1253,287 @@ H1{
     transition-delay: 0s;
 }
 
-#journey-title-display {
+
+/*==========ENDE Navigation für Städte==============*/
+
+/*==========3D Effekt für Karte=====================*/
+
+
+
+.region-path {
+    fill: #B39A2A; 
+    stroke: black;
+    stroke-width: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.region-path:hover{
+    transform: translateY(-3px);
+}
+
+.region-path:hover {
+    fill: #b39a2a;
+}
+
+.region-path.completed {
+    fill: #004a9e;
+    stroke: black;
+}
+.region-path.completed:hover {
+    fill: #004a9e;
+}
+
+
+.region-path.next-region {
+    fill: #e1475a;
+    stroke: black;
+}
+
+.region-path.locked {
+    fill: #F0EFE8;
+    stroke: black;
+    cursor: not-allowed;
+}
+.region-path.locked:hover {
+    fill: white;
+}
+
+.region-path.is-inactive {
+    pointer-events: none;    
+}
+
+/*======ENDE 3D EFFEKT Karte==========*/
+
+/*======START Styling für Kultur dings=======*/
+
+.kultur-layout .modal-header {
+    display: none;
+}
+
+.kultur-layout {
+    padding: 0 !important; 
+    overflow-y: auto;
+    height: 100%;
+}
+
+.kultur-header {
+    height: 50vh;
+    max-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 60%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: white;
+    aspect-ratio: 16 / 6;
+}
+
+.kultur-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+}
+.kultur-header h1 {
+    position: relative;
+    font-size: 2.2rem;
     margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.kultur-article {
+    padding: 25px;
+    background-color: white;
+}
+
+.kultur-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
     color: #333;
 }
 
-#city-select-dropdown {
-    /* Setzt den Standard-Look des Browsers zurück */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    
-    /* Eigener Stil */
-    border: none;
-    background-color: transparent;
-    font-size: 1.1rem;
+.kultur-text p:first-of-type::first-letter {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    float: left;
+    margin-right: 10px;
+    line-height: 0.8;
+}
+
+.kultur-inline-image {
+    width: 45%;
+    float: right;
+    margin: 10px 0 10px 20px;
+    border-radius: 12px;
+    shape-outside: margin-box; 
+}
+
+.kultur-quote {
+    position: relative;
+    margin: 60px 15%;
+    padding-left: 25px;
+    border-left: 3px solid var(--primary-color);
+    font-size: 1.4rem;
+    font-style: italic;
     font-weight: 500;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.kultur-quote::before {
+    content: '“'; 
+    position: absolute;
+    top: -30px;
+    left: -15px;
+    font-size: 6rem; 
+    font-family: Georgia, serif;
+    color: rgba(0, 86, 179, 0.08);
+    z-index: -1;
+}
+
+.kultur-quote p {
+    margin: 0;
+}
+
+.kultur-quote footer {
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
     color: #555;
-    cursor: pointer;
-    padding-right: 20px; /* Platz für den Pfeil */
-
-    /* Eigener Pfeil */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0px center;
+    margin-top: 15px;
 }
 
-#city-select-dropdown:focus {
-    outline: none; /* Entfernt den blauen Rahmen bei Klick */
+.kultur-quote footer::before {
+    content: '— ';
 }
 
-/* Stil für deaktivierte Optionen in der Liste */
-#city-select-dropdown option:disabled {
-    color: #aaa;
+.kultur-fun-fact {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+}
+.kultur-fun-fact .fun-fact-icon {
+    font-size: 2rem;
+}
+.kultur-fun-fact h3 {
+    margin: 10px 0;
+    color: #333;
+}
+.kultur-fun-fact p {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .kultur-inline-image {
+        width: 100%;
+        float: none;
+        margin: 20px 0;
+    }
+}
+
+/*=======ENDE styling für kulturelles und so=========
+
+/*=====Start styling für die Geografischen Dinge=====*/
+.region-layout .modal-header { display: none; }
+.region-layout {
+    padding: 0 !important;
+    overflow-y: auto;
+    height: 100%;
+}
+.region-header {
+    height: 35vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: white;
+    aspect-ratio: 16 / 6;
+}
+.region-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+}
+.region-header h1 {
+    position: relative;
+    font-size: 2.2rem;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Artikelbereich */
+.region-article {
+    padding: 25px;
+    background-color: white;
+    width: 900px;
+}
+.region-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+}
+.region-text p:first-of-type::first-letter {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    float: left;
+    margin-right: 10px;
+    line-height: 0.8;
+}
+
+/* Styling für den Karten-Container (sollte schon existieren, hier zur Sicherheit) */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Seitenverhältnis */
+    border-radius: 12px;
+    margin: 30px 0; /* Abstand nach oben und unten */
+}
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- ALLGEMEINE "FUN FACT"-BOX --- */
+/* Ersetze .kultur-fun-fact mit dieser allgemeineren Klasse */
+.fun-fact-box {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+    border-left: 5px solid var(--primary-color);
+}
+.fun-fact-box .fun-fact-icon {
+    font-size: 2rem;
+}
+.fun-fact-box h3 {
+    margin: 10px 0;
+    color: #333;
+}
+.fun-fact-box p {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
 }

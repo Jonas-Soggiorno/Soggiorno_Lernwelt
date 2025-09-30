@@ -1,15 +1,15 @@
 {
   "chapters": [
-    { "id": "torino", "name": "Torino", "pos": { "x": 300, "y": 70 }, "path": "M 300 70 L 280 60" },
-    { "id": "asti", "name": "Asti", "pos": { "x": 280, "y": 60 }, "path": "M 280 60 L 260 65" },
-    { "id": "alba", "name": "Alba", "pos": { "x": 260, "y": 65 }, "path": "M 260 65 L 245 68" },
-    { "id": "acqui_terme", "name": "Acqui Terme", "pos": { "x": 245, "y": 68 }, "path": "M 245 68 L 230 72" },
-    { "id": "sanremo", "name": "Sanremo", "pos": { "x": 230, "y": 72 }, "path": "M 230 72 L 215 75" },
-    { "id": "imperia", "name": "Imperia", "pos": { "x": 215, "y": 75 }, "path": "M 215 75 L 200 78" },
-    { "id": "genova", "name": "Genova", "pos": { "x": 200, "y": 78 }, "path": "M 200 78 L 185 80" },
-    { "id": "camogli", "name": "Camogli", "pos": { "x": 185, "y": 80 }, "path": "M 185 80 L 170 82" },
-    { "id": "la_spezia", "name": "La Spezia", "pos": { "x": 170, "y": 82 }, "path": "M 170 82 L 155 85" },
-    { "id": "riomaggiore", "name": "Riomaggiore", "pos": { "x": 155, "y": 85 } }
+    { "id": "torino", "name": "Torino", "pos": { "x": 90, "y": 100 }, "path": "M 90 100 L 105 110" },
+    { "id": "asti", "name": "Asti", "pos": { "x": 105, "y": 110 }, "path": "M 105 110 L 98 120" },
+    { "id": "alba", "name": "Alba", "pos": { "x": 98, "y": 120 }, "path": "M 98 120 L 114 121" },
+    { "id": "acqui_terme", "name": "Acqui Terme", "pos": { "x": 114, "y": 121 }, "path": "M 114 121 L 93 154" },
+    { "id": "sanremo", "name": "Sanremo", "pos": { "x": 93, "y": 154 }, "path": "M 93 154 L 104 150" },
+    { "id": "imperia", "name": "Imperia", "pos": { "x": 104, "y": 150 }, "path": "M 104 150 L 130 130" },
+    { "id": "genova", "name": "Genova", "pos": { "x": 130, "y": 130 }, "path": "M 130 130 L 142 133" },
+    { "id": "camogli", "name": "Camogli", "pos": { "x": 142, "y": 133 }, "path": "M 142 133 L 166 145" },
+    { "id": "la_spezia", "name": "La Spezia", "pos": { "x": 166, "y": 145 }, "path": "M 166 145 L 158 142" },
+    { "id": "riomaggiore", "name": "Riomaggiore", "pos": { "x": 158, "y": 142 } }
   ],
   "content": {
     "torino": [
