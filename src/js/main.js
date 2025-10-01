@@ -10,20 +10,20 @@ let appState = {
         "A1_1": { 
             status: 'unlocked',
             chapters:[
-                { id: 'trieste',  completed: false},
-                { id: 'udine',  completed: false},
-                { id: 'valdobbiadene',  completed: false},
-                { id: 'bassano_del_grappa',  completed: false},
-                { id: 'venezia',  completed: false},
-                { id: 'vicenza',  completed: false},
-                { id: 'verona',  completed: false},
-                { id: 'sirmione',  completed: false},
-                { id: 'monza',  completed: false},
+                { id: 'trieste',  completed: true},
+                { id: 'udine',  completed: true},
+                { id: 'valdobbiadene',  completed: true},
+                { id: 'bassano_del_grappa',  completed: true},
+                { id: 'venezia',  completed: true},
+                { id: 'vicenza',  completed: true},
+                { id: 'verona',  completed: true},
+                { id: 'sirmione',  completed: true},
+                { id: 'monza',  completed: true},
                 { id: 'milano',  completed: false}
             ]
         },
         "A1_2": {
-            status: 'unlocked',
+            status: 'locked',
             chapters: [
                 { id: 'torino',  completed: false },
                 { id: 'asti',  completed: false },
@@ -136,14 +136,48 @@ function buildMap() {
     mapCanvas = document.getElementById('map-canvas');
     mapCanvas.innerHTML = '';
 
+    const overviewPathsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    overviewPathsLayer.id = 'overview-paths-layer';
+
     const regionsShadowLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     regionsShadowLayer.id = 'regions-shadow-layer';
 
     const regionsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     regionsLayer.id = 'regions-layer';
 
-    const overviewPathsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    overviewPathsLayer.id = 'overview-paths-layer';
+    const nextRegionId = levelOrder.find(id =>
+        appState.levels[id].status === 'unlocked' &&
+        !appState.levels[id].chapters.every(c => c.completed)
+    );
+
+    for (const levelId in worldData) {
+        const levelData = worldData[levelId];
+        const regionPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        regionPath.setAttribute('d', levelData.regionPathData);
+        regionPath.setAttribute('id', `region-${levelId}`);
+        regionPath.classList.add('region-path');
+
+        const shadowPath = regionPath.cloneNode(true);
+        
+        const levelState = appState.levels[levelId];
+        const isCompleted = levelState.chapters.every(c => c.completed === true);
+
+        if (isCompleted) {
+            // Region ist vollständig abgeschlossen
+            regionPath.classList.add('completed');
+        } else if (levelId === nextRegionId) {
+            // Das ist die nächste, aktive Region
+            regionPath.classList.add('next-region');
+        } else if (levelState.status === 'locked') {
+            // Region ist noch gesperrt
+            regionPath.classList.add('locked');
+        }
+
+        regionPath.addEventListener('click', () => showJourney(levelId));
+        regionsShadowLayer.appendChild(shadowPath);
+        regionsLayer.appendChild(regionPath);
+
+    }
 
     for (const levelId in overviewPaths) {
         const pathData = overviewPaths[levelId];
@@ -153,10 +187,6 @@ function buildMap() {
         overviewPathsLayer.appendChild(overviewPath);
     }
 
-    const nextRegionId = levelOrder.find(id =>
-        appState.levels[id].status === 'unlocked' &&
-        !appState.levels[id].chapters.every(c => c.completed)
-    )
 
     const interRegionCurveFactor = 0.3; 
 
@@ -185,35 +215,6 @@ function buildMap() {
         }
     }
 
-    // Erstellt nur noch die klickbaren Regionen der Italien-Karte
-    for (const levelId in worldData) {
-        const levelData = worldData[levelId];
-        const regionPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        regionPath.setAttribute('d', levelData.regionPathData);
-        regionPath.setAttribute('id', `region-${levelId}`);
-        regionPath.classList.add('region-path');
-
-        const shadowPath = regionPath.cloneNode(true);
-        
-        const levelState = appState.levels[levelId];
-        const isCompleted = levelState.chapters.every(c => c.completed === true);
-
-        if (isCompleted) {
-            // Region ist vollständig abgeschlossen
-            regionPath.classList.add('completed');
-        } else if (levelId === nextRegionId) {
-            // Das ist die nächste, aktive Region
-            regionPath.classList.add('next-region');
-        } else if (levelState.status === 'locked') {
-            // Region ist noch gesperrt
-            regionPath.classList.add('locked');
-        }
-
-        regionPath.addEventListener('click', () => showJourney(levelId));
-        regionsLayer.appendChild(shadowPath);
-        regionsLayer.appendChild(regionPath);
-
-    }
 
     mapCanvas.appendChild(regionsShadowLayer);
     mapCanvas.appendChild(regionsLayer);
@@ -494,6 +495,34 @@ function initEventListeners(){
         }
     });
 
+    const panelHammer = new Hammer(lessonPanel);
+
+    panelHammer.get('pan').set({direction: Hammer.DIRECTION_VERTICAL, threshold: 10});
+
+    panelHammer.on('pany', (e) => {
+        if (e.deltaY < 0) {
+            return;
+        }
+
+        lessonPanel.classList.add('is-dragging');
+
+        gsap.set(lessonPanel, {y: e.deltaY});
+    });
+
+    panelHammer.on('panend', (e) => {
+        lessonPanel.classList.remove('is-dragging');
+
+        if (e.deltaY > (lessonPanel.offsetHeight / 3) || e.velocityY > 0.5){
+            lessonPanel.classList.remove('visible');
+        } else {
+            gsap.to(lessonPanel, {
+                y: 0,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        }
+    })
+
     window.addEventListener('click', function() {
         const itemsContainer = document.getElementById('select-items-container');
         const selectedItemDisplay = document.getElementById('select-selected-item');
@@ -551,17 +580,55 @@ function openLessonPanel(levelId, chapterId, showWelcome = true) {
                     </div>
                     <h3 class="module-title">${exercise.data.title}</h3>
                 `;
-            card.addEventListener('click', () => {
-                document.getElementById('city-nav-container').classList.remove('visible');
-                lessonPanel.classList.remove('visible');
-                document.getElementById('map-view').classList.remove('active');
-                renderExercise(levelId, chapterId, index);
-            });
+
+            if (exercise.type === 'vokabeln') {
+                card.addEventListener('click', () => {
+                    const modal = document.getElementById('vocab-choice-modal');
+                    if (!modal) return;
+                    modal.classList.remove('hidden');
+
+                    document.getElementById('choice-flashcards').onclick = () => {
+                        modal.classList.add('hidden');
+                        const switchView = () => {
+                            document.getElementById('map-view').classList.remove('active');
+                            renderExercise(levelId, chapterId, index);
+                        };
+                        lessonPanel.addEventListener('transitionend', switchView, { once: true });
+                        lessonPanel.classList.remove('visible');
+                    };
+
+                    document.getElementById('choice-typing').onclick = () => {
+                        modal.classList.add('hidden');
+                        const typingExercise = { ...exercise, type: 'tipptrainer' };
+                        
+                        const switchView = () => {
+                            document.getElementById('map-view').classList.remove('active');
+                            renderExercise(levelId, chapterId, index, typingExercise);
+                        };
+                        lessonPanel.addEventListener('transitionend', switchView, { once: true });
+                        lessonPanel.classList.remove('visible');
+                    };
+
+                    document.getElementById('choice-close').onclick = () => {
+                        modal.classList.add('hidden');
+                    };
+                });
+            } else {
+                card.addEventListener('click', () => {
+                    document.getElementById('city-nav-container').classList.remove('visible');
+                    const switchView = () => {
+                        document.getElementById('map-view').classList.remove('active');
+                        renderExercise(levelId, chapterId, index);
+                    };
+                    lessonPanel.addEventListener('transitionend', switchView, { once: true });
+                    lessonPanel.classList.remove('visible');
+                });
+            }
+            
             lessonPanelContent.appendChild(card);
         });
 
         lessonPanel.style.display = '';
-        
         setTimeout(() => {
             lessonPanel.classList.add('visible');
         }, 10);
@@ -585,11 +652,12 @@ function panToCity(cityPosition) {
     });
 }
 
-function renderExercise(levelId, chapterId, exerciseIndex){
+function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = null){
+
     lastOpenedChapterId = chapterId;
     lastOpenedLevelId = levelId;
 
-    const exercise = currentLevelData.content[chapterId][exerciseIndex];
+    const exercise = overrideExercise || currentLevelData.content[chapterId][exerciseIndex];
     
     const lesson_view = document.getElementById('lesson-view')
     const lesson_content = document.getElementById('lesson-content')
@@ -745,6 +813,8 @@ function renderExercise(levelId, chapterId, exerciseIndex){
                 </div>
             </article>
         `;
+    } else if (exercise.type === 'tipptrainer') {
+            contentHTML = `<div class="tipptrainer-container"></div>`
     }
 
     lesson_content.innerHTML = contentHTML
@@ -853,9 +923,7 @@ function renderExercise(levelId, chapterId, exerciseIndex){
                 }
             });
         });
-    }
-
-    if (exercise.type === 'grammatik') {
+    } else if (exercise.type === 'grammatik') {
         const mainContent = document.getElementById('lesson-main-content');
         const navLinks = document.querySelectorAll('#lesson-nav a');
         const sections = document.querySelectorAll('.lesson-section');
@@ -924,8 +992,7 @@ function renderExercise(levelId, chapterId, exerciseIndex){
                 }
             });
         });
-    }
-    if (exercise.type === 'test') {
+    } else if (exercise.type === 'test') {
         if (DEBUG_MODE) {
             const skipButton = document.getElementById('debug-skip-test-btn');
             if (skipButton) {
@@ -1056,6 +1123,92 @@ function renderExercise(levelId, chapterId, exerciseIndex){
         
         // --- QUIZ STARTEN ---
         displayCurrentQuestion(); // Zeige die erste Frage an
+    } else if (exercise.type === 'tipptrainer') {
+        const trainerContainer = document.querySelector('.tipptrainer-container');
+        let currentWordIndex = 0;
+        const words = moduleData.cards.sort(() => Math.random() - 0.5);
+
+        function displayCurrentWord() {
+            if (currentWordIndex >= words.length) {
+                trainerContainer.innerHTML = `<div class="feedback-box correct">Super! Alle Vokabeln geübt.</div>`;
+                return;
+            }
+            const word = words[currentWordIndex];
+            trainerContainer.innerHTML = `
+                <p class="language-hint">DEUTSCH</p>
+                <p class="word-to-translate">${word.q}</p>
+                <div class="answer-section">
+                    <input type="text" id="tipptrainer-input" placeholder="Übersetzung eingeben..." autocomplete="off">
+                    <button id="tipptrainer-check">Prüfen</button>
+                </div>
+                <div id="tipptrainer-feedback"></div>
+            `;
+            setupWordCheck();
+        }
+
+        function setupWordCheck() {
+        const input = document.getElementById('tipptrainer-input');
+        const checkBtn = document.getElementById('tipptrainer-check');
+        if (!input || !checkBtn) return; // Sicherheits-Check
+        input.focus();
+
+        const checkAnswer = () => {
+
+            input.removeEventListener('keydown', handleEnterForCheck);
+
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = words[currentWordIndex].a.toLowerCase();
+            const feedbackEl = document.getElementById('tipptrainer-feedback');
+            
+            checkBtn.disabled = true;
+            input.disabled = true;
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedbackEl.innerHTML = `<div class="feedback-box correct">Richtig! ✔</div>`;
+                setTimeout(()=> {
+                    goToNextWord();
+                }, 1000);
+            } else {
+                feedbackEl.innerHTML = `<div class="feedback-box incorrect">Leider falsch. Richtig ist: <strong>${words[currentWordIndex].a}</strong></div>`;
+            }
+
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Weiter';
+            nextBtn.className = 'action-button';
+            feedbackEl.appendChild(nextBtn);
+
+            const goToNextWord = () => {
+                document.removeEventListener('keydown', handleEnterForNext); 
+                currentWordIndex++;
+                displayCurrentWord();
+                input.focus();
+            };
+
+            nextBtn.addEventListener('click', goToNextWord);
+            
+            const handleEnterForNext = (e) => {
+                if (e.key === 'Enter') {
+                    goToNextWord();
+                }
+            };
+            
+            setTimeout(() => {
+                document.addEventListener('keydown', handleEnterForNext);
+            }, 0);
+        };
+
+        const handleEnterForCheck = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkAnswer();
+            }
+        };
+
+        checkBtn.addEventListener('click', checkAnswer);
+        input.addEventListener('keydown', handleEnterForCheck);
+    }
+        
+        displayCurrentWord();
     }
 
     const back_to_journey_btn = document.getElementById('back-to-journey-btn');

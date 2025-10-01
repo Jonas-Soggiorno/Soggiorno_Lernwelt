@@ -1102,6 +1102,15 @@ H1{
         text-align: left;
     }
 
+    /*Modal für die Vokabelns*/
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal-options {
+        display: flex;
+        flex-direction: column;
+    }
 
 }
 
@@ -1257,7 +1266,9 @@ H1{
 
 /*==========3D Effekt für Karte=====================*/
 
-
+#regions-shadow-layer{
+    pointer-events: none;
+}
 
 .region-path {
     fill: #B39A2A; 
@@ -1535,4 +1546,80 @@ H1{
     font-size: 1rem;
     color: #555;
     font-style: italic;
+}
+
+/*======Vokabel Modal===========*/
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.modal-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+.modal-options button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+.modal-options button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.hidden {
+    display: none;
+}
+
+.tipptrainer-container { text-align: center; width: 100%; max-width: 500px;}
+.word-to-translate { font-size: 2.5rem; font-weight: 600; margin: 10px 0 30px; }
+.answer-section { display: flex; gap: 10px; width: 100%; }
+#tipptrainer-input { flex-grow: 1; border: 2px solid #ccc; border-radius: 8px; padding: 12px; font-size: 1rem; }
+#tipptrainer-check { padding: 12px 20px; font-size: 1rem; font-weight: 600; border: none; border-radius: 8px; background-color: var(--primary-color); color: white; cursor: pointer; }
+#tipptrainer-feedback { margin-top: 20px; min-height: 80px; }
+.feedback-box { padding: 15px; border-radius: 8px; font-weight: 500; }
+.feedback-box.correct { background-color: #e8f8f5; color: #1abc9c; }
+.feedback-box.incorrect { background-color: #fdedec; color: #e74c3c; }
+
+
+/*Nur für am Handy damit man das Lesson panel weg swipen kann*/
+#lesson-panel.is-dragging {
+    transition: none !important;
 }
