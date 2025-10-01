@@ -371,7 +371,7 @@ H1{
     margin: 5px 0;
 }
 
-/* Styling für den neuen Header, um den Button zu platzieren */
+
 .quiz-header {
     display: flex;
     align-items: center;
@@ -380,12 +380,11 @@ H1{
 }
 .quiz-header #quiz-progress-text,
 .quiz-header #quiz-progress-bar-container {
-    flex-grow: 1; /* Nimmt den meisten Platz ein */
+    flex-grow: 1;
 }
 
-/* Styling für den Debug-Button selbst */
 #debug-skip-test-btn {
-    background-color: #7f8c8d; /* Graue Farbe */
+    background-color: #7f8c8d; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -394,7 +393,7 @@ H1{
     font-weight: bold;
     cursor: pointer;
     opacity: 0.7;
-    flex-shrink: 0; /* Verhindert, dass der Button schrumpft */
+    flex-shrink: 0;
 }
 #debug-skip-test-btn:hover {
     opacity: 1;
