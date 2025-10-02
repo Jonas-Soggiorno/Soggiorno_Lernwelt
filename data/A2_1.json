@@ -1,0 +1,14 @@
+{
+    "chapters": [
+        { "id": "san_gimignano", "name": "San Gimignano", "pos": { "x": 200, "y": 175 }},
+        { "id": "siena", "name": "Siena", "pos": { "x": 205, "y": 185 }},
+        { "id": "perugia", "name": "Perugia", "pos": { "x": 240, "y": 197 }},
+        { "id": "assissi", "name": "Assissi", "pos": { "x": 252, "y": 200 }},
+        { "id": "spoleto", "name": "Spoleto", "pos": { "x": 255, "y": 215 }},
+        { "id": "l aquila", "name": "l'Aquila", "pos": { "x": 285, "y": 225 }},
+        { "id": "sulmona", "name": "Sulmona", "pos": { "x": 300, "y": 235 }},
+        { "id": "pescara", "name": "Pescara", "pos": { "x": 315, "y": 225 }},
+        { "id": "città di vaticano", "name": "Città di Vaticano", "pos": { "x": 250, "y": 237 }},
+        { "id": "roma", "name": "Roma", "pos": { "x": 250, "y": 242 } }
+    ]
+}

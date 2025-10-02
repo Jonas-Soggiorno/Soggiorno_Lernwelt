@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: var(--app-height, 100vh);
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -67,13 +67,12 @@ H1{
 }
 
 
-
 #back-to-italy-btn {
     padding: 9px 12px;
     font-size: 20px;
     font-weight: 400;
     letter-spacing: -0.4px;
-    background-color: transparent;
+    background-color: #F0EFE8;
     color: #0056b3;
     border: solid 2px #0056b3;
     border-radius: 25px;
@@ -81,7 +80,7 @@ H1{
     display: block;
     margin-bottom: 15px;
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     opacity: 0;
 }
 
@@ -1283,7 +1282,7 @@ H1{
 }
 
 .region-path:hover {
-    fill: #b39a2a;
+    fill: #004a9e;
 }
 
 .region-path.completed {

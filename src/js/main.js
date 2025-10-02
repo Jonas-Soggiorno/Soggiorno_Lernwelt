@@ -1,6 +1,4 @@
 import {worldData} from './world.js';
-import {overviewPaths} from './overviewPaths.js'
-import { journeyEndpoints } from './journeyEndpoints.js';
 
 //===GLOBALE VARIABLEN===
 const levelOrder = ["A1_1", "A1_2", "A1_3", "A2_1", "A2_2", "A2_3"];
@@ -10,20 +8,20 @@ let appState = {
         "A1_1": { 
             status: 'unlocked',
             chapters:[
-                { id: 'trieste',  completed: true},
-                { id: 'udine',  completed: true},
-                { id: 'valdobbiadene',  completed: true},
-                { id: 'bassano_del_grappa',  completed: true},
-                { id: 'venezia',  completed: true},
-                { id: 'vicenza',  completed: true},
-                { id: 'verona',  completed: true},
-                { id: 'sirmione',  completed: true},
-                { id: 'monza',  completed: true},
+                { id: 'trieste',  completed: false},
+                { id: 'udine',  completed: false},
+                { id: 'valdobbiadene',  completed: false},
+                { id: 'bassano_del_grappa',  completed: false},
+                { id: 'venezia',  completed: false},
+                { id: 'vicenza',  completed: false},
+                { id: 'verona',  completed: false},
+                { id: 'sirmione',  completed: false},
+                { id: 'monza',  completed: false},
                 { id: 'milano',  completed: false}
             ]
         },
         "A1_2": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
                 { id: 'torino',  completed: false },
                 { id: 'asti',  completed: false },
@@ -38,7 +36,7 @@ let appState = {
             ]
         },
         "A1_3": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
                 { id: 'parma',  completed: false },
                 { id: 'ferrara',  completed: false},
@@ -53,7 +51,7 @@ let appState = {
             ]
         },
         "A2_1": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
                 { id: 'san gimignano',  completed: false },
                 { id: 'siena',  completed: false},
@@ -68,22 +66,22 @@ let appState = {
             ]
         },
         "A2_2": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
                 { id: 'napoli',  completed: false },
                 { id: 'pompei',  completed: false},
-                { id: 'sorrento',  completed: false },
                 { id: 'capri',  completed: false },
                 { id: 'positano',  completed: false },
-                { id: 'ravello',  completed: false },
                 { id: 'salerno',  completed: false },
+                { id: 'castelmezzano',  completed: false },
+                { id: 'altamura',  completed: false },
                 { id: 'bari',  completed: false },
                 { id: 'ostuni',  completed: false },
                 { id: 'lecce',  completed: false }
             ]
         },
         "A2_3": {
-            status: 'locked',
+            status: 'unlocked',
             chapters: [
                 { id: 'matera',  completed: false },
                 { id: 'maratea',  completed: false},
@@ -104,6 +102,7 @@ let initialViewBox = "";
 let currentLevelData = null;
 let lastOpenedLevelId = null;
 let lastOpenedChapterId= null;
+let isViewAnimating = false;
 
 //===APP START===
 document.addEventListener('DOMContentLoaded', initApp);
@@ -135,9 +134,6 @@ function initApp() {
 function buildMap() {
     mapCanvas = document.getElementById('map-canvas');
     mapCanvas.innerHTML = '';
-
-    const overviewPathsLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    overviewPathsLayer.id = 'overview-paths-layer';
 
     const regionsShadowLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     regionsShadowLayer.id = 'regions-shadow-layer';
@@ -179,46 +175,8 @@ function buildMap() {
 
     }
 
-    for (const levelId in overviewPaths) {
-        const pathData = overviewPaths[levelId];
-        const overviewPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        overviewPath.setAttribute('d', pathData);
-        overviewPath.classList.add('overview-path');
-        overviewPathsLayer.appendChild(overviewPath);
-    }
-
-
-    const interRegionCurveFactor = 0.3; 
-
-    for (let i = 0; i < levelOrder.length - 1; i++) {
-        const currentLevelId = levelOrder[i];
-        const nextLevelId = levelOrder[i + 1];
-
-        if (journeyEndpoints[currentLevelId] && journeyEndpoints[nextLevelId] && journeyEndpoints[nextLevelId].start.x != 0) {
-            const startPoint = journeyEndpoints[currentLevelId].end;
-            const endPoint = journeyEndpoints[nextLevelId].start;
-
-
-            const midX = (startPoint.x + endPoint.x) / 2;
-            const midY = (startPoint.y + endPoint.y) / 2;
-            const dx = endPoint.x - startPoint.x;
-            const dy = endPoint.y - startPoint.y;
-            const controlX = midX + interRegionCurveFactor * dy;
-            const controlY = midY - interRegionCurveFactor * dx;
-
-            const pathString = `M ${startPoint.x} ${startPoint.y} Q ${controlX} ${controlY} ${endPoint.x} ${endPoint.y}`;
-
-            const interRegionPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            interRegionPath.setAttribute('d', pathString);
-            interRegionPath.classList.add('inter-region-path');
-            overviewPathsLayer.appendChild(interRegionPath);
-        }
-    }
-
-
     mapCanvas.appendChild(regionsShadowLayer);
     mapCanvas.appendChild(regionsLayer);
-    //mapCanvas.appendChild(overviewPathsLayer);
     
     // Setzt die initiale viewBox
     requestAnimationFrame(() => {
@@ -281,7 +239,10 @@ async function showJourney(levelId) {
             gsap.to(mapCanvas, {
                 duration: 1.2,
                 attr: { viewBox: targetViewBox },
-                ease: "power2.inOut"
+                ease: "power2.inOut",
+                onComplete: () => {
+                    isViewAnimating= false;
+                }
             });
         });
 
@@ -364,8 +325,10 @@ function buildJourneyLayer(levelId, levelData) {
         } else {
             optionDiv.addEventListener('click', function() {
                 selectedItemDisplay.textContent = this.textContent;
-                updateCityDropdownSelection(index);
+                document.getElementById('lesson-panel').classList.remove('visible');
                 panToCity(chapter.pos);
+                updateCityDropdownSelection(index);
+
                 itemsContainer.classList.add('select-hide');
                 selectedItemDisplay.classList.remove('select-arrow-active');
             });
@@ -375,6 +338,9 @@ function buildJourneyLayer(levelId, levelData) {
 
 
     selectedItemDisplay.addEventListener('click', function(e) {
+        if (isViewAnimating){
+            return;
+        }
         e.stopPropagation();
         itemsContainer.classList.toggle('select-hide');
         this.classList.toggle('select-arrow-active');
@@ -389,7 +355,7 @@ function buildJourneyLayer(levelId, levelData) {
         const svg_group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         svg_group.classList.add('pin-container');
         const levelState = appState.levels[levelId];
-        // ... (deine Logik für isCompleted, isNext bleibt gleich) ...
+
         const completedCount = levelState.chapters.filter(c => c.completed === true).length;
         const isCompleted = index < completedCount;
         const isNext = index === completedCount;
@@ -398,10 +364,8 @@ function buildJourneyLayer(levelId, levelData) {
         else if (isNext) { svg_group.classList.add('next-stop'); }
         else { svg_group.classList.add('locked'); }
 
-        // --- ANPASSUNG: <use> DURCH <image> ERSETZEN ---
-
         const svg_pin = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-        let pinFile = './src/images/pin-locked.svg'; // Standard ist gesperrt
+        let pinFile = './src/images/pin-locked.svg';
         if (isCompleted) {
             pinFile = './src/images/pin-completed.svg';
         } else if (isNext) {
@@ -449,7 +413,10 @@ function showRegions() {
     gsap.to(mapCanvas, {
         duration: 1.2,
         attr: { viewBox: initialViewBox },
-        ease: "power2.inOut"
+        ease: "power2.inOut",
+        onComplete: () => {
+            isViewAnimating = false;
+        }
     });
 
     // Blende die Ebenen um
@@ -460,6 +427,7 @@ function showRegions() {
 }
 
 function initEventListeners(){
+
     const backToItalyBtn = document.getElementById('back-to-italy-btn');
     if (backToItalyBtn){
         backToItalyBtn.addEventListener('click', showRegions);

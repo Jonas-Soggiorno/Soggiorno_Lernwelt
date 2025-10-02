@@ -1,0 +1,14 @@
+{
+    "chapters": [
+        { "id": "matera", "name": "Matera", "pos": { "x": 400, "y": 300 }},
+        { "id": "maratea", "name": "maratea", "pos": { "x": 366, "y": 331 }},
+        { "id": "tropea", "name": "Tropea", "pos": { "x": 380, "y": 392 }},
+        { "id": "reggio calabria", "name": "Reggio Calabria", "pos": { "x": 370, "y": 420 }},
+        { "id": "messina", "name": "Messina", "pos": { "x": 365, "y": 415 }},
+        { "id": "taormina", "name": "Taormina", "pos": { "x": 357, "y": 430 }},
+        { "id": "catania", "name": "Catania", "pos": { "x": 350, "y": 445 }},
+        { "id": "syrakus", "name": "Syrakus", "pos": { "x": 360, "y": 465 }},
+        { "id": "cefalù", "name": "Cefalù", "pos": { "x": 310, "y": 424 }},
+        { "id": "palermo", "name": "Palermo", "pos": { "x": 284, "y": 418 } }
+    ]
+}
