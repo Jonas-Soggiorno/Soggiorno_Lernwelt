@@ -1,14 +1,1128 @@
 {
-    "chapters": [
-        { "id": "parma", "name": "Parma", "pos": { "x": 180, "y": 110 }},
-        { "id": "ferrera", "name": "Ferrera", "pos": { "x": 220, "y": 109 }},
-        { "id": "bologna", "name": "Bologna", "pos": { "x": 210, "y": 122 }},
-        { "id": "rimini", "name": "Rimini", "pos": { "x": 255, "y": 145 }},
-        { "id": "san marino", "name": "San Marino", "pos": { "x": 245, "y": 152 }},
-        { "id": "arezzo", "name": "Arezzo", "pos": { "x": 230, "y": 180 }},
-        { "id": "firenze", "name": "Firenze", "pos": { "x": 217, "y": 173 }},
-        { "id": "montecatini terme", "name": "montecatini terme", "pos": { "x": 200, "y": 155 }},
-        { "id": "lucca", "name": "Lucca", "pos": { "x": 190, "y": 158 }},
-        { "id": "pisa", "name": "Pisa", "pos": { "x": 183, "y": 167 } }
+  "chapters": [
+      { "id": "parma", "name": "Parma", "pos": { "x": 180, "y": 110 }},
+      { "id": "ferrera", "name": "Ferrera", "pos": { "x": 220, "y": 109 }},
+      { "id": "bologna", "name": "Bologna", "pos": { "x": 210, "y": 122 }},
+      { "id": "rimini", "name": "Rimini", "pos": { "x": 255, "y": 145 }},
+      { "id": "san marino", "name": "San Marino", "pos": { "x": 245, "y": 152 }},
+      { "id": "arezzo", "name": "Arezzo", "pos": { "x": 230, "y": 180 }},
+      { "id": "firenze", "name": "Firenze", "pos": { "x": 217, "y": 173 }},
+      { "id": "montecatini terme", "name": "montecatini terme", "pos": { "x": 200, "y": 155 }},
+      { "id": "lucca", "name": "Lucca", "pos": { "x": 190, "y": 158 }},
+      { "id": "pisa", "name": "Pisa", "pos": { "x": 183, "y": 167 } }
+  ],
+  "content": {
+    "parma": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "das Brot", "a": "il pane" },
+            { "q": "der Käse", "a": "il formaggio" },
+            { "q": "der Schinken", "a": "il prosciutto" },
+            { "q": "der Mozzerella", "a": "la mozzarella" },
+            { "q": "die Milch", "a": "il latte" },
+            { "q": "das Joghurt", "a": "lo yogurt" },
+            { "q": "die Butter", "a": "il burro" },
+            { "q": "die Eier", "a": "le uova" },
+            { "q": "die Pasta", "a": "la pasta" },
+            { "q": "der Reis", "a": "il riso" },
+            { "q": "das Mehl", "a": "la farina" },
+            { "q": "der Zucker", "a": "lo zucchero" },
+            { "q": "das Fleisch", "a": "la carne" },
+            { "q": "der Fisch", "a": "il pesce" },
+            { "q": "das Salz", "a": "il sale" },
+            { "q": "100 Gramm", "a": "un etto" },
+            { "q": "ein Kilo", "a": "un chilo" },
+            { "q": "ein halbes Kilo", "a": "mezzo chilo" },
+            { "q": "ein Liter von", "a": "un litro di" },
+            { "q": "eine Flasche", "a": "una bottiglia" },
+            { "q": "ein Paket", "a": "un pacco" },
+            { "q": "eine Packung von", "a": "una confezione di" },
+            { "q": "ein Glas", "a": "un vasetto" },
+            { "q": "ein Becher", "a": "un barattolo" },
+            { "q": "eine kleine Dose", "a": "una scatoletta" },
+            { "q": "eine Scheibe", "a": "una fetta" },
+            { "q": "ein Stück", "a": "un pezzo" },
+            { "q": "ein bisschen", "a": "un po' di" },
+            { "q": "etwas", "a": "del" },
+            { "q": "etwas", "a": "dell'" },
+            { "q": "etwas", "a": "dello" },
+            { "q": "etwas", "a": "della" },
+            { "q": "etwas", "a": "dei" },
+            { "q": "etwas", "a": "degli" },
+            { "q": "etwas", "a": "delle" },
+            { "q": "das Obst", "a": "la frutta" },
+            { "q": "der Apfel", "a": "la mela" },
+            { "q": "die Banane", "a": "la banana" },
+            { "q": "die Traube", "a": "l'uva" },
+            { "q": "die Birne", "a": "la pera" },
+            { "q": "die Orange", "a": "l'arancia" },
+            { "q": "die Zitrone", "a": "il limone" },
+            { "q": "der Pfirsich", "a": "la pesca" },
+            { "q": "die Erdbeere", "a": "la fragola" },
+            { "q": "das Gemüse", "a": "la verdura" },
+            { "q": "die Karotte", "a": "la carota" },
+            { "q": "die Tomate", "a": "il pomodoro" },
+            { "q": "die Zwiebel", "a": "la cipolla" },
+            { "q": "die Oliven", "a": "le olive" },
+            { "q": "der Spinat", "a": "gli spinaci" },
+            { "q": "der Kopfsalat", "a": "la lattuga" },
+            { "q": "der Paprika", "a": "il peperone" },
+            { "q": "die Kartoffel", "a": "la patata" },
+            { "q": "die Zucchini", "a": "la zucchina" },
+            { "q": "der Knoblauch", "a": "l'aglio" },
+            { "q": "der Brokkoli", "a": "il broccolo" },
+            { "q": "die Gurke", "a": "il cetriolo" },
+            { "q": "Wie viel davon möchten Sie?", "a": "Quanto ne vuole?" },
+            { "q": "Möchten Sie es so?", "a": "Lo vuole così?" },
+            { "q": "Noch was?", "a": "Qualcos'altro?" },
+            { "q": "Das reicht dake", "a": "Basta così, grazie." }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Bestimmter Artikel: Männlich",
+                    "text": "Für die meisten männlichen Substantive, die mit einem Konsonanten beginnen, wird der Artikel 'il' verwendet.",
+                    "question": "Welcher Artikel passt zu 'prosciutto'?",
+                    "options": ["lo", "il", "la"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: der Käse", "a": ["il formaggio"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Parma ist weltberühmt für seine kulinarischen Spezialitäten, insbesondere den Parmaschinken (Prosciutto di Parma) und den Parmesan-Käse (Parmigiano Reggiano)."
+            ],
+            "funFact": "Die Universität von Parma ist eine der ältesten der Welt und wurde bereits im 11. Jahrhundert gegründet."
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Parma liegt in der norditalienischen Region Emilia-Romagna, die oft als 'Bauch Italiens' bezeichnet wird, wegen ihrer reichen kulinarischen Tradition."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Prosciutto", "Schinken",
+            "Formaggio", "Käse"
+          ]
+        }
+      }
+    ],
+    "ferrera": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Morgen", "a": "la mattina" },
+            { "q": "der Nachmittag", "a": "il pomeriggio" },
+            { "q": "der Abend", "a": "la sera" },
+            { "q": "die Nacht", "a": "la notte" },
+            { "q": "früh", "a": "presto" },
+            { "q": "spät", "a": "tardi" },
+            { "q": "gewöhnlich", "a": "di solito" },
+            { "q": "jeden Tag", "a": "ogni giorno" },
+            { "q": "jeden Tag", "a": "tutti i giorni" },
+            { "q": "einmal am Tag", "a": "una volta al giorno" },
+            { "q": "jeden Morgen", "a": "ogni mattina" },
+            { "q": "jeden Morgen", "a": "tutte le mattine" },
+            { "q": "montags", "a": "il lunedì" },
+            { "q": "jeden Montag", "a": "tutti i lunedì" },
+            { "q": "abends", "a": "la sera" },
+            { "q": "jeden Abend", "a": "tutte le sere" },
+            { "q": "vor Acht Uhr", "a": "prima delle otto" },
+            { "q": "nach Zehn Uhr", "a": "dopo le dieci" },
+            { "q": "zwischen Acht und Zehn Uhr", "a": "fra le otto e le dieci" },
+            { "q": "von Acht bis Zehn Uhr", "a": "dalle otto alle dieci" },
+            { "q": "ab Acht Uhr", "a": "dalle 8 in poi" },
+            { "q": "bis elf Uhr", "a": "fino alle undici" },
+            { "q": "gegen Mittag", "a": "verso mezzogiorno" },
+            { "q": "aufwachen", "a": "svegliarsi" },
+            { "q": "aufstehen", "a": "alzarsi" },
+            { "q": "sich waschen", "a": "lavarsi" },
+            { "q": "sich anziehen", "a": "vestirsi" },
+            { "q": "sich vorbereiten", "a": "prepararsi" },
+            { "q": "sich ausruhen", "a": "riposarsi" },
+            { "q": "sich amüsieren", "a": "divertirsi" },
+            { "q": "einschlafen", "a": "addormentarsi" },
+            { "q": "sich bewegen", "a": "muoversi" },
+            { "q": "sich gewöhnen", "a": "abituarsi" },
+            { "q": "sich treffen", "a": "incontrarsi" },
+            { "q": "sich verlieben", "a": "innamorarsi" },
+            { "q": "sich ärgern", "a": "arrabbiarsi" },
+            { "q": "sich schminken", "a": "truccarsi" },
+            { "q": "sich setzen", "a": "sedersi" },
+            { "q": "müde werden", "a": "stancarsi" },
+            { "q": "sich langweilen", "a": "annoiarsi" },
+            { "q": "heißen, sich nennnen", "a": "chiamarsi" },
+            { "q": "heiraten", "a": "sposarsi" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Endungen von Adjektiven",
+                    "text": "Adjektive passen sich im Geschlecht und in der Zahl an das Substantiv an, das sie beschreiben. 'Castello' ist männlich Singular.",
+                    "question": "Wie sagt man 'das schöne Schloss'?",
+                    "options": ["il castello bella", "il castello bello", "la castello bella"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: das Schloss", "a": ["il castello"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Ferrara ist berühmt für seine gut erhaltene Renaissance-Architektur. Das Castello Estense, eine imposante Wasserburg, dominiert das Stadtzentrum."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Die Stadt liegt in der Po-Ebene und ihr historisches Zentrum wurde von der UNESCO zum Weltkulturerbe erklärt."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Castello", "Schloss",
+            "Città", "Stadt"
+          ]
+        }
+      }
+    ],
+    "bologna": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "das Fest", "a": "la festa" },
+            { "q": "der Geburtstag", "a": "il compleanno" },
+            { "q": "der Studienabschluss", "a": "la laurea" },
+            { "q": "die Hochzeit", "a": "il matrimonio" },
+            { "q": "Weihnachten", "a": "Natale" },
+            { "q": "Ostern", "a": "Pasqua" },
+            { "q": "Neujahr", "a": "Capodanno" },
+            { "q": "Maria Himmelfahrt", "a": "Ferragosto" },
+            { "q": "der Frauentag", "a": "La festa della donna" },
+            { "q": "Muttertag", "a": "La festa della mamma" },
+            { "q": "Vatertag", "a": "del papà" },
+            { "q": "Silvester", "a": "San Silvestro" },
+            { "q": "Tag der Befreiung", "a": "Festa della Liberazione" },
+            { "q": "Tag der Republik", "a": "Festa della Repubblica" },
+            { "q": "eine Überraschungsparty", "a": "una festa a sorpresa" },
+            { "q": "man isst", "a": "si mangia" },
+            { "q": "man trinkt", "a": "si beve" },
+            { "q": "man besichtigt", "a": "si visita" },
+            { "q": "man spricht", "a": "si parla" },
+            { "q": "man feiert", "a": "si festeggia" },
+            { "q": "man kocht", "a": "si cucina" },
+            { "q": "man hört Musik", "a": "si ascolta musica" },
+            { "q": "man ist fröhlich", "a": "si è felice" },
+            { "q": "man spricht viele Sprachen", "a": "si parlano tante lingue" },
+            { "q": "Herzlichen Glückwunsch", "a": "Tanti auguri!" },
+            { "q": "Alles Gute zum Geburtstag", "a": "Buon compleanno!" },
+            { "q": "Glückwunsch", "a": "Congratulazioni!" },
+            { "q": "Kompliment!", "a": "Complimenti!" },
+            { "q": "Viel Glück!", "a": "In bocca al lupo!" },
+            { "q": "Danke! (Antwort auf „In bocca al lupo“)", "a": "Crepi!" },
+            { "q": "Zum Wohl!", "a": "Alla salute!" },
+            { "q": "Prost!", "a": "Cin cin!" },
+            { "q": "Gute Reise!", "a": "Buon viaggio!" },
+            { "q": "Frohe Weihnachten!", "a": "Buon Natale!" },
+            { "q": "Frohes neues Jahr!", "a": "Buon anno!" },
+            { "q": "schöne Ferien!", "a": "Buone vacanze!" },
+            { "q": "einen schönen Urlaub", "a": "Buone vacanze!" },
+            { "q": "man entspannt sich", "a": "ci si rilassa" },
+            { "q": "man hat Spaß", "a": "ci si diverte" },
+            { "q": "man wacht auf", "a": "ci si sveglia" },
+            { "q": "man trifft sich", "a": "ci si incontra" },
+            { "q": "man zieht sich schön an", "a": "ci si veste bene" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Unregelmäßige Pluralformen",
+                    "text": "Einige männliche Substantive, die auf -o enden, haben einen unregelmäßigen Plural auf -a, besonders wenn sie Körperteile oder architektonische Elemente bezeichnen.",
+                    "question": "Wie lautet der Plural von 'il portico'?",
+                    "options": ["i portici", "i portichi", "le portica"],
+                    "correct": 0
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: der Turm", "a": ["la torre"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+              "Bologna ist bekannt als 'la Dotta, la Grassa, la Rossa' (die Gelehrte, die Fette, die Rote). 'Die Gelehrte' wegen der ältesten Universität der westlichen Welt, 'die Fette' wegen ihrer reichhaltigen Küche und 'die Rote' wegen der roten Ziegeldächer."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Die Stadt ist die Hauptstadt der Region Emilia-Romagna und ein wichtiger Verkehrsknotenpunkt in Italien."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Torre", "Turm",
+            "Portico", "Arkade"
+          ]
+        }
+      }
+    ],
+    "rimini": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Strand", "a": "la spiaggia" },
+            { "q": "das Meer", "a": "il mare" },
+            { "q": "der Sand", "a": "la sabbia" },
+            { "q": "der Sonnenschirm", "a": "l'ombrellone" },
+            { "q": "die Sonnencreme", "a": "la crema solare" },
+            { "q": "der Bademeister", "a": "il bagnino" },
+            { "q": "der Liegestuhl", "a": "la sdraio" },
+            { "q": "der (Sand-) Eimer", "a": "il secchiello" },
+            { "q": "die Muschel", "a": "la conchiglia" },
+            { "q": "die Luftmatratze", "a": "il materassino" },
+            { "q": "das Badetuch", "a": "l'asciugamano" },
+            { "q": "der Freizeitpark", "a": "il lunapark" },
+            { "q": "der Campingplatz", "a": "il campeggio" },
+            { "q": "die Piadina", "a": "la piadina" },
+            { "q": "baden", "a": "fare il bagno" },
+            { "q": "schwimmen", "a": "nuotare" },
+            { "q": "spazieren", "a": "camminare" },
+            { "q": "springen/eintauchen", "a": "tuffarsi" },
+            { "q": "Beachvolleyball spielen", "a": "giocare a beachvolley" },
+            { "q": "eine Sandburg bauen", "a": "fare un castello di sabbia" },
+            { "q": "Frisbee spielen", "a": "giocare a frisbee" },
+            { "q": "einen Sonnenbrand bekommen", "a": "scottarsi" },
+            { "q": "sich entspannen", "a": "rilassarsi" },
+            { "q": "sich bräunen", "a": "abbronzarsi" },
+            { "q": "leer", "a": "vuoto" },
+            { "q": "ruhig", "a": "calmo" },
+            { "q": "überfüllt", "a": "affollato" },
+            { "q": "bewegt", "a": "mosso" },
+            { "q": "das stimmt", "a": "è vero" },
+            { "q": "das ist falsch", "a": "è falso" },
+            { "q": "kommt darauf an", "a": "dipende" },
+            { "q": "das ist ein Klischee", "a": "è uno stereotipo" },
+            { "q": "im Allgemeinen", "a": "generalmente" },
+            { "q": "nicht ganz so", "a": "non è proprio così" },
+            { "q": "ziemlich wahr", "a": "è abbastanza vero" },
+            { "q": "manchmal", "a": "a volte" },
+            { "q": "meiner Meinung nach", "a": "secondo me" },
+            { "q": "es ist übertrieben", "a": "è esagerato" },
+            { "q": "die Italiener:innen", "a": "gli italiani" },
+            { "q": "laut", "a": "chiassoso" },
+            { "q": "herzlich", "a": "affettuoso" },
+            { "q": "gesellig", "a": "socievole" },
+            { "q": "pünktlich", "a": "puntuale" },
+            { "q": "verspätet", "a": "ritardatario" },
+            { "q": "gestikulieren", "a": "gesticolare" },
+            { "q": "Pasta essen", "a": "mangiare pasta" },
+            { "q": "mit den Händen sprechen", "a": "parlare con le mani" },
+            { "q": "spät dran sein", "a": "fare tardi" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Präposition 'a'",
+                    "text": "Um auszudrücken, dass man sich an einem Ort befindet, wird oft die Präposition 'a' verwendet, die mit dem Artikel verschmelzen kann. Für 'mare' wird 'al' (a + il) benutzt.",
+                    "question": "Wie sagt man 'am Meer'?",
+                    "options": ["in mare", "al mare", "del mare"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: das Meer", "a": ["il mare"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Rimini ist einer der bekanntesten Badeorte Europas und die Geburtsstadt des berühmten Regisseurs Federico Fellini."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Die Stadt liegt an der Adriaküste in der Region Emilia-Romagna."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Spiaggia", "Strand",
+            "Mare", "Meer"
+          ]
+        }
+      }
+    ],
+     "san marino": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Prozentsatz", "a": "la percentuale" },
+            { "q": "die Zahl", "a": "il numero" },
+            { "q": "die Gesamtsumme", "a": "il totale" },
+            { "q": "die Hälfte", "a": "la metà" },
+            { "q": "ein Drittel", "a": "un terzo" },
+            { "q": "ein Viertel", "a": "un quarto" },
+            { "q": "mehr als die Hälfte", "a": "più della metà" },
+            { "q": "weniger als 10%", "a": "meno del 10%" },
+            { "q": "über 30%", "a": "oltre il 30%" },
+            { "q": "fast alle", "a": "quasi tutti" },
+            { "q": "die Mehrheit", "a": "la maggioranza" },
+            { "q": "die Minderheit", "a": "la minoranza" },
+            { "q": "ein Teil", "a": "una parte" },
+            { "q": "einige", "a": "alcuni" },
+            { "q": "niemand", "a": "nessuno" },
+            { "q": "handgemacht", "a": "artigianale" },
+            { "q": "das lokale Produkt", "a": "il prodotto locale" },
+            { "q": "der Besucher", "a": "il visitatore" },
+            { "q": "die Republik", "a": "la repubblica" },
+            { "q": "die Verfassung", "a": "la costituzione" },
+            { "q": "der Gründer", "a": "il fondatore" },
+            { "q": "das Schloss", "a": "il castello" },
+            { "q": "das Weltkulturerbe", "a": "il patrimonio mondiale" },
+            { "q": "die Flagge", "a": "la bandiera" },
+            { "q": "die Touristenkarte", "a": "la mappa turistica" },
+            { "q": "die Aussicht", "a": "il panorama" },
+            { "q": "die Seilbahn", "a": "la funivia" },
+            { "q": "der Nationalfeiertag", "a": "la festa nazionale" },
+            { "q": "steigen", "a": "aumentare" },
+            { "q": "sinken", "a": "diminuire" },
+            { "q": "wachsen", "a": "crescere" },
+            { "q": "sich verändern", "a": "cambiare" },
+            { "q": "umziehen", "a": "trasferirsi" },
+            { "q": "verkaufen", "a": "vendere" },
+            { "q": "produzieren", "a": "produrre" },
+            { "q": "verbrauchen", "a": "consumare" },
+            { "q": "werden", "a": "diventare" },
+            { "q": "umwandeln", "a": "transformare" },
+            { "q": "Der Fortschritt ist sichtbar.", "a": "Il progresso è visibile." },
+            { "q": "die Entwicklung", "a": "lo sviluppo" },
+            { "q": "der Fortschritt", "a": "il progresso" },
+            { "q": "das Wachstum", "a": "la crescita" },
+            { "q": "die Veränderung", "a": "il cambiamento" },
+            { "q": "neu", "a": "nuovo" },
+            { "q": "alt", "a": "vecchio" },
+            { "q": "vorher", "a": "prima" },
+            { "q": "nachher", "a": "dopo" },
+            { "q": "jetzt", "a": "adesso" },
+            { "q": "in der Vergangenheit", "a": "in passato" },
+            { "q": "modern", "a": "moderno" },
+            { "q": "technologisch", "a": "tecnologico" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Substantive auf -à",
+                    "text": "Feminine Substantive, die auf -à enden (wie libertà), ändern ihre Form im Plural nicht.",
+                    "question": "Wie lautet der Plural von 'la libertà'?",
+                    "options": ["le liberte", "le libertàs", "le libertà"],
+                    "correct": 2
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: die Freiheit", "a": ["la libertà"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "San Marino ist die älteste bestehende Republik der Welt. Ihr Motto lautet 'Libertas' (Freiheit)."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "San Marino ist ein unabhängiger Kleinstaat, der vollständig von Italien umschlossen ist und auf dem Monte Titano liegt."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Repubblica", "Republik",
+            "Libertà", "Freiheit"
+          ]
+        }
+      }
+    ],
+     "arezzo": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "die toskanische Küche", "a": "la cucina toscana" },
+            { "q": "das Steak nach Florentiner Art", "a": "la bistecca alla fiorentina" },
+            { "q": "der toskanische Gemüseeintopf", "a": "la ribollita" },
+            { "q": "das ungesalzene toskanische Brot", "a": "il pane toscana" },
+            { "q": "die Wurstplatte", "a": "il tagliere di salumi" },
+            { "q": "der Schafskäse", "a": "il pecorino" },
+            { "q": "der Dessertwein aus der Toskana", "a": "il Vinsanto" },
+            { "q": "die Verkostung", "a": "la degustazione" },
+            { "q": "der Rotwein", "a": "il vino rosso" },
+            { "q": "das typische Gericht", "a": "il piatto tipico" },
+            { "q": "die Festung", "a": "la rocca" },
+            { "q": "der mittelalterliche Turm", "a": "la torre medievale" },
+            { "q": "das Sarazenen-Turnier", "a": "la giostra del Saracino" },
+            { "q": "der Platz", "a": "la piazza" },
+            { "q": "die Altstadt", "a": "il centro storico" },
+            { "q": "der Tourguide", "a": "la guida turistica" },
+            { "q": "die Führung", "a": "la vista guidata" },
+            { "q": "ich habe mich vorbereitet", "a": "mi sono preparato" },
+            { "q": "ich habe mich vorbereitet", "a": "mi sono preparata" },
+            { "q": "ich habe mich entspannt", "a": "mi sono rilassato" },
+            { "q": "ich habe mich entspannt", "a": "mi sono rilassata" },
+            { "q": "ich habe mich angezogen", "a": "mi sono vestito" },
+            { "q": "ich habe mich angezogen", "a": "mi sono vestita" },
+            { "q": "wir hatten Spaß", "a": "ci siamo divertiti" },
+            { "q": "wir hatten Spaß", "a": "ci siamo divertite" },
+            { "q": "wir haben angehalten", "a": "ci siamo fermati" },
+            { "q": "wir haben angehalten", "a": "ci siamo fermate" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Artikel 'l''",
+                    "text": "Vor Substantiven (männlich oder weiblich), die mit einem Vokal beginnen, wird im Singular der Artikel 'l'' verwendet.",
+                    "question": "Welcher Artikel passt zu 'oro'?",
+                    "options": ["il", "lo", "l'"],
+                    "correct": 2
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: das Gold", "a": ["l'oro"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Arezzo ist ein Zentrum der Goldschmiedekunst. Der Film 'Das Leben ist schön' (La vita è bella) von Roberto Benigni wurde hier gedreht."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Arezzo liegt im Osten der Toskana und war eine der wichtigsten etruskischen Städte."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Oro", "Gold",
+            "Vita", "Leben"
+          ]
+        }
+      }
+    ],
+     "firenze": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "die Ausstellung", "a": "la mostra" },
+            { "q": "der Maler", "a": "il pittore" },
+            { "q": "die Skulptur", "a": "la scultura" },
+            { "q": "das Gemälde", "a": "il dipinto" },
+            { "q": "der Renaissancepalast", "a": "il palazzo rinascimentale" },
+            { "q": "die Kathedrale", "a": "il duomo" },
+            { "q": "die Kuppel", "a": "la cupola" },
+            { "q": "die Fassade", "a": "la facciata" },
+            { "q": "die Brücke", "a": "il ponte" },
+            { "q": "die Arkadenhalle", "a": "la loggia" },
+            { "q": "die Restaurierung", "a": "il restauro" },
+            { "q": "die Basilika", "a": "la basilica" },
+            { "q": "das Denkmal", "a": "il monumento" },
+            { "q": "der bekannteste", "a": "il più famoso" },
+            { "q": "die schönste", "a": "la più bella" },
+            { "q": "die wichtigsten", "a": "i più importanti" },
+            { "q": "die elegantesten", "a": "le più eleganti" },
+            { "q": "der am wenigsten interessante", "a": "il meno interessante" },
+            { "q": "die am wenigsten bekannte", "a": "la meno conosciuta" },
+            { "q": "die am wenigsten modernen", "a": "i meno moderni" },
+            { "q": "die günstigsten", "a": "le meno costose" },
+            { "q": "meiner Meinung nach", "a": "secondo me" },
+            { "q": "in der Gegend", "a": "della zona" },
+            { "q": "Es ist echt faszinierend", "a": "È davvero affascinante" },
+            { "q": "Mir gefällt dieses Museum sehr", "a": "Mi pica molto questo museo" },
+            { "q": "Ich finde den Palast sehr elegant", "a": "Trovo il palazzo molto elegante" },
+            { "q": "Es ist wirklich beeindruckend", "a": "È davvero impressionante" },
+            { "q": "Er ist alt, aber gut erhalten", "a": "è antico ma ben conservato" },
+            { "q": "Die Fassade beeindruckt mich", "a": "Mi colpisce la facciata" },
+            { "q": "Von der Kuppel hat man eine tolle Aussicht", "a": "C'è una vista magnifica dalla cupola" },
+            { "q": "Es ist ein Ort voller Geschichte", "a": "È un luogo peno di storia" },
+            { "q": "Er ist in ganz Italien berühmt", "a": "È famoso in tutta l'Italia" },
+            { "q": "Es ist ein Symbol der Stadt", "a": "È simbolo della città" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Geschlecht von Substantiven auf -e",
+                    "text": "Substantive, die auf -e enden, können männlich oder weiblich sein. 'Il ponte' ist männlich.",
+                    "question": "Welches Adjektiv passt zu 'ponte'?",
+                    "options": ["vecchio", "vecchia", "vecchie"],
+                    "correct": 0
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: die Kunst", "a": ["l'arte"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Florenz (Firenze) gilt als die Wiege der Renaissance. Die Stadt beherbergt unzählige Meisterwerke der Kunst und Architektur, wie den Dom von Brunelleschi und die Ponte Vecchio."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Florenz ist die Hauptstadt der Toskana und liegt am Fluss Arno."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Arte", "Kunst",
+            "Ponte", "Brücke"
+          ]
+        }
+      }
+    ],
+     "montecatini terme": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Kopf", "a": "la testa" },
+            { "q": "das Gesicht", "a": "il viso" },
+            { "q": "die Augen", "a": "l'occhio" },
+            { "q": "das Ohr", "a": "l'orecchio" },
+            { "q": "die Nase", "a": "il naso" },
+            { "q": "der Mund", "a": "la bocca" },
+            { "q": "die Zähne", "a": "i denti" },
+            { "q": "die Haare", "a": "i capelli" },
+            { "q": "der Hals", "a": "il collo" },
+            { "q": "der Rücken", "a": "la schiena" },
+            { "q": "der Arm", "a": "il braccio" },
+            { "q": "die Hand", "a": "la mano" },
+            { "q": "das Bein", "a": "la gamba" },
+            { "q": "das Knie", "a": "il ginocchio" },
+            { "q": "der Fuß", "a": "il piede" },
+            { "q": "der Finger", "a": "il dito" },
+            { "q": "die Haut", "a": "la pelle" },
+            { "q": "die Massage", "a": "il massaggio" },
+            { "q": "die Thermen", "a": "le terme" },
+            { "q": "die Sauna", "a": "la sauna" },
+            { "q": "der Kräuteretee", "a": "la tisana" },
+            { "q": "gut", "a": "bene" },
+            { "q": "schlecht", "a": "male" },
+            { "q": "sehr", "a": "molto" },
+            { "q": "sehr", "a": "tanto" },
+            { "q": "viel", "a": "molto" },
+            { "q": "viel", "a": "tanto" },
+            { "q": "wenig", "a": "poco" },
+            { "q": "nie", "a": "mai" },
+            { "q": "vielleicht", "a": "forse" },
+            { "q": "tatsächlich", "a": "infatti" },
+            { "q": "mindestens", "a": "almeno" },
+            { "q": "währenddessen", "a": "intanto" },
+            { "q": "oft", "a": "spesso" },
+            { "q": "immer", "a": "sempre" },
+            { "q": "gern", "a": "volentieri" },
+            { "q": "spät", "a": "tardi" },
+            { "q": "früh", "a": "presto" },
+            { "q": "bald", "a": "presto" },
+            { "q": "dann", "a": "poi" },
+            { "q": "später", "a": "poi" },
+            { "q": "außerdem", "a": "inoltre" },
+            { "q": "langsam", "a": "lentamente" },
+            { "q": "ruhig", "a": "tranquilamente" },
+            { "q": "freundlich", "a": "gentilmente" },
+            { "q": "normalerweise", "a": "normalmente" },
+            { "q": "schnell", "a": "velocemente" },
+            { "q": "leicht", "a": "facilmente" },
+            { "q": "einfach", "a": "facilmente" },
+            { "q": "elegant", "a": "elegantemente" },
+            { "q": "frei", "a": "liberamente" },
+            { "q": "regelmäßig", "a": "regolarmente" },
+            { "q": "häufig", "a": "frequentemente" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Weiblicher Plural",
+                    "text": "Die meisten weiblichen Substantive auf -a bilden ihren Plural auf -e.",
+                    "question": "Wie lautet der Plural von 'acqua'?",
+                    "options": ["le acqui", "le acque", "le aqua"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: das Wasser", "a": ["l'acqua"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Montecatini Terme ist einer der berühmtesten Kurorte Italiens, bekannt für sein Thermalwasser und seine eleganten Jugendstil-Thermen."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Der Ort liegt in der Toskana, in der Provinz Pistoia, zwischen Florenz und der Küste."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Acqua", "Wasser",
+            "Salute", "Gesundheit"
+          ]
+        }
+      }
+    ],
+     "lucca": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "die Mama", "a": "la mamma" },
+            { "q": "der Papa", "a": "il papà" },
+            { "q": "der Sohn", "a": "il figlio" },
+            { "q": "die Tochter", "a": "la figlia" },
+            { "q": "die Kinder", "a": "i figli" },
+            { "q": "der Bruder", "a": "il fratello" },
+            { "q": "die Schwester", "a": "la sorella" },
+            { "q": "die Geschwister", "a": "i fratelli" },
+            { "q": "die Eltern", "a": "i genitori" },
+            { "q": "der Großvater", "a": "il nonno" },
+            { "q": "die Großmutter", "a": "la nonna" },
+            { "q": "die Großeltern", "a": "i nonni" },
+            { "q": "der Onkel", "a": "lo zio" },
+            { "q": "die Tante", "a": "la zia" },
+            { "q": "Onkel + Tante", "a": "gli zii" },
+            { "q": "der Cousin", "a": "il cugino" },
+            { "q": "die Cousine", "a": "la cugina" },
+            { "q": "der Enkel", "a": "il nipote" },
+            { "q": "der Neffe", "a": "il nipote" },
+            { "q": "die Enkelin", "a": "la nipote" },
+            { "q": "die Nichte", "a": "la nipote" },
+            { "q": "die Enkelkinder", "a": "i nipoti" },
+            { "q": "Neffen und Nichten", "a": "i nipoti" },
+            { "q": "der Ehemann", "a": "il marito" },
+            { "q": "die Ehefrau", "a": "la moglie" },
+            { "q": "die Schwiegermutter", "a": "la suocera" },
+            { "q": "der Schwiegervater", "a": "il suocero" },
+            { "q": "die Schwiegereltern", "a": "i suoceri" },
+            { "q": "die Schwägerin", "a": "la cognata" },
+            { "q": "der Schwager", "a": "il cognato" },
+            { "q": "die Ehe", "a": "il matrimonio" },
+            { "q": "Hochzeit", "a": "il matrimonio" },
+            { "q": "die Herkunftsfamilie", "a": "la famiglia d'origine" },
+            { "q": "die Patchworkfamilie", "a": "la famiglia allargata" },
+            { "q": "das Paar", "a": "la coppia" },
+            { "q": "das Zusammenleben", "a": "la convivenza" },
+            { "q": "das Einzelkind", "a": "il figlio unico" },
+            { "q": "das Einzelkind", "a": "la figlia unica" },
+            { "q": "der Verwandte", "a": "il parente" },
+            { "q": "die Verwandten", "a": "i parenti" },
+            { "q": "Hast du Geschwister?", "a": "Hai fratelli o sorelle?" },
+            { "q": "Bist du ein Einzelkind?", "a": "Sei figlio unico / figlia unica?" },
+            { "q": "Wohnst du mit deiner Familie?", "a": "Vivi con la tua famiglia?" },
+            { "q": "Seid ihr hier im Urlaub?", "a": "Siete qui in vacanza?" },
+            { "q": "meine Schwester", "a": "mia sorella" },
+            { "q": "dein Vater", "a": "tuo padre" },
+            { "q": "seine / ihre Mutter", "a": "sua madre" },
+            { "q": "unsere Onkeln und Tanten", "a": "i nostri zii" },
+            { "q": "eure Töchter", "a": "le vostre figlie" },
+            { "q": "ihr Sohn", "a": "il loro figlio" },
+            { "q": "ihre Kinder", "a": "i loro figli" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Unregelmäßiger Plural",
+                    "text": "'Il muro' (die Wand) wird im Plural zu 'i muri'. 'Le mura' hingegen bezeichnet die Stadtmauern und ist eine unregelmäßige weibliche Pluralform.",
+                    "question": "Ist 'le mura' Singular oder Plural?",
+                    "options": ["Singular", "Plural", "Beides"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: der Baum", "a": ["l'albero"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Lucca ist berühmt für seine vollständig erhaltenen Stadtmauern aus der Renaissancezeit. Heute dient die breite Mauerkrone als beliebte Promenade zum Spazierengehen und Radfahren."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Die Stadt liegt in der Toskana, in der Nähe von Pisa und dem Ligurischen Meer."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Mura", "Mauern",
+            "Albero", "Baum"
+          ]
+        }
+      }
+    ],
+     "pisa": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Schiefe Turm", "a": "la torre pendente" },
+            { "q": "das Bapisterium", "a": "il battistero" },
+            { "q": "der Platz der Wunder", "a": "la piazza dei Miracoli" },
+            { "q": "die gotische Kirche", "a": "la chiesa gotica" },
+            { "q": "der Fluss Arno", "a": "il fiume Arno" },
+            { "q": "die Kathedrale", "a": "la cattedrale" },
+            { "q": "der Turm", "a": "la torre" },
+            { "q": "die Aussicht", "a": "la vista" },
+            { "q": "die Treppe", "a": "la scalinata" },
+            { "q": "die Altstadt", "a": "il centro storico" },
+            { "q": "Fladen aus Kichererbsenmehl", "a": "la cecina" },
+            { "q": "toskanische Tomatensuppe", "a": "la pappa al pomodoro" },
+            { "q": "der Honig", "a": "il miele" },
+            { "q": "das Olivenöl", "a": "l'olio d'oliva" },
+            { "q": "der Kunsthandwerksmarkt", "a": "il mercato dell'artigianato" },
+            { "q": "die Messe", "a": "la fiera" },
+            { "q": "der Jahrmarkt", "a": "la fiera" },
+            { "q": "das Handwerksgeschäft", "a": "la bottega" },
+            { "q": "das regionale Produkt", "a": "il prodotto locale" },
+            { "q": "die handgemachte Keramik", "a": "la ceramica artigianale" },
+            { "q": "das Juweliergeschäft", "a": "la gioielleria" },
+            { "q": "der Antiquitätenmarkt", "a": "il mercato dell'antiquariato" },
+            { "q": "das Einzelstück", "a": "il pezzo unico" }
+          ]
+        }
+      },
+       {
+        "type": "grammatik",
+        "data": {
+            "title": "Grammatik",
+            "icon": "./src/images/Grammatik.png",
+            "exercises": [
+                {
+                    "title": "Stellung des Adjektivs",
+                    "text": "Die meisten Adjektive stehen nach dem Substantiv, besonders solche, die eine objektive Eigenschaft beschreiben (z.B. Farben, Formen). 'Pendente' (schief) steht nach 'torre'.",
+                    "question": "Welche Reihenfolge ist korrekt?",
+                    "options": ["la pendente torre", "la torre pendente", "pendente la torre"],
+                    "correct": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "test",
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: das Wunder", "a": ["il miracolo"] }
+          ]
+        }
+      },
+      {
+        "type": "kultur",
+        "data": {
+            "icon": "./src/images/Icon_Lerneffekt.png",
+            "title": "Kultur",
+            "text": [
+                "Pisa ist weltbekannt für seinen Schiefen Turm auf der Piazza dei Miracoli (Platz der Wunder). Der Platz beherbergt auch den Dom, das Baptisterium und den Camposanto Monumentale."
+            ]
+        }
+      },
+      {
+        "type": "region",
+        "data": {
+          "title": "Region",
+          "icon": "./src/images/Location.png",
+          "text": [
+            "Pisa liegt in der Toskana, nahe der Mündung des Flusses Arno in das Mittelmeer. Einst war die Stadt eine mächtige Seerepublik."
+          ]
+        }
+      },
+      {
+        "type": "spiel",
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": [
+            "Torre", "Turm",
+            "Miracolo", "Wunder"
+          ]
+        }
+      }
     ]
+  }
 }

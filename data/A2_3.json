@@ -1,14 +1,1171 @@
 {
     "chapters": [
         { "id": "matera", "name": "Matera", "pos": { "x": 400, "y": 300 }},
-        { "id": "maratea", "name": "maratea", "pos": { "x": 366, "y": 331 }},
+        { "id": "maratea", "name": "Maratea", "pos": { "x": 366, "y": 331 }},
         { "id": "tropea", "name": "Tropea", "pos": { "x": 380, "y": 392 }},
-        { "id": "reggio calabria", "name": "Reggio Calabria", "pos": { "x": 370, "y": 420 }},
+        { "id": "reggio_calabria", "name": "Reggio Calabria", "pos": { "x": 370, "y": 420 }},
         { "id": "messina", "name": "Messina", "pos": { "x": 365, "y": 415 }},
         { "id": "taormina", "name": "Taormina", "pos": { "x": 357, "y": 430 }},
         { "id": "catania", "name": "Catania", "pos": { "x": 350, "y": 445 }},
-        { "id": "syrakus", "name": "Syrakus", "pos": { "x": 360, "y": 465 }},
-        { "id": "cefalù", "name": "Cefalù", "pos": { "x": 310, "y": 424 }},
+        { "id": "siracusa", "name": "Siracusa", "pos": { "x": 360, "y": 465 }},
+        { "id": "cefalu", "name": "Cefalù", "pos": { "x": 310, "y": 424 }},
         { "id": "palermo", "name": "Palermo", "pos": { "x": 284, "y": 418 } }
-    ]
+    ],
+    "content": {
+        "matera": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "(alte Höhlensiedlungen)", "a": "i Sassi" },
+                        { "q": "der Stein", "a": "la pietra" },
+                        { "q": "das Weltkulturerbe", "a": "il patrimonio mondiale" },
+                        { "q": "die Höhlen", "a": "le grotte" },
+                        { "q": "die Aussichtsterrasse", "a": "la terrazza panoramica" },
+                        { "q": "die Kultur", "a": "la cultura" },
+                        { "q": "die Tradition", "a": "la tradizione" },
+                        { "q": "der Folklore", "a": "il folklore" },
+                        { "q": "die lokale Gemeinschaft", "a": "la comunità locale" },
+                        { "q": "die traditionelle Tracht", "a": "il costume tradizionale" },
+                        { "q": "respektieren", "a": "rispettare" },
+                        { "q": "einhalten", "a": "rispettare" },
+                        { "q": "die Zukunft", "a": "il futuro" },
+                        { "q": "das Projekt", "a": "il progetto" },
+                        { "q": "der Traum", "a": "il sogno" },
+                        { "q": "der Wunsch", "a": "il desiderio" },
+                        { "q": "die Absicht", "a": "l'intenzione" },
+                        { "q": "die Wahl", "a": "la scelta" },
+                        { "q": "Entscheidung", "a": "la scelta" },
+                        { "q": "ich würde gerne ...", "a": "vorrei" },
+                        { "q": "die Arbeit", "a": "il lavoro" },
+                        { "q": "die Universität", "a": "l'università" },
+                        { "q": "die Erfahrung", "a": "l'esperienza" },
+                        { "q": "die Ausbildung", "a": "la formazione" },
+                        { "q": "Weiterbildung", "a": "la formazione" },
+                        { "q": "die Flexibilität", "a": "la flessibilità" },
+                        { "q": "die Zeit", "a": "il tempo" },
+                        { "q": "Zeit brauchen", "a": "metterci tempo" },
+                        { "q": "bringen", "a": "portare" },
+                        { "q": "mitbringen", "a": "portare" },
+                        { "q": "wir brauchen Zeit für...", "a": "ci mettiamo tempo per..." },
+                        { "q": "man muss", "a": "bisogna" },
+                        { "q": "es ist notwendig", "a": "bisogna" },
+                        { "q": "man muss (etwas tun)", "a": "bisogna + infinitiv (bisogna visitare...)" },
+                        { "q": "ich wünsche", "a": "desidero" },
+                        { "q": "ich möchte", "a": "desidero" },
+                        { "q": "ich habe die Absicht zu...", "a": "ho intenzione di" },
+                        { "q": "entdecken", "a": "scoprire" },
+                        { "q": "die Geheimnisse", "a": "i segreti" },
+                        { "q": "Fotos machen", "a": "scattare foto" },
+                        { "q": "hinaufsteigen", "a": "salire" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Maskuliner Plural auf -i",
+                            "text": "Das Wort 'sasso' (Stein) ist männlich. Der Plural wird regelmäßig auf -i gebildet: 'i sassi'.",
+                            "question": "Was ist die Einzahl von 'i sassi'?",
+                            "options": ["il sasso", "la sassa", "lo sasso"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Höhle", "a": ["la grotta"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Matera ist weltberühmt für die 'Sassi', historische Höhlensiedlungen, die seit der Jungsteinzeit bewohnt sind. Die Stadt wurde 2019 zur Kulturhauptstadt Europas ernannt und diente als Kulisse für viele Filme, darunter 'Die Passion Christi'."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Matera liegt in der süditalienischen Region Basilikata und wurde an den Hängen einer tiefen Schlucht erbaut."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Sassi", "Steine",
+                        "Grotta", "Höhle"
+                    ]
+                }
+            }
+        ],
+        "maratea": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "das Denkmal", "a": "il monumento" },
+                        { "q": "die Statue", "a": "la statua" },
+                        { "q": "der Berg", "a": "la montagna" },
+                        { "q": "der Panoramablick", "a": "la vista panoramica" },
+                        { "q": "das Panorama aufs Meer", "a": "il panorama sul mare" },
+                        { "q": "der Christus-Erlöser (Statue)", "a": "il Cristo Redentore" },
+                        { "q": "atemberaubend", "a": "mozzafiato" },
+                        { "q": "der Ausflug", "a": "l'escursione" },
+                        { "q": "die Wanderung", "a": "l'escursione" },
+                        { "q": "begeisternd", "a": "entusiasmante" },
+                        { "q": "überwältigend", "a": "sbalorditivo" },
+                        { "q": "die Küste", "a": "la costa" },
+                        { "q": "der Pfad", "a": "il sentiero" },
+                        { "q": "Wanderweg", "a": "il sentiero" },
+                        { "q": "die Brise", "a": "la brezza" },
+                        { "q": "die Landschaft", "a": "il paesaggio" },
+                        { "q": "die Pilgerreise", "a": "il pellegrinaggio" },
+                        { "q": "die Postkarte", "a": "la cartolina" },
+                        { "q": "die Tradition", "a": "la tradizione" },
+                        { "q": "die Gastfreundschaft", "a": "l'ospitalita" },
+                        { "q": "die Kultur", "a": "la cultura" },
+                        { "q": "die lokale Gemeinschaft", "a": "la comunità locale" },
+                        { "q": "hinaufsteigen", "a": "salire" },
+                        { "q": "hinuntergehen", "a": "scendere" },
+                        { "q": "spazieren gehen", "a": "camminare" },
+                        { "q": "sehen", "a": "vedere" },
+                        { "q": "fotografieren", "a": "fotografare" },
+                        { "q": "einen Spaziergang machen", "a": "fare una passeggiata" },
+                        { "q": "das Panorama genießen", "a": "godere del panorama" },
+                        { "q": "besichtigen", "a": "visitare" },
+                        { "q": "erkunden", "a": "esplorare" },
+                        { "q": "ankommen", "a": "arrivare" },
+                        { "q": "abfahren", "a": "partire" },
+                        { "q": "buchen", "a": "prenotare" },
+                        { "q": "reservieren", "a": "prenotare" },
+                        { "q": "das Ticket", "a": "il biglietto" },
+                        { "q": "der Reiseführer (Person/Buch)", "a": "la guida turistica" },
+                        { "q": "der Reisebus", "a": "il pullman" },
+                        { "q": "das Programm", "a": "il programma" },
+                        { "q": "die Unterkunft", "a": "l'alloggio" },
+                        { "q": "die Buchung", "a": "la prenotazione" },
+                        { "q": "organisieren", "a": "organizzare" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Adjektiv 'grande'",
+                            "text": "Das Adjektiv 'grande' (groß) steht oft vor dem Substantiv und wird zu 'gran' verkürzt, wenn das Substantiv im Singular steht (außer vor s+Konsonant, z, etc.).",
+                            "question": "Wie sagt man 'eine große Statue'?",
+                            "options": ["una statua grande", "una grande statua", "una gran statua"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Statue", "a": ["la statua"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Das Wahrzeichen von Maratea ist die monumentale Statue 'Cristo Redentore' (Christus der Erlöser), die auf dem Gipfel des Monte San Biagio thront und auf die Stadt und das Meer blickt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Maratea ist der einzige Ort der Region Basilikata, der am Tyrrhenischen Meer liegt. Er wird wegen seiner Schönheit oft als 'Perle des Tyrrhenischen Meeres' bezeichnet."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Statua", "Statue",
+                        "Cristo", "Christus"
+                    ]
+                }
+            }
+        ],
+        "tropea": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Saisonarbeit", "a": "il lavoro stagionale" },
+                        { "q": "sich bewerben", "a": "candidarsi" },
+                        { "q": "Bewerbung", "a": "la candidatura" },
+                        { "q": "Anforderung", "a": "il requisito" },
+                        { "q": "Beruf", "a": "la professione" },
+                        { "q": "Erfahrung", "a": "l'esperienza" },
+                        { "q": "Motivation", "a": "la motivazione" },
+                        { "q": "Behandlung / Arbeitsbedingungen", "a": "il trattamento" },
+                        { "q": "Verfügbarkeit", "a": "la disponibilità" },
+                        { "q": "Vertrag", "a": "il contratto" },
+                        { "q": "Vorstellungsgespräch", "a": "il colloquio" },
+                        { "q": "Lebenslauf", "a": "il CV / il curriculum" },
+                        { "q": "beifügen / anhängen", "a": "allegare" },
+                        { "q": "einstellen", "a": "assumere" },
+                        { "q": "eine Antwort erhalten", "a": "ricevere una risposta" },
+                        { "q": "ich möchte mich bewerben", "a": "vorrei candidarmi" },
+                        { "q": "ich habe Erfahrung als...", "a": "ho esperienza come..." },
+                        { "q": "ich füge meinen Lebenslauf bei", "a": "allego il mio CV" },
+                        { "q": "ich spreche Italienisch", "a": "parlo italiano" },
+                        { "q": "ich würde gerne wissen, ob...", "a": "vorrei sapere se..." },
+                        { "q": "Schulabschluss", "a": "il diploma" },
+                        { "q": "Universitätsabschluss", "a": "la laurea" },
+                        { "q": "Spezialisierung", "a": "la specializzazione" },
+                        { "q": "Fremdsprache", "a": "la lingua straniera" },
+                        { "q": "Italienisch sprechen", "a": "parlare italiano" },
+                        { "q": "Weiterbildungskurs", "a": "il corso di formazione" },
+                        { "q": "wahrscheinlich", "a": "probabilmente" },
+                        { "q": "vielleicht", "a": "forse" },
+                        { "q": "meiner Meinung nach", "a": "secondo me" },
+                        { "q": "reale Bedingungssätze", "a": "se + Präsens, Futur" },
+                        { "q": "ich werde arbeiten", "a": "lavorerò" },
+                        { "q": "ich werde Arbeit finden", "a": "troverò lavoro" },
+                        { "q": "ich werde eine Antwort erhalten", "a": "riceverò una risposta" },
+                        { "q": "ich werde meinen Lebenslauf verbessern", "a": "migliorerò il mio CV" },
+                        { "q": "ich bin verfügbar von... bis...", "a": "sono disponibile da... a..." },
+                        { "q": "im Ausland", "a": "all'estero" },
+                        { "q": "rote Zwiebel", "a": "la cipolla rossa" },
+                        { "q": "Granita (Eisgetränk)", "a": "la granita" },
+                        { "q": "scharfe Streichsalami aus Kalabrien", "a": "l'nduja" },
+                        { "q": "frischer Fisch", "a": "il pesce fresco" },
+                        { "q": "Tourismus", "a": "il turismo" },
+                        { "q": "Gasse", "a": "il vicolo" },
+                        { "q": "Treppe", "a": "la scalinata" },
+                        { "q": "Wallfahrtskirche", "a": "il santuario" },
+                        { "q": "kristallklares Meer", "a": "il mare cristallino" },
+                        { "q": "Steilküste", "a": "la scogliera" },
+                        { "q": "Boot", "a": "la barca" },
+                        { "q": "Sand", "a": "la sabbia" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Adjektivangleichung",
+                            "text": "Das Adjektiv passt sich dem Geschlecht des Substantivs an. 'Cipolla' ist weiblich.",
+                            "question": "Wie sagt man 'die rote Zwiebel'?",
+                            "options": ["il cipollo rosso", "la cipolla rosso", "la cipolla rossa"],
+                            "correct": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Zwiebel", "a": ["la cipolla"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Tropea ist berühmt für die 'Cipolla Rossa di Tropea', eine süße rote Zwiebel mit geschützter geografischer Angabe. Aus ihr werden sogar Marmelade und Eis hergestellt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Der malerische Ort liegt auf einer Klippe an der 'Küste der Götter' (Costa degli Dei) in Kalabrien."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Cipolla", "Zwiebel",
+                        "Spiaggia", "Strand"
+                    ]
+                }
+            }
+        ],
+        "reggio_calabria": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "das archäologische Museum", "a": "il museo archeologico" },
+                        { "q": "der Eintritt", "a": "l'ingresso" },
+                        { "q": "Eingang", "a": "l'ingresso" },
+                        { "q": "Ausstellungssaal", "a": "la sala espositiva" },
+                        { "q": "der Besuch", "a": "la visita" },
+                        { "q": "Fundstück", "a": "il reperto" },
+                        { "q": "antike Statue", "a": "la statua antica" },
+                        { "q": "kleine Statue", "a": "la statuetta" },
+                        { "q": "Bronze", "a": "il bronzo" },
+                        { "q": "antike Kunst", "a": "l'arte antica" },
+                        { "q": "historische Epoche", "a": "il periodo storico" },
+                        { "q": "der Guide", "a": "la guida" },
+                        { "q": "Museumsführer", "a": "la guida" },
+                        { "q": "das Ticket", "a": "il biglietto" },
+                        { "q": "die Ausstellung", "a": "la mostra" },
+                        { "q": "der Ausstellungskatalog", "a": "il catalogo" },
+                        { "q": "erzählen", "a": "raccontare" },
+                        { "q": "Erzählung", "a": "il racconto" },
+                        { "q": "Interesse", "a": "l'interesse" },
+                        { "q": "Neugier", "a": "la curiosità" },
+                        { "q": "zuhören", "a": "ascoltare" },
+                        { "q": "beobachten", "a": "osservare" },
+                        { "q": "fotografieren", "a": "fotografare" },
+                        { "q": "staunen", "a": "stupirsi" },
+                        { "q": "sich wundern", "a": "stupirsi" },
+                        { "q": "Notizen machen", "a": "prendere appunti" },
+                        { "q": "anfangen zu erzählen", "a": "cominciare a raccontare" },
+                        { "q": "weitermachen", "a": "continuare" },
+                        { "q": "während (mit Verb)", "a": "mentre" },
+                        { "q": "während / im Laufe von (mit Nomen)", "a": "durante" },
+                        { "q": "kurz davor sein, etw. zu tun", "a": "stare per + infinito" },
+                        { "q": "warten", "a": "aspettare" },
+                        { "q": "geschehen", "a": "succedere" },
+                        { "q": "passieren", "a": "succedere" },
+                        { "q": "anfangen", "a": "cominciare" },
+                        { "q": "beenden", "a": "finire" },
+                        { "q": "dann / danach", "a": "poi" },
+                        { "q": "sobald", "a": "appena" },
+                        { "q": "die Bronzen von Riace", "a": "i Bronzi di Riace" },
+                        { "q": "die Entdeckung", "a": "la scoperta" },
+                        { "q": "Zivilisation", "a": "la civiltà" },
+                        { "q": "griechische Kultur", "a": "la cultura greca" },
+                        { "q": "kostenlos", "a": "gratuito" },
+                        { "q": "entdecken", "a": "scoprire" },
+                        { "q": "das Kulturerbe", "a": "il patrimonio culturale" },
+                        { "q": "historisches Ereignis", "a": "l'evento storico" },
+                        { "q": "die Erhaltung", "a": "la conservazione" },
+                        { "q": "Wie war der Besuch?", "a": "Com'è andata la visita?" },
+                        { "q": "Und was ist dann passiert?", "a": "E poi cos'è successo?" },
+                        { "q": "Wirklich?", "a": "Davvero?" },
+                        { "q": "Das glaube ich nicht!", "a": "Non ci credo!" },
+                        { "q": "Wie interessant!", "a": "Che interessante!" },
+                        { "q": "Erzähl weiter!", "a": "Raccontami!" },
+                        { "q": "Erzähl mir!", "a": "Raccontami!" },
+                        { "q": "Mach weiter!", "a": "Continua!" },
+                        { "q": "Erzähl weiter!", "a": "Vai avanti!" },
+                        { "q": "Unglaublich!", "a": "Incredibile!" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Der bestimmte Artikel 'i'",
+                            "text": "'I' ist der Pluralartikel für männliche Substantive, die im Singular mit 'il' beginnen.",
+                            "question": "Was ist die Einzahl von 'i guerrieri'?",
+                            "options": ["il guerriero", "lo guerriero", "li guerrieri"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Krieger", "a": ["il guerriero"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Das Archäologische Nationalmuseum von Reggio Calabria beherbergt die berühmten 'Bronzi di Riace', zwei lebensgroße griechische Bronzestatuen von Kriegern, die 1972 im Meer gefunden wurden."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Reggio Calabria liegt an der 'Stiefelspitze' Italiens, an der Straße von Messina, die Kalabrien von Sizilien trennt."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Bronzi", "Bronzen",
+                        "Guerriero", "Krieger"
+                    ]
+                }
+            }
+        ],
+        "messina": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "entschuldige (informell)", "a": "scusami" },
+                        { "q": "entschuldigen Sie (formell)", "a": "mi scusi" },
+                        { "q": "es tut mir leid", "a": "mi dispiace" },
+                        { "q": "ich wollte nicht", "a": "non volevo" },
+                        { "q": "es war nicht meine Absicht", "a": "non era mia intenzione" },
+                        { "q": "leider", "a": "purtroppo" },
+                        { "q": "um Entschuldigung bitten", "a": "chiedere scusa" },
+                        { "q": "die Enttäuschung", "a": "la delusione" },
+                        { "q": "wie schade!", "a": "che peccato!" },
+                        { "q": "ich bin etwas enttäuscht", "a": "sono un po' deluso" },
+                        { "q": "ich bin etwas enttäuscht", "a": "sono un po' delusa" },
+                        { "q": "es war ein unvorhergesehenes Ereignis", "a": "è stato un imprevisto" },
+                        { "q": "das öffentliche Bauwerk", "a": "l'opera pubblica" },
+                        { "q": "die Brücke", "a": "il ponte" },
+                        { "q": "wirtschaftliche Entwicklung", "a": "lo sviluppo economico" },
+                        { "q": "die Modernität", "a": "la modernità" },
+                        { "q": "die Umweltbelastung", "a": "l'impatto ambientale" },
+                        { "q": "das Risiko", "a": "il rischio" },
+                        { "q": "einverstanden sein", "a": "essere d'accordo" },
+                        { "q": "nicht einverstanden sein", "a": "non sono d'accordo" },
+                        { "q": "Einfluss haben", "a": "potere avere un impatto" },
+                        { "q": "Verbindungen erleichtern", "a": "facilitare i collegamenti" },
+                        { "q": "Vorteile bringen", "a": "portare benefici" },
+                        { "q": "hohe Kosten verursachen", "a": "avere dei costi elevati" },
+                        { "q": "sicher sein im Fall von...", "a": "essere sicuro in caso di..." },
+                        { "q": "aber, jedoch", "a": "peró" },
+                        { "q": "also, deshalb", "a": "quindi" },
+                        { "q": "weil / warum", "a": "perché" },
+                        { "q": "während", "a": "mentre" },
+                        { "q": "als / wenn", "a": "quando" },
+                        { "q": "wenn / falls", "a": "se" },
+                        { "q": "sobald", "a": "appena" },
+                        { "q": "obwohl / auch wenn", "a": "anche se" },
+                        { "q": "stattdessen", "a": "invece" },
+                        { "q": "da / weil", "a": "dato che" },
+                        { "q": "die Fähre", "a": "il traghetto" },
+                        { "q": "der Hafen", "a": "il porto" },
+                        { "q": "die Schlange / Warteschlange", "a": "la fila" },
+                        { "q": "die Verbindung", "a": "il collegamento" },
+                        { "q": "sich verspäten", "a": "essere in ritardo" },
+                        { "q": "besichtigen / besuchen", "a": "visitare" },
+                        { "q": "ankommen", "a": "arrivare" },
+                        { "q": "abfahren", "a": "partire" },
+                        { "q": "den Bus verpassen", "a": "perdere l'autobus" },
+                        { "q": "anstehen", "a": "fare la fila" },
+                        { "q": "ein Cannolo holen", "a": "prendere un cannolo" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Der Artikel 'lo'",
+                            "text": "Vor männlichen Substantiven, die mit 's + Konsonant' beginnen (wie 'stretto'), wird im Singular der Artikel 'lo' verwendet.",
+                            "question": "Wie lautet der Plural von 'lo stretto'?",
+                            "options": ["i stretti", "li stretti", "gli stretti"],
+                            "correct": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Uhr", "a": ["l'orologio"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Der Glockenturm der Kathedrale von Messina beherbergt die größte und komplexeste mechanische und astronomische Uhr der Welt. Jeden Tag um 12 Uhr mittags setzen sich die Figuren in Bewegung, um Szenen aus der Geschichte der Stadt darzustellen."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Messina ist das Tor zu Sizilien und liegt an der nordöstlichen Spitze der Insel, direkt an der Straße von Messina."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Stretto", "Meerenge",
+                        "Orologio", "Uhr"
+                    ]
+                }
+            }
+        ],
+        "taormina": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "das griechisch-römische Theater", "a": "il teatro greco-romano" },
+                        { "q": "die Arena", "a": "l'arena" },
+                        { "q": "die Bühne", "a": "il palcoscenico" },
+                        { "q": "der Zuschauerraum", "a": "la platea" },
+                        { "q": "der Vorhang", "a": "il sipario" },
+                        { "q": "die Ruinen", "a": "le rovine" },
+                        { "q": "die archäologische Stätte", "a": "il sito archeologico" },
+                        { "q": "das Theaterfestival", "a": "il festival teatrale" },
+                        { "q": "die Stufe / Sitzreihe", "a": "il gradino" },
+                        { "q": "der Marmor", "a": "il marmo" },
+                        { "q": "die Säule", "a": "la colonna" },
+                        { "q": "der Tempel", "a": "il tempio" },
+                        { "q": "das historische Denkmal", "a": "il monumento storico" },
+                        { "q": "die Restaurierung", "a": "il restauro" },
+                        { "q": "die Akustik", "a": "l'acustica" },
+                        { "q": "schön", "a": "bello" },
+                        { "q": "schön (vor m. Sg. Konsonant)", "a": "bel" },
+                        { "q": "schön (vor Vokal)", "a": "bell'" },
+                        { "q": "schön (w. Sg.)", "a": "bella" },
+                        { "q": "schön (m. Pl.)", "a": "bei" },
+                        { "q": "schön (m. Pl. vor Vokal/S+Konsonant)", "a": "begli" },
+                        { "q": "schön (w. Pl.)", "a": "belle" },
+                        { "q": "Was für eine schöne Idee!", "a": "Che bell'idea!" },
+                        { "q": "wunderschön", "a": "bellissimo" },
+                        { "q": "spektakulär", "a": "spettacolare" },
+                        { "q": "bezaubernd", "a": "incantevole" },
+                        { "q": "stimmungsvoll", "a": "suggestivo" },
+                        { "q": "bewegend / emotional", "a": "emozionante" },
+                        { "q": "Was für ein schönes Panorama!", "a": "Che bel panorama!" },
+                        { "q": "Was für ein schöner Tag!", "a": "Che bella giornata!" },
+                        { "q": "Es ist eine schöne Erfahrung.", "a": "È una bella esperienza." },
+                        { "q": "klassische Kultur", "a": "la cultura classica" },
+                        { "q": "Panorama", "a": "il panorama" },
+                        { "q": "Meeresblick", "a": "la vista sul mare" },
+                        { "q": "der Ätna", "a": "l'Etna" },
+                        { "q": "malerisch", "a": "pittoresco" },
+                        { "q": "atemberaubend", "a": "mozzafiato" },
+                        { "q": "überwältigend", "a": "sbalorditivo" },
+                        { "q": "entdecken", "a": "scoprire" },
+                        { "q": "das Ereignis", "a": "l'evento" },
+                        { "q": "Tradition", "a": "la tradizione" },
+                        { "q": "Abendvorstellung", "a": "lo spettacolo serale" },
+                        { "q": "Publikum", "a": "il pubblico" },
+                        { "q": "die antike Zivilisation", "a": "la civiltà antica" },
+                        { "q": "die Mythologie", "a": "la mitologia" },
+                        { "q": "der Mythos", "a": "il mito" },
+                        { "q": "die Legende", "a": "la leggenda" },
+                        { "q": "die natürliche Kulisse", "a": "la cornice naturale" },
+                        { "q": "die Schönheit des Ortes", "a": "la bellezza del luogo" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Adjektiv 'antico'",
+                            "text": "Das Adjektiv 'antico' (alt, antik) wird wie die meisten Adjektive auf -o an Geschlecht und Zahl angepasst: antico, antica, antichi, antiche.",
+                            "question": "Wie heißt 'das antike Theater'?",
+                            "options": ["il teatro antico", "l'antico teatro", "il teatro antica"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: das Theater", "a": ["il teatro"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Taormina ist berühmt für sein antikes griechisch-römisches Theater, das eine spektakuläre Aussicht auf das Ionische Meer und den Vulkan Ätna bietet. Es wird auch heute noch für Konzerte und Veranstaltungen genutzt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Das elegante Städtchen liegt auf einem Hügel an der Ostküste Siziliens, zwischen Messina und Catania."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Teatro", "Theater",
+                        "Vista", "Aussicht"
+                    ]
+                }
+            }
+        ],
+        "catania": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "der Marktstand", "a": "la bancarella" },
+                        { "q": "Fischmarkt", "a": "il mercato del pesce" },
+                        { "q": "getrocknete Tomaten", "a": "i pomodori secchi" },
+                        { "q": "Basilikum", "a": "il basilico" },
+                        { "q": "Peperoni / Chilischote", "a": "il peperoncino" },
+                        { "q": "sizilianische Cannoli", "a": "i cannoli siciliani" },
+                        { "q": "Arancini", "a": "gli arancini" },
+                        { "q": "Pistazie", "a": "il pistacchio" },
+                        { "q": "Kaktusfeigen", "a": "i fichi d'India" },
+                        { "q": "Obst", "a": "la frutta" },
+                        { "q": "Straßenverkäufer", "a": "il venditore ambulante" },
+                        { "q": "Händler", "a": "il commerciante" },
+                        { "q": "Passant", "a": "il passante" },
+                        { "q": "Einheimischer", "a": "il residente" },
+                        { "q": "Freundschaft schließen", "a": "fare amicizia" },
+                        { "q": "ein paar Worte wechseln", "a": "scambiare due parole" },
+                        { "q": "Duft", "a": "il profumo" },
+                        { "q": "Geräusch / Lärm", "a": "il rumore" },
+                        { "q": "Stimme", "a": "la voce" },
+                        { "q": "Verkäufer", "a": "il venditore" },
+                        { "q": "Kunde", "a": "il cliente" },
+                        { "q": "Kostprobe", "a": "l'assaggio" },
+                        { "q": "Menschenmenge", "a": "la folla" },
+                        { "q": "Feilschen / Verhandeln", "a": "la contrattazione" },
+                        { "q": "Preis", "a": "il prezzo" },
+                        { "q": "Auswahl", "a": "la scelta" },
+                        { "q": "der Geschmack", "a": "il sapore" },
+                        { "q": "das Stimmengewirr / Lärm", "a": "il chiasso" },
+                        { "q": "das Durcheinander", "a": "la confusione" },
+                        { "q": "die Lebendigkeit", "a": "la vivacità" },
+                        { "q": "die Farbe", "a": "il colore" },
+                        { "q": "der Klang", "a": "il suono" },
+                        { "q": "die Energie", "a": "l'energia" },
+                        { "q": "probieren / kosten", "a": "assaggiare" },
+                        { "q": "feilschen", "a": "contrattare" },
+                        { "q": "wählen", "a": "scegliere" },
+                        { "q": "groß einkaufen", "a": "comprare all'ingrosso" },
+                        { "q": "kaufen", "a": "comprare" },
+                        { "q": "vergleichen", "a": "paragonare" },
+                        { "q": "herumstöbern", "a": "curiosare" },
+                        { "q": "die Tüte füllen", "a": "riempire il sacchetto" },
+                        { "q": "mit nach Hause nehmen", "a": "portare a casa" },
+                        { "q": "hoffentlich / vielleicht", "a": "magari" },
+                        { "q": "voll / überfüllt", "a": "affollato" },
+                        { "q": "bunt", "a": "colorato" },
+                        { "q": "lokal / einheimisch", "a": "locale" },
+                        { "q": "laut", "a": "rumoroso" },
+                        { "q": "authentisch", "a": "autentico" },
+                        { "q": "vielfältig", "a": "vario" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Substantive auf -e",
+                            "text": "Substantive, die auf -e enden, können männlich oder weiblich sein. 'L'elefante' ist männlich.",
+                            "question": "Wie lautet der Plural von 'l'elefante'?",
+                            "options": ["gli elefanta", "le elefante", "gli elefanti"],
+                            "correct": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Elefant", "a": ["l'elefante"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Das Symbol von Catania ist 'u Liotru', ein Elefantenbrunnen aus Lavagestein auf der Piazza del Duomo. Die Stadt ist auch für ihren lauten und lebhaften Fischmarkt ('La Pescheria') berühmt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Catania liegt an der Ostküste Siziliens, direkt am Fuße des Ätna, des aktivsten Vulkans Europas. Viele Gebäude der Stadt sind aus dem dunklen Lavagestein des Vulkans erbaut."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Pescheria", "Fischmarkt",
+                        "Elefante", "Elefant"
+                    ]
+                }
+            }
+        ],
+        "siracusa": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "griechische Geschichte", "a": "storia greca" },
+                        { "q": "griechischer Tempel", "a": "il tempio greco" },
+                        { "q": "barocker Stil", "a": "stile barocco" },
+                        { "q": "Ruine", "a": "la rovina" },
+                        { "q": "Architektur", "a": "l'architettura" },
+                        { "q": "Denkmal", "a": "il monumento" },
+                        { "q": "Platz", "a": "la piazza" },
+                        { "q": "Fassade", "a": "la facciata" },
+                        { "q": "historische Stätte", "a": "il sito storico" },
+                        { "q": "das Kapitell", "a": "il capitello" },
+                        { "q": "das Mosaik", "a": "il mosaico" },
+                        { "q": "der Innenhof", "a": "il cortile" },
+                        { "q": "der Kreuzgang", "a": "il chiostro" },
+                        { "q": "funkelndes Meer", "a": "mare scintillante" },
+                        { "q": "Hafen", "a": "il porto" },
+                        { "q": "Sonnenuntergang über dem Meer", "a": "il tramonto sul mare" },
+                        { "q": "Strand", "a": "la spiaggia" },
+                        { "q": "Küste", "a": "la costa" },
+                        { "q": "Boot", "a": "la barca" },
+                        { "q": "die Insel Ortigia", "a": "l'isola di Ortigia" },
+                        { "q": "kristallklares Wasser", "a": "l'acqua cristallina" },
+                        { "q": "Meeresbrise", "a": "la brezza marina" },
+                        { "q": "rosafarbener Himmel", "a": "il cielo rosato" },
+                        { "q": "die Spiegelung / Reflexion", "a": "il riflesso" },
+                        { "q": "der Leuchtturm", "a": "il faro" },
+                        { "q": "die Klippe / Felsenküste", "a": "la scogliera" },
+                        { "q": "Hoffnung", "a": "speranza" },
+                        { "q": "Wunsch", "a": "desiderio" },
+                        { "q": "Zweifel", "a": "dubbio" },
+                        { "q": "Angst", "a": "paura" },
+                        { "q": "Freude", "a": "gioia" },
+                        { "q": "Meinung", "a": "opinione" },
+                        { "q": "Emotion", "a": "emozione" },
+                        { "q": "Besorgnis", "a": "preoccupazione" },
+                        { "q": "Sehnsucht / Nostalgie", "a": "la nostalgia" },
+                        { "q": "Ruhe", "a": "la tranquillità" },
+                        { "q": "Staunen / Wunder", "a": "la meraviglia" },
+                        { "q": "Traum", "a": "il sogno" },
+                        { "q": "Betrachtung", "a": "la contemplazione" },
+                        { "q": "Erwartung", "a": "l'attesa" },
+                        { "q": "eintauchen (bildlich)", "a": "immergersi" },
+                        { "q": "sich entspannen", "a": "rilassarsi" },
+                        { "q": "betrachten / in sich aufnehmen", "a": "contemplare" },
+                        { "q": "die Aussicht genießen", "a": "godere della vista" },
+                        { "q": "einen magischen Moment erleben", "a": "vivere un momento magico" },
+                        { "q": "sich inspirieren lassen", "a": "lasciarsi ispirare" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Feminin Plural auf -e",
+                            "text": "Weibliche Substantive auf -a (wie 'isola') bilden den Plural auf -e.",
+                            "question": "Wie sagt man 'die Inseln'?",
+                            "options": ["le isole", "gli isoli", "le isola"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Insel", "a": ["l'isola"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Syrakus war eine der wichtigsten Städte der antiken griechischen Welt und die Heimat von Archimedes. Das Herz der Stadt ist die wunderschöne Insel Ortigia, auf der der Dom auf den Ruinen eines antiken Athena-Tempels errichtet wurde."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die Stadt liegt an der Südostküste Siziliens am Ionischen Meer."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Isola", "Insel",
+                        "Antico", "Antik"
+                    ]
+                }
+            }
+        ],
+        "cefalu": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Landhaus", "a": "il casale" },
+                        { "q": "Dachwohnung / Penthouse", "a": "l'attico" },
+                        { "q": "Dachwohnung (meist mit Schrägen)", "a": "la mansarda" },
+                        { "q": "kleines Haus", "a": "il villino" },
+                        { "q": "Wohnung", "a": "l'appartamento" },
+                        { "q": "Einzimmerwohnung / Studio", "a": "il monolocale" },
+                        { "q": "Zweizimmerwohnung", "a": "il bilocale" },
+                        { "q": "Dreizimmerwohnung", "a": "il trilocale" },
+                        { "q": "freistehendes Haus", "a": "la casa indipendente" },
+                        { "q": "Wohnhaus / Mehrfamilienhaus", "a": "il condominio" },
+                        { "q": "Eigentum", "a": "la proprietà" },
+                        { "q": "Immobilienanzeige", "a": "l'annuncio immobiliare" },
+                        { "q": "Immobilienmakler/in", "a": "l'agente immobiliare" },
+                        { "q": "Terrasse", "a": "la terrazza" },
+                        { "q": "Quadratmeter", "a": "i metri quadri" },
+                        { "q": "Miete", "a": "l'affitto" },
+                        { "q": "Wohnküche", "a": "la cucina abitabile" },
+                        { "q": "Badezimmer", "a": "il bagno" },
+                        { "q": "Dusche", "a": "la doccia" },
+                        { "q": "Badewanne", "a": "la vasca da bagno" },
+                        { "q": "Balkon", "a": "il balcone" },
+                        { "q": "Heizung", "a": "il riscaldamento" },
+                        { "q": "Klimaanlage", "a": "l'aria condizionata" },
+                        { "q": "Waschmaschine", "a": "la lavatrice" },
+                        { "q": "Backofen", "a": "il forno" },
+                        { "q": "Kühlschrank", "a": "il frigorifero" },
+                        { "q": "Spülbecken", "a": "il lavandino" },
+                        { "q": "Bett", "a": "il letto" },
+                        { "q": "Sofa", "a": "il divano" },
+                        { "q": "Bücherregal", "a": "la libreria" },
+                        { "q": "Tisch", "a": "il tavolo" },
+                        { "q": "Kleiderschrank", "a": "l'armadio" },
+                        { "q": "Es ist notwendig, dass...", "a": "È necessario che." },
+                        { "q": "Mir würde gefallen, dass...", "a": "Mi piacerebbe che..." },
+                        { "q": "Es wäre schön, wenn...", "a": "Sarebbe bello che..." },
+                        { "q": "Ich will nicht, dass...", "a": "Non voglio che..." },
+                        { "q": "Wie viel kostet die Miete?", "a": "Quanto costa l'affitto?" },
+                        { "q": "Ist sie möbliert?", "a": "È arredato?" },
+                        { "q": "Ab wann ist sie verfügbar?", "a": "Quando è disponibile?" },
+                        { "q": "Können wir sie besichtigen?", "a": "Possiamo visitarla?" },
+                        { "q": "Gibt es zusätzliche Kosten?", "a": "Ci sono spese extra?" },
+                        { "q": "modern", "a": "moderno" },
+                        { "q": "renoviert", "a": "ristrutturato" },
+                        { "q": "gut eingerichtet", "a": "ben arredato" },
+                        { "q": "ruhig", "a": "silenzioso" },
+                        { "q": "mit Aussicht", "a": "panoramico" },
+                        { "q": "preiswert", "a": "economico" },
+                        { "q": "vielleicht ja / vielleicht nein", "a": "magari sì / magari no" },
+                        { "q": "wer weiß", "a": "chissà" },
+                        { "q": "es wäre perfekt", "a": "sarebbe perfetto" },
+                        { "q": "es ist nicht leicht zu finden", "a": "non è facile da trovare" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Plural von -co",
+                            "text": "Männliche Substantive, die auf -co enden, haben im Plural oft die Endung -ci (Betonung auf der vorletzten Silbe) oder -chi (Betonung auf der drittletzten Silbe). 'Mosaico' wird zu 'mosaici'.",
+                            "question": "Wie lautet der Plural von 'mosaico'?",
+                            "options": ["i mosaichi", "i mosaici", "le mosaiche"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: das Mosaik", "a": ["il mosaico"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Cefalù ist berühmt für seine normannische Kathedrale, die von einer imposanten Christus-Pantokrator-Mosaikfigur in der Apsis dominiert wird. Sie ist Teil des UNESCO-Weltkulturerbes 'Arabisch-Normannisches Palermo und die Kathedralen von Cefalù und Monreale'."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Das Fischerstädtchen liegt an der Nordküste Siziliens am Tyrrhenischen Meer."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Cattedrale", "Kathedrale",
+                        "Mosaico", "Mosaik"
+                    ]
+                }
+            }
+        ],
+        "palermo": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "der Ätna", "a": "l'Etna" },
+                        { "q": "der Kreuzgang", "a": "il chiostro" },
+                        { "q": "das Mosaik", "a": "il mosaico" },
+                        { "q": "das Teatro Massimo", "a": "il teatro Massimo" },
+                        { "q": "der Normannenpalast", "a": "il palazzo dei Normanni" },
+                        { "q": "die Palatinskapelle", "a": "la Cappella Palatina" },
+                        { "q": "die Barockkirche", "a": "la chiesa barocca" },
+                        { "q": "die Kuppel", "a": "la cupola" },
+                        { "q": "die Fassade", "a": "la facciata" },
+                        { "q": "der Glockenturm", "a": "il campanile" },
+                        { "q": "der Innenhof", "a": "il cortile interno" },
+                        { "q": "die Treppe", "a": "la scalinata" },
+                        { "q": "kristallklares Wasser", "a": "l'acqua cristallina" },
+                        { "q": "goldener Sand", "a": "la sabbia dorata" },
+                        { "q": "die Landzunge", "a": "il promontorio" },
+                        { "q": "die Palme", "a": "la palma" },
+                        { "q": "der Sonnenuntergang", "a": "il tramonto" },
+                        { "q": "der Sonnenaufgang", "a": "l'alba" },
+                        { "q": "Panoramablick", "a": "la vista panoramica" },
+                        { "q": "der klare Himmel", "a": "il cielo sereno" },
+                        { "q": "die Muschel", "a": "la conchiglia" },
+                        { "q": "der Panoramaweg", "a": "il sentiero panoramico" },
+                        { "q": "das Naturschutzgebiet", "a": "la riserva naturale" },
+                        { "q": "historischer Markt", "a": "il mercato storico" },
+                        { "q": "Straßenessen", "a": "lo streetfood" },
+                        { "q": "Granita", "a": "la granita" },
+                        { "q": "Milzbrötchen", "a": "il panino con la milza" },
+                        { "q": "der Hafen", "a": "il porto" },
+                        { "q": "monumentaler Brunnen", "a": "la fontana monumentale" },
+                        { "q": "Uferpromenade", "a": "il lungomare" },
+                        { "q": "der authentische Geschmack", "a": "il sapore autentico" },
+                        { "q": "die lokale Spezialität", "a": "la specialità locale" },
+                        { "q": "das Stadtteilfest", "a": "la festa di quartiere" },
+                        { "q": "das Boot", "a": "la barca" },
+                        { "q": "der Fischer", "a": "il pescatore" },
+                        { "q": "die Reise", "a": "il viaggio" },
+                        { "q": "der Koffer", "a": "la valigia" },
+                        { "q": "die Erinnerung", "a": "il ricordo" },
+                        { "q": "der Abschied", "a": "l'addio" },
+                        { "q": "das Reisetagebuch", "a": "il diario di viaggio" },
+                        { "q": "die Postkarte", "a": "la cartolina" },
+                        { "q": "Wie schön!", "a": "Che bello!" },
+                        { "q": "Ich kann es kaum erwarten zu...", "a": "Non vedo l'ora di..." },
+                        { "q": "Erinnerst du dich, als...?", "a": "Ti ricordi quando...?" },
+                        { "q": "Ich hoffe, es wird unvergesslich.", "a": "Spero che sia indimenticabile." },
+                        { "q": "Vielleicht kommen wir bald zurück.", "a": "Magari torneremo presto." }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Präposition 'a'",
+                            "text": "Um zu sagen, dass man zu einem Ort geht oder sich an einem Ort befindet, wird bei Städten die Präposition 'a' verwendet.",
+                            "question": "Wie sagt man 'Ich bin in Palermo'?",
+                            "options": ["Io sono in Palermo.", "Io sono di Palermo.", "Io sono a Palermo."],
+                            "correct": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Markt", "a": ["il mercato"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Palermo ist eine Stadt der Kontraste, bekannt für ihre lebhaften Märkte wie Ballarò und Vucciria, ihr köstliches Street Food und ihre einzigartige arabisch-normannische Architektur."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Palermo ist die Hauptstadt der autonomen Region Sizilien und liegt an einer Bucht an der Nordküste der Insel."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Mercato", "Markt",
+                        "Capitale", "Hauptstadt"
+                    ]
+                }
+            }
+        ]
+    }
 }

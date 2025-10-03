@@ -5,10 +5,1163 @@
         { "id": "capri", "name": "Capri", "pos": { "x": 315, "y": 308 }},
         { "id": "positano", "name": "Positano", "pos": { "x": 325, "y": 304 }},
         { "id": "salerno", "name": "Salerno", "pos": { "x": 335, "y": 301 }},
-        { "id": "castelmezzano", "name": "castelmezzano", "pos": { "x": 375, "y": 304 }},
+        { "id": "castelmezzano", "name": "Castelmezzano", "pos": { "x": 375, "y": 304 }},
         { "id": "altamura", "name": "Altamura", "pos": { "x": 395, "y": 288 }},
         { "id": "bari", "name": "Bari", "pos": { "x": 406, "y": 279 } },
         { "id": "ostuni", "name": "Ostuni", "pos": { "x": 435, "y": 295 } },
         { "id": "lecce", "name": "Lecce", "pos": { "x": 450, "y": 305 } }
-    ]
+    ],
+    "content": {
+        "napoli": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "ich wollte dich etwas fragen", "a": "volevo chiederti una cosa" },
+                        { "q": "ich würde gerne wissen, wo ... ist", "a": "vorrei sapere dov'è ..." },
+                        { "q": "Wo befindet sich ...?", "a": "dove si trova ...?" },
+                        { "q": "Wie lange dauert es ...?", "a": "quanto ci vuole ...?" },
+                        { "q": "Ist es weit von hier?", "a": "è lontano da qui?" },
+                        { "q": "Wie kommt man zu ...?", "a": "come si arriva a ...?" },
+                        { "q": "Entschuldigen Sie, können Sie mir helfen?", "a": "scusi, può aiutarmi?" },
+                        { "q": "Können Sie das bitte wiederholen?", "a": "può ripetere, per favore?" },
+                        { "q": "ich habe gewusst", "a": "ho saputo" },
+                        { "q": "erfahren", "a": "ho saputo" },
+                        { "q": "ich habe gekannt", "a": "ho conosciuto" },
+                        { "q": "kennengelernt", "a": "ho conosciuto" },
+                        { "q": "wirklich", "a": "davvero" },
+                        { "q": "das wusste ich nicht", "a": "non lo sapevo" },
+                        { "q": "Ach komm! Echt jetzt!", "a": "ma dai!" },
+                        { "q": "Was für eine Überraschung", "a": "che sorpresa!" },
+                        { "q": "Ich glaube es nicht!", "a": "non ci credo!" },
+                        { "q": "Es ist wunderschön!", "a": "è bellissimo!" },
+                        { "q": "Information", "a": "informazione" },
+                        { "q": "Auskunft", "a": "informazione" },
+                        { "q": "Burg", "a": "castello" },
+                        { "q": "Schloss", "a": "castello" },
+                        { "q": "Uferpromenade", "a": "lungomare" },
+                        { "q": "Gasse", "a": "vicolo" },
+                        { "q": "Motorroller", "a": "motorino" },
+                        { "q": "Vesuv", "a": "vesuvio" },
+                        { "q": "Haltestelle", "a": "fermata" },
+                        { "q": "Stadtplan", "a": "mappa" },
+                        { "q": "Karte", "a": "mappa" },
+                        { "q": "Fahrplan", "a": "orario" },
+                        { "q": "Öffnungszeiten", "a": "orario" },
+                        { "q": "Denkmal", "a": "monumento" },
+                        { "q": "Sehenswürdigkeit", "a": "monumento" },
+                        { "q": "Aussicht", "a": "panorama" },
+                        { "q": "Panorama", "a": "panorama" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Das Verb 'fare'",
+                            "text": "Das Verb 'fare' (machen) ist sehr gebräuchlich, z.B. in 'fare la pizza' (Pizza machen). Es ist unregelmäßig: io faccio, tu fai, lui/lei fa.",
+                            "question": "Wie sagst du 'Ich mache eine Pizza'?",
+                            "options": ["Io fo una pizza.", "Io faccio una pizza.", "Io face una pizza."],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Pizza", "a": ["la pizza"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Neapel gilt als die Geburtsstätte der Pizza. Die traditionelle Pizza Napoletana ist so berühmt, dass ihre Kunst von der UNESCO als immaterielles Kulturerbe anerkannt wurde."
+                    ],
+                    "funFact": "Der Legende nach wurde die Pizza Margherita 1889 zu Ehren der Königin Margherita von Savoyen kreiert und stellt mit Tomaten (rot), Mozzarella (weiß) und Basilikum (grün) die italienische Flagge dar."
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Neapel liegt am Golf von Neapel in der Region Kampanien und wird vom imposanten Vulkan Vesuv überragt."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Pizza", "Pizza",
+                        "Vulcano", "Vulkan"
+                    ]
+                }
+            }
+        ],
+        "pompei": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Maler:in", "a": "pittore" },
+                        { "q": "Maler:in", "a": "Pittrice" },
+                        { "q": "Schauspieler:in", "a": "attore" },
+                        { "q": "Schauspieler:in", "a": "attrice" },
+                        { "q": "Verkäufer:in", "a": "venditore" },
+                        { "q": "Verkäufer:in", "a": "venditrice" },
+                        { "q": "Schriftsteller:in", "a": "scrittore" },
+                        { "q": "Schriftsteller:in", "a": "scrittrice" },
+                        { "q": "Baumeister:in", "a": "costruttore" },
+                        { "q": "Baumeister:in", "a": "construttrice" },
+                        { "q": "Direktor:in", "a": "direttore" },
+                        { "q": "Direktor:in", "a": "direttrice" },
+                        { "q": "Übersetzer:in", "a": "traduttore" },
+                        { "q": "Übersetzer:in", "a": "traduttrice" },
+                        { "q": "Moderator:in", "a": "presentatore" },
+                        { "q": "Moderator:in", "a": "presentatrice" },
+                        { "q": "Tourist:in", "a": "turista" },
+                        { "q": "Künstler:in", "a": "arista" },
+                        { "q": "Pianist:in", "a": "pianista" },
+                        { "q": "Radfahrer:in", "a": "ciclista" },
+                        { "q": "Journalist:in", "a": "giornalista" },
+                        { "q": "Modedesigner:in", "a": "stilista" },
+                        { "q": "Zahnarzt", "a": "dentista" },
+                        { "q": "Zahnärztin", "a": "dentista" },
+                        { "q": "Apotheker:in", "a": "farmacista" },
+                        { "q": "Optimist:in", "a": "ottimista" },
+                        { "q": "Pessimist:in", "a": "pessimista" },
+                        { "q": "Archäologe", "a": "acheologo" },
+                        { "q": "Archäologin", "a": "acheologo" },
+                        { "q": "Sklave", "a": "schiavo" },
+                        { "q": "Ruine", "a": "rovina" },
+                        { "q": "Ausgrabung", "a": "scavo" },
+                        { "q": "Villa", "a": "villa" },
+                        { "q": "Landhaus", "a": "villa" },
+                        { "q": "Mosaik", "a": "mosaico" },
+                        { "q": "Fresco", "a": "affresco" },
+                        { "q": "Säule", "a": "colonna" },
+                        { "q": "Forum", "a": "foro" },
+                        { "q": "Brunne", "a": "fontana" },
+                        { "q": "römische Straße", "a": "strada romana" },
+                        { "q": "Atrium", "a": "atrio" },
+                        { "q": "Amphore", "a": "fora" },
+                        { "q": "öffentliches Bad", "a": "bagno pubblico" },
+                        { "q": "Asche", "a": "cenere" },
+                        { "q": "Vulkan", "a": "vulcano" },
+                        { "q": "Ausbruch", "a": "eruzione" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Passato Prossimo",
+                            "text": "Um über die Vergangenheit zu sprechen, verwendet man oft das 'Passato Prossimo' (Perfekt). Es wird mit 'avere' oder 'essere' und dem Partizip Perfekt gebildet.",
+                            "question": "Wie heißt 'der Vulkan ist ausgebrochen'?",
+                            "options": ["Il vulcano erutta.", "Il vulcano ha eruttato.", "Il vulcano era eruttato."],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Ruinen", "a": ["le rovine"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Pompeji war eine blühende römische Stadt, die im Jahr 79 n. Chr. durch einen Ausbruch des Vesuvs vollständig unter Asche und Bimsstein begraben wurde. Die Ausgrabungen bieten einen einzigartigen Einblick in das Leben der Antike."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die archäologische Stätte von Pompeji liegt in der Region Kampanien, nahe dem modernen Neapel und am Fuße des Vesuvs."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Rovine", "Ruinen",
+                        "Scavo", "Ausgrabung"
+                    ]
+                }
+            }
+        ],
+        "capri": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Italienisch", "a": "l'italiano" },
+                        { "q": "Englisch", "a": "l'inglese" },
+                        { "q": "Deutsch", "a": "il tedesco" },
+                        { "q": "Arabisch", "a": "l'arabo" },
+                        { "q": "Spanisch", "a": "lo spagnolo" },
+                        { "q": "Französisch", "a": "il francese" },
+                        { "q": "Portugiesisch", "a": "il portoguese" },
+                        { "q": "Polnisch", "a": "il polacco" },
+                        { "q": "Ungarisch", "a": "l'ungherese" },
+                        { "q": "Niederländisch", "a": "l'olandese" },
+                        { "q": "Griechisch", "a": "il greco" },
+                        { "q": "Chinesisch", "a": "il cinese" },
+                        { "q": "Russisch", "a": "il russo" },
+                        { "q": "Japanisch", "a": "il giapponese" },
+                        { "q": "sprechen", "a": "parlare" },
+                        { "q": "verstehen", "a": "capire" },
+                        { "q": "machen", "a": "fare" },
+                        { "q": "tun", "a": "fare" },
+                        { "q": "lernen, studieren", "a": "studiare" },
+                        { "q": "wohnen", "a": "abitare" },
+                        { "q": "arbeiten", "a": "lavorare" },
+                        { "q": "reisen", "a": "viaggiare" },
+                        { "q": "die Blaue Grotte", "a": "la Grotta Azzurra" },
+                        { "q": "die Felsenküste", "a": "la scogliera" },
+                        { "q": "die Felsnadel", "a": "il faraglione" },
+                        { "q": "der Strand", "a": "la spiaggia" },
+                        { "q": "die Insel", "a": "l'isola" },
+                        { "q": "der blaue Himmel", "a": "il cielo azzurro" },
+                        { "q": "der Aussichtspunkt", "a": "il belvedere" },
+                        { "q": "die Fähre", "a": "il traghetto" },
+                        { "q": "Einschiffungspunkt", "a": "punto d'imbarco" },
+                        { "q": "Hafen", "a": "porto" },
+                        { "q": "Doppelkabine", "a": "cabina doppia" },
+                        { "q": "Pier", "a": "molo" },
+                        { "q": "Anleger", "a": "molo" },
+                        { "q": "Sonnenuntergang", "a": "tramonto" },
+                        { "q": "Meerblick", "a": "vista mare" },
+                        { "q": "eine Bootsfahrt machen", "a": "fare un giro in barca" },
+                        { "q": "sich sonnen", "a": "prendere il sole" },
+                        { "q": "Fotos machen", "a": "scattare foto" },
+                        { "q": "zum Aussichtspunkt hinaufgehen", "a": "salire al belvedere" },
+                        { "q": "sich entspannen", "a": "rilassarsi" },
+                        { "q": "es lohnt sich", "a": "vale la pena" },
+                        { "q": "erkunden", "a": "esplorare" },
+                        { "q": "spazieren gehen", "a": "passeggiare" },
+                        { "q": "Fotoapparat", "a": "la macchina fotografica" },
+                        { "q": "Kamera", "a": "la macchina fotografica" },
+                        { "q": "der Wanderweg", "a": "il sentiero" },
+                        { "q": "die Panoramaterrasse", "a": "la terrazza panoramica" },
+                        { "q": "man kann", "a": "si può" },
+                        { "q": "es ist möglich", "a": "è possibile" },
+                        { "q": "es kann sein, dass", "a": "può darsi (che ...)" },
+                        { "q": "natürlich kann man!", "a": "certo che si può!" },
+                        { "q": "ja, es ist möglich", "a": "sì, è possibile" },
+                        { "q": "Geh zur Blauen Grotte!", "a": "Vai alla Grotta Azzurra!" },
+                        { "q": "Sonne dich!", "a": "Prendi il sole!" },
+                        { "q": "Verpasse das Panorama nicht!", "a": "Non perdere il panorama!" },
+                        { "q": "Vergiss die Kamera nicht!", "a": "Non dimenticare la macchina fotografica!" },
+                        { "q": "Vergessen Sie nicht, das Boot zu reservieren!", "a": "Non dimentichi di prenotare la barca!" },
+                        { "q": "Du musst unbedingt hingehen!", "a": "Devi assolutamente andarci!" },
+                        { "q": "Vertrau mir, es ist spektakulär!", "a": "Fidati, è spettacolare!" },
+                        { "q": "Schau, es lohnt sich wirklich!", "a": "Guarda che ne vale la pena!" },
+                        { "q": "Du darfest es nicht verpassen!", "a": "Non puoi perdertelo!" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Adjektiv 'blu'",
+                            "text": "Das Adjektiv 'blu' (blau) ist unveränderlich. Es behält seine Form im Singular und Plural, sowohl für männliche als auch für weibliche Substantive.",
+                            "question": "Wie sagt man 'die blaue Grotte'?",
+                            "options": ["la grotta blua", "la grotta blu", "le grotte blue"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Insel", "a": ["l'isola"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Capri ist eine luxuriöse Insel, die für ihre atemberaubende Landschaft, die Faraglioni-Felsen und die berühmte Blaue Grotte (Grotta Azzurra) bekannt ist, in der das Meerwasser durch eine Unterwasserhöhle in einem leuchtenden Blau erstrahlt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die Insel Capri liegt im Golf von Neapel, gegenüber der Halbinsel von Sorrent."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Isola", "Insel",
+                        "Grotta", "Grotte"
+                    ]
+                }
+            }
+        ],
+        "positano": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Gastfreundschaft", "a": "accoglienza" },
+                        { "q": "Gast", "a": "ospite" },
+                        { "q": "Gastgeber", "a": "oste" },
+                        { "q": "Gastgeber", "a": "host" },
+                        { "q": "Unterkunft", "a": "struttura" },
+                        { "q": "Anlage", "a": "struttura" },
+                        { "q": "Bettwäsche", "a": "lenzuola" },
+                        { "q": "komfortabel", "a": "confortevole" },
+                        { "q": "Interaktion", "a": "interazione" },
+                        { "q": "Ratschlag", "a": "consiglio" },
+                        { "q": "Tipp", "a": "consiglio" },
+                        { "q": "Kommentar", "a": "commento" },
+                        { "q": "Bewertung", "a": "recensione" },
+                        { "q": "Erlebnis", "a": "esperienza" },
+                        { "q": "plaudern", "a": "chiacchierare" },
+                        { "q": "sich unterhalten", "a": "chiacchierare" },
+                        { "q": "empfehlen", "a": "consigliare" },
+                        { "q": "an deiner Stelle", "a": "al posto tuo" },
+                        { "q": "Ich brauche Ruhe", "a": "Ho bisogno di riposo" },
+                        { "q": "Ich hätte gerne etwas Typisches", "a": "Vorrei qualcosa di tipico" },
+                        { "q": "Ich fühle mich entspannt", "a": "Mi sento rilassato" },
+                        { "q": "Ich suche einen ruhigeren Ort", "a": "Cerco un posto più tranquillo" },
+                        { "q": "bring sie (z.B. die Tasche)", "a": "portala" },
+                        { "q": "geh!", "a": "vai!" },
+                        { "q": "mach!", "a": "fai!" },
+                        { "q": "gib!", "a": "dai!" },
+                        { "q": "Iss es nicht!", "a": "Non lo mangiare!" },
+                        { "q": "Nimm sie nicht!", "a": "Non la prendere!" },
+                        { "q": "Sprich nicht so mit mir!", "a": "Non mi parlare così" },
+                        { "q": "Iss es!", "a": "Mangialo!" },
+                        { "q": "Nimm sie!", "a": "Prendili!" },
+                        { "q": "Mach es!", "a": "Fallo!" },
+                        { "q": "Gib es!", "a": "Dallo!" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Superlativ",
+                            "text": "Der relative Superlativ wird mit dem bestimmten Artikel + 'più' (mehr) gebildet. Zum Beispiel: 'il più bello' (der schönste).",
+                            "question": "Wie sagt man 'die schönste Küste'?",
+                            "options": ["la costa più bella", "la più costa bella", "la bella più costa"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Küste", "a": ["la costa"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Positano ist ein malerisches Dorf an der Amalfiküste. Seine pastellfarbenen Häuser scheinen an den steilen Klippen zu kleben, die zum Meer hinabführen."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Der Ort liegt an der Amalfiküste in der Region Kampanien, südlich von Neapel."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Costa", "Küste",
+                        "Mare", "Meer"
+                    ]
+                }
+            }
+        ],
+        "salerno": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "Das Rezept", "a": "la ricetta" },
+                        { "q": "die mediterrane Küche", "a": "la dieta mediterranea" },
+                        { "q": "Zutaten", "a": "ingredienti" },
+                        { "q": "Ernährung", "a": "alimentazione" },
+                        { "q": "der Kochtopf", "a": "la pentola" },
+                        { "q": "die Pfanne", "a": "la padella" },
+                        { "q": "das Schneidebrett", "a": "il tagliere" },
+                        { "q": "der Schöpflöffel", "a": "il mestolo" },
+                        { "q": "die Schüssel", "a": "la ciotola" },
+                        { "q": "probieren", "a": "assaggiare" },
+                        { "q": "kosten", "a": "assaggiare" },
+                        { "q": "kochen", "a": "bollire" },
+                        { "q": "sieden", "a": "bollire" },
+                        { "q": "frittieren", "a": "friggere" },
+                        { "q": "würzen", "a": "condire" },
+                        { "q": "eingießen", "a": "versare" },
+                        { "q": "schütten", "a": "versare" },
+                        { "q": "köstlich", "a": "squisito" },
+                        { "q": "geschmacklos", "a": "insipido" },
+                        { "q": "scharf", "a": "piccante" },
+                        { "q": "würzig", "a": "saporito" },
+                        { "q": "schmackhaft", "a": "saporito" },
+                        { "q": "sauer", "a": "acido" },
+                        { "q": "knusprig", "a": "croccante" },
+                        { "q": "weich", "a": "morbido" },
+                        { "q": "cremig", "a": "cremoso" },
+                        { "q": "Hausfrau", "a": "casalinga" },
+                        { "q": "häuslich", "a": "casalinga" },
+                        { "q": "Willst du noch mehr?", "a": "ne vuoi ancora?" },
+                        { "q": "Sie kocht besser als ich.", "a": "Lei cucina meglio di me." },
+                        { "q": "die Rechnung bitte", "a": "il conto, per favore" },
+                        { "q": "bitte sehr? (Kellnerin/Kellner)", "a": "si dica?" },
+                        { "q": "ist es möglich, ... zu bekommen?", "a": "è possibile avere...?" },
+                        { "q": "nötig sein", "a": "servire" },
+                        { "q": "gebraucht werden", "a": "servire" },
+                        { "q": "Ich brauche nichts Weiteres, danke.", "a": "Non mi serve altro, grazie" },
+                        { "q": "Man braucht heißes Wasser für Pasta.", "a": "Serve l'acqua calda per la pasta." },
+                        { "q": "Was brauchst du zum Kochen?", "a": "Che cosa ti serve per cucinare?" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Präposition 'di'",
+                            "text": "Die Präposition 'di' wird oft verwendet, um Zugehörigkeit oder Material auszudrücken, ähnlich dem deutschen Genitiv. Zum Beispiel 'la scuola di medicina'.",
+                            "question": "Was bedeutet 'il libro di Marco'?",
+                            "options": ["Das Buch über Marco", "Marcos Buch", "Das Buch von Marco"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: die Schule", "a": ["la scuola"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Salerno war im Mittelalter die Heimat der 'Scuola Medica Salernitana', der ersten und wichtigsten medizinischen Hochschule Europas."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die Hafenstadt liegt am gleichnamigen Golf von Salerno, am südlichen Ende der Amalfiküste in Kampanien."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Scuola", "Schule",
+                        "Porto", "Hafen"
+                    ]
+                }
+            }
+        ],
+        "castelmezzano": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "ein Name", "a": "un nome" },
+                        { "q": "der Name", "a": "il nome" },
+                        { "q": "eine Adresse", "a": "un'indirizzo" },
+                        { "q": "die Adresse", "a": "l'indirizzo" },
+                        { "q": "eine Telefonnummer", "a": "un numero di telefono" },
+                        { "q": "die Telefonnummer", "a": "il numero di telefono" },
+                        { "q": "eine Buchung", "a": "una prenotazione" },
+                        { "q": "die Buchung", "a": "la prenotazione" },
+                        { "q": "Reservierung", "a": "la prenotazione" },
+                        { "q": "Ich wohne in...", "a": "abito in..." },
+                        { "q": "Ich heiße...", "a": "mi chiamo..." },
+                        { "q": "Was ist deine/Ihre Telefonnummer?", "a": "Qual è il tuo/Suo numero di telefono?" },
+                        { "q": "Was ist deine/Ihre Adresse", "a": "Qual è il tuo/Suo indirizzo?" },
+                        { "q": "gut, lecker", "a": "buono" },
+                        { "q": "besonders", "a": "speciale" },
+                        { "q": "ruhig", "a": "tranquillo" },
+                        { "q": "einladend", "a": "accogliente" },
+                        { "q": "typisch", "a": "tipico" },
+                        { "q": "eins", "a": "uno" },
+                        { "q": "zwei", "a": "due" },
+                        { "q": "drei", "a": "tre" },
+                        { "q": "vier", "a": "quattro" },
+                        { "q": "fünf", "a": "cinque" },
+                        { "q": "sechs", "a": "sei" },
+                        { "q": "sieben", "a": "sette" },
+                        { "q": "acht", "a": "otto" },
+                        { "q": "neun", "a": "nove" },
+                        { "q": "zehn", "a": "dieci" },
+                        { "q": "der Prosecco", "a": "il prosecco" },
+                        { "q": "ein Glas", "a": "un bicchiere" },
+                        { "q": "das Glas", "a": "il bicchiere" },
+                        { "q": "eine Spezialität", "a": "una specialità" },
+                        { "q": "die Spezialität", "a": "la specialità" },
+                        { "q": "das Abendessen", "a": "la cena" },
+                        { "q": "ein Käse", "a": "un formaggio" },
+                        { "q": "der Käse", "a": "il formaggio" },
+                        { "q": "das Brot", "a": "il pane" },
+                        { "q": "das Menü", "a": "il menù" },
+                        { "q": "ich hätte gerne", "a": "Vorrei" },
+                        { "q": "darf ich bitte haben...?", "a": "posso avere...?" },
+                        { "q": "bitte", "a": "per favore" },
+                        { "q": "vielen Dank", "a": "grazie mille" },
+                        { "q": "gern geschehen!", "a": "si figuri!" },
+                        { "q": "keine Ursache", "a": "non c'é di che" },
+                        { "q": "ist es möglich...?", "a": "è possibile...?" },
+                        { "q": "elf", "a": "uno" },
+                        { "q": "zwölf", "a": "due" },
+                        { "q": "dreizehn", "a": "tre" },
+                        { "q": "vierzehn", "a": "quattro" },
+                        { "q": "fünfzehn", "a": "cinque" },
+                        { "q": "sechszehn", "a": "sei" },
+                        { "q": "siebzehn", "a": "sette" },
+                        { "q": "achtzehn", "a": "otto" },
+                        { "q": "neunzehn", "a": "nove" },
+                        { "q": "zwanzig", "a": "dieci" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Präposition 'tra'",
+                            "text": "'Tra' (oder 'fra') bedeutet 'zwischen'. Es wird verwendet, um eine Position zwischen zwei oder mehr Dingen anzugeben.",
+                            "question": "Wie sagt man 'zwischen den Felsen'?",
+                            "options": ["di le rocce", "sulle rocce", "tra le rocce"],
+                            "correct": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Flug", "a": ["il volo"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Castelmezzano ist bekannt für den 'Volo dell'Angelo' (Flug des Engels), eine der höchsten und schnellsten Ziplines der Welt, bei der man an einem Stahlseil hängend das Tal zum Nachbardorf Pietrapertosa überquert."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Das spektakuläre Dorf liegt in den Lukanischen Dolomiten in der süditalienischen Region Basilikata."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Roccia", "Fels",
+                        "Volo", "Flug"
+                    ]
+                }
+            }
+        ],
+        "altamura": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "ein Geschäft", "a": "un negozio" },
+                        { "q": "das Geschäft", "a": "il negozio" },
+                        { "q": "ein Schaufenster", "a": "una vetrina" },
+                        { "q": "das Schaufenster", "a": "la vetrina" },
+                        { "q": "eine Apotheke", "a": "una farmacia" },
+                        { "q": "die Apotheke", "a": "la farmacia" },
+                        { "q": "eine Parfümerie", "a": "una profumeria" },
+                        { "q": "die Parfümerie", "a": "la profumeria" },
+                        { "q": "eine Bank", "a": "una banca" },
+                        { "q": "die Bank", "a": "la banca" },
+                        { "q": "ein Supermarkt", "a": "un supermercato" },
+                        { "q": "der Supermarkt", "a": "il supermercato" },
+                        { "q": "ein Kino", "a": "un cinema" },
+                        { "q": "das Kino", "a": "il cinema" },
+                        { "q": "die Post", "a": "l'ufficio postale" },
+                        { "q": "abfahren", "a": "partire" },
+                        { "q": "Wie spät ist es?", "a": "che ore sono?" },
+                        { "q": "Wann fährt der Bus ab?", "a": "a che ora parte il bus?" },
+                        { "q": "Welchen Bus müssen wir nehmen?", "a": "che bus dobbiamo prendere?" },
+                        { "q": "Es ist Mittag", "a": "è mezzogiorno" },
+                        { "q": "Es ist 1 Uhr", "a": "è l'una" },
+                        { "q": "Es ist Mitternacht", "a": "è mezzanotte" },
+                        { "q": "Es ist 2 Uhr", "a": "sono le due" },
+                        { "q": "Der Bus fährt um sechs Uhr ab", "a": "il bus parte alle sei" },
+                        { "q": "um halb neun", "a": "alle otto e mezza" },
+                        { "q": "um viertel nach vier", "a": "alle quattro e un quarto" },
+                        { "q": "um dreiviertel drei", "a": "alle due e tre quarti" },
+                        { "q": "um viertel vor drei", "a": "alle tre meno un quarto" },
+                        { "q": "gehen nach", "a": "andare a" },
+                        { "q": "gehen zu", "a": "andare a" },
+                        { "q": "ich gehe nach Hause", "a": "vado a casa" },
+                        { "q": "ich gehe zum Supermarkt", "a": "vado al supermercato" },
+                        { "q": "wir gehen ins Kino", "a": "andiamo al cinema" },
+                        { "q": "geht sie zur Apotheke?", "a": "lei va in farmacia?" },
+                        { "q": "ich gehe ins Zentrum", "a": "vado in centro" },
+                        { "q": "sie gehen zur Post", "a": "vanno alle poste" },
+                        { "q": "20", "a": "venti" },
+                        { "q": "21", "a": "ventuno (nicht ventiuno)" },
+                        { "q": "28", "a": "ventotto (nicht ventiotto)" },
+                        { "q": "30", "a": "trenta" },
+                        { "q": "40", "a": "quaranta" },
+                        { "q": "50", "a": "cinquanta" },
+                        { "q": "60", "a": "sessanta" },
+                        { "q": "70", "a": "settanta" },
+                        { "q": "80", "a": "ottanta" },
+                        { "q": "90", "a": "novanta" },
+                        { "q": "100", "a": "cento" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Unregelmäßiger Plural",
+                            "text": "Das männliche Substantiv 'l'uomo' (der Mensch/Mann) hat den unregelmäßigen Plural 'gli uomini'.",
+                            "question": "Wie sagt man 'die Männer'?",
+                            "options": ["gli uomi", "gli uomini", "i uomi"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: das Brot", "a": ["il pane"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Altamura ist berühmt für sein traditionelles Brot, das 'Pane di Altamura', das als einziges Brot in Europa eine geschützte Ursprungsbezeichnung (DOP) trägt. In einer nahegelegenen Höhle wurde außerdem das bemerkenswert gut erhaltene Skelett des 'Uomo di Altamura' (Mensch von Altamura), eines Neandertalers, gefunden."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die Stadt liegt auf der Murge-Hochebene in der Region Apulien."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Pane", "Brot",
+                        "Uomo", "Mensch"
+                    ]
+                }
+            }
+        ],
+        "bari": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "schlafen", "a": "dormire" },
+                        { "q": "lesen", "a": "leggere" },
+                        { "q": "anschauen", "a": "guardare" },
+                        { "q": "spielen", "a": "giocare" },
+                        { "q": "schwimmen", "a": "nuotare" },
+                        { "q": "ein Instrument spielen", "a": "suonare" },
+                        { "q": "zuhören", "a": "ascoltare" },
+                        { "q": "hören", "a": "ascoltare" },
+                        { "q": "tanzen", "a": "ballare" },
+                        { "q": "laufen", "a": "correre" },
+                        { "q": "joggen", "a": "correre" },
+                        { "q": "spazieren", "a": "camminare" },
+                        { "q": "kochen", "a": "cucinare" },
+                        { "q": "ausgehen", "a": "uscire" },
+                        { "q": "am Strand", "a": "in spiaggia" },
+                        { "q": "zur Burg", "a": "al castello" },
+                        { "q": "in die Therme", "a": "alle terme" },
+                        { "q": "in die Berge", "a": "in montagna" },
+                        { "q": "an den See", "a": "al lago" },
+                        { "q": "mit Freund:innen", "a": "con gli amici" },
+                        { "q": "um sich zu entspannen", "a": "per rilassarsi" },
+                        { "q": "im Zentrum", "a": "in centro" },
+                        { "q": "im Schwimmbad", "a": "in piscina" },
+                        { "q": "zu Hause", "a": "a casa" },
+                        { "q": "mir gefällt...", "a": "mi piace ..." },
+                        { "q": "mir gefallen", "a": "mi piacciono..." },
+                        { "q": "mir gefällt nicht...", "a": "non mi piace..." },
+                        { "q": "ich würde gern...", "a": "vorrei..." },
+                        { "q": "ich liebe...", "a": "io adoro/amo..." },
+                        { "q": "ich hasse...", "a": "io odio..." },
+                        { "q": "ich bevorzuge...", "a": "preferisco..." },
+                        { "q": "immer", "a": "sempre" },
+                        { "q": "fast immer", "a": "quasi sempre" },
+                        { "q": "sehr oft", "a": "molto spesso" },
+                        { "q": "oft", "a": "spesso" },
+                        { "q": "manchmal", "a": "qualche volta" },
+                        { "q": "manchmal", "a": "a volte" },
+                        { "q": "selten", "a": "raramente" },
+                        { "q": "fast nie", "a": "quasi mai" },
+                        { "q": "nie", "a": "non... mai" },
+                        { "q": "sich entspannen", "a": "rilassarsi" },
+                        { "q": "besichtigen", "a": "visitare" },
+                        { "q": "finden", "a": "trovare" },
+                        { "q": "sich sonnen", "a": "prendere il sole" },
+                        { "q": "Fahrrad fahren", "a": "andare in bicicletta" },
+                        { "q": "einen Spaziergang machen", "a": "fare una passeggiata" },
+                        { "q": "Zeit verbringen", "a": "passare il tempo" },
+                        { "q": "plaudern", "a": "chiacchierare" },
+                        { "q": "Sport machen", "a": "fare sport" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Namenszusätze",
+                            "text": "Wie im Deutschen wird die Präposition 'di' verwendet, um einen Ort mit einem Namen zu verbinden, z.B. 'La Basilica di San Nicola' (Die Basilika des Heiligen Nikolaus).",
+                            "question": "Was bedeutet 'la Cattedrale di Bari'?",
+                            "options": ["Die Kathedrale in Bari", "Die Kathedrale von Bari", "Die Kathedrale nach Bari"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Heilige", "a": ["il santo"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Bari ist eine wichtige Pilgerstadt, da in der Basilica di San Nicola die Reliquien des Heiligen Nikolaus aufbewahrt werden, der als Vorbild für den Weihnachtsmann gilt."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Bari ist die Hauptstadt der Region Apulien und eine bedeutende Hafen- und Universitätsstadt an der Adria."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Basilica", "Basilika",
+                        "Santo", "Heiliger"
+                    ]
+                }
+            }
+        ],
+        "ostuni": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "mir gefällt (Einzahl)", "a": "mi piace" },
+                        { "q": "mir gefallen (Mehrzahl)", "a": "mi piacciono" },
+                        { "q": "ein Kino", "a": "un cinema" },
+                        { "q": "das Kino", "a": "il cinema" },
+                        { "q": "Jazzmusik", "a": "la musica jazz" },
+                        { "q": "klassische Musik", "a": "la musica classica" },
+                        { "q": "Rockmusik", "a": "rock" },
+                        { "q": "Popmusik", "a": "pop" },
+                        { "q": "elektronische Musik", "a": "elettronica" },
+                        { "q": "italienische Bücher", "a": "i libri italiani" },
+                        { "q": "romantische Filme", "a": "i film romantici" },
+                        { "q": "hausgemachte Pasta", "a": "la pasta fatta in casa" },
+                        { "q": "Spaziergänge", "a": "le passeggiate" },
+                        { "q": "Fußball", "a": "il calcio" },
+                        { "q": "der Italienischkurs", "a": "il corso di italiano" },
+                        { "q": "der Sport", "a": "lo sport" },
+                        { "q": "moderne Kunst", "a": "l'arte moderna" },
+                        { "q": "zeichnen", "a": "disegnare" },
+                        { "q": "fotografieren", "a": "fotografare" },
+                        { "q": "ja, sehr!", "a": "sì, moltissimo" },
+                        { "q": "nein, nicht besonders", "a": "no, non molto" },
+                        { "q": "nein, überhaupt nicht", "a": "no, per niente" },
+                        { "q": "mir auch", "a": "anche a me" },
+                        { "q": "mir nicht", "a": "a me no" },
+                        { "q": "mir dagegen schon", "a": "a me invece sì" },
+                        { "q": "ich auch nicht", "a": "neanche a me" },
+                        { "q": "ich liebe...", "a": "io adoro..." },
+                        { "q": "ich hasse...", "a": "io odio..." },
+                        { "q": "ich bevorzuge...", "a": "io preferisco..." },
+                        { "q": "es ist interessant", "a": "è interessante" },
+                        { "q": "es ist langweilig", "a": "è noioso" },
+                        { "q": "es ist unterhaltsam", "a": "è divertente" },
+                        { "q": "es ist entspannend", "a": "è rilassante" },
+                        { "q": "es ist anstrengend", "a": "è faticoso" },
+                        { "q": "es ist kreativ", "a": "è creativo" },
+                        { "q": "es ist anregend", "a": "è stimolante" },
+                        { "q": "es ist nutzlos", "a": "è inutile" },
+                        { "q": "meiner Meinung nach...", "a": "secondo me..." },
+                        { "q": "ich finde, dass...", "a": "trovo che..." }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Anpassung von Adjektiven",
+                            "text": "Adjektive auf -o passen sich dem Geschlecht und der Zahl des Substantivs an. 'Città' ist weiblich.",
+                            "question": "Wie sagt man 'die weiße Stadt'?",
+                            "options": ["il bianco città", "la città bianca", "la città bianco"],
+                            "correct": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: weiß", "a": ["bianco"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Ostuni ist als 'La Città Bianca' (Die weiße Stadt) bekannt, da ihre Altstadt aus einem Labyrinth von Gassen mit weiß gekalkten Häusern besteht. Das Kalken diente ursprünglich dazu, die Pest abzuwehren."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Die Stadt thront auf einem Hügel in der Region Apulien, nur wenige Kilometer von der Adriaküste entfernt und umgeben von Olivenhainen."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Bianco", "Weiß",
+                        "Città", "Stadt"
+                    ]
+                }
+            }
+        ],
+        "lecce": [
+            {
+                "type": "vokabeln",
+                "data": {
+                    "title": "Vokabeln",
+                    "icon": "./src/images/Mund_für_Tippsprechblase.png",
+                    "cards": [
+                        { "q": "ein T-Shirt", "a": "una maglietta" },
+                        { "q": "das T-Shirt", "a": "la maglietta" },
+                        { "q": "eine Jacke", "a": "una giacca" },
+                        { "q": "die Jacke", "a": "la giacca" },
+                        { "q": "ein Hemd", "a": "una camicia" },
+                        { "q": "das Hemd", "a": "la camicia" },
+                        { "q": "ein Rock", "a": "una gonna" },
+                        { "q": "der Rock", "a": "la gonna" },
+                        { "q": "Hosen", "a": "i pantaloni" },
+                        { "q": "Schuhe", "a": "le scarpe" },
+                        { "q": "ein Gürtel", "a": "una cintura" },
+                        { "q": "der Gürtel", "a": "la cintura" },
+                        { "q": "Handschuhe", "a": "i guanti" },
+                        { "q": "ein Kleid", "a": "un vestito" },
+                        { "q": "das Kleid", "a": "il vestito" },
+                        { "q": "ein Pullover", "a": "un maglione" },
+                        { "q": "der Pullover", "a": "il maglione" },
+                        { "q": "ein Schlafanzug", "a": "un pigiama" },
+                        { "q": "der Schlafanzug", "a": "il pigiama" },
+                        { "q": "die Brille", "a": "gli occhiali" },
+                        { "q": "die Socken", "a": "le calze" },
+                        { "q": "die Tasche", "a": "la borsa" },
+                        { "q": "die Haube", "a": "il berretto" },
+                        { "q": "rot", "a": "rosso" },
+                        { "q": "blau", "a": "blu" },
+                        { "q": "schwarz", "a": "nero" },
+                        { "q": "weiß", "a": "bianco" },
+                        { "q": "grün", "a": "verde" },
+                        { "q": "braun", "a": "marrone" },
+                        { "q": "orange", "a": "arancione" },
+                        { "q": "violett", "a": "viola" },
+                        { "q": "gelb", "a": "giallo" },
+                        { "q": "rosa", "a": "rosa" },
+                        { "q": "hellblau", "a": "azzurro" },
+                        { "q": "grau", "a": "grigio" },
+                        { "q": "anprobieren", "a": "provare" },
+                        { "q": "kaufen", "a": "comprare" },
+                        { "q": "bezahlen", "a": "pagare" },
+                        { "q": "eine Größe", "a": "una taglia" },
+                        { "q": "größer", "a": "più grande" },
+                        { "q": "kleiner", "a": "più piccola" },
+                        { "q": "der Preis", "a": "il prezzo" },
+                        { "q": "der Rabatt", "a": "lo sconto" },
+                        { "q": "zu teuer", "a": "troppo caro" },
+                        { "q": "günstig", "a": "economico" },
+                        { "q": "im Angebot", "a": "in saldo" },
+                        { "q": "ein Euro", "a": "un euro" },
+                        { "q": "der Euro", "a": "gli euro" },
+                        { "q": "ein Cent", "a": "un centesimo" },
+                        { "q": "die Cents", "a": "i centesimi" },
+                        { "q": "ein Architekt", "a": "un architetto" },
+                        { "q": "eine Architektin", "a": "un'architetta" },
+                        { "q": "ein Lehrer", "a": "un insegnante" },
+                        { "q": "eine Lehrerin", "a": "un'insegnante" },
+                        { "q": "ein Künstler", "a": "un artista" },
+                        { "q": "eine Künstlerin", "a": "un'artista" },
+                        { "q": "ein Arzt", "a": "un medico" },
+                        { "q": "eine Ärztin", "a": "un medico" },
+                        { "q": "leben", "a": "vivere" },
+                        { "q": "arbeiten", "a": "lavorare" },
+                        { "q": "werden", "a": "diventare" },
+                        { "q": "wollen", "a": "volere" },
+                        { "q": "ich würde gerne", "a": "vorrei" },
+                        { "q": "die Zukunft", "a": "il futuro" },
+                        { "q": "morgen", "a": "domani" }
+                    ]
+                }
+            },
+            {
+                "type": "grammatik",
+                "data": {
+                    "title": "Grammatik",
+                    "icon": "./src/images/Grammatik.png",
+                    "exercises": [
+                        {
+                            "title": "Stilbezeichnungen",
+                            "text": "Stilbezeichnungen wie 'barocco' können als Substantiv ('il barocco') oder als Adjektiv ('stile barocco') verwendet werden.",
+                            "question": "Was bedeutet 'architettura barocca'?",
+                            "options": ["Barocke Architektur", "Die Architektur des Barocks", "Architektur in Barock"],
+                            "correct": 0
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "test",
+                "data": {
+                    "title": "Abschlusstest",
+                    "icon": "./src/images/Icon_Aufgabe.png",
+                    "questions": [
+                        { "q": "Übersetze: der Stein", "a": ["la pietra"] }
+                    ]
+                }
+            },
+            {
+                "type": "kultur",
+                "data": {
+                    "icon": "./src/images/Icon_Lerneffekt.png",
+                    "title": "Kultur",
+                    "text": [
+                        "Lecce wird wegen seiner prachtvollen Barockarchitektur oft als 'Florenz des Südens' bezeichnet. Die Gebäude sind aus einem lokalen, weichen Kalkstein ('pietra leccese') gefertigt, der sich leicht bearbeiten lässt und in der Sonne golden schimmert."
+                    ]
+                }
+            },
+            {
+                "type": "region",
+                "data": {
+                    "title": "Region",
+                    "icon": "./src/images/Location.png",
+                    "text": [
+                        "Lecce ist eine der wichtigsten Städte auf der Salento-Halbinsel, dem 'Absatz' des italienischen Stiefels in der Region Apulien."
+                    ]
+                }
+            },
+            {
+                "type": "spiel",
+                "data": {
+                    "title": "Spielecke: Memory",
+                    "icon": "./src/images/Icon_Ziel.png",
+                    "pairs": [
+                        "Barocco", "Barock",
+                        "Pietra", "Stein"
+                    ]
+                }
+            }
+        ]
+    }
 }

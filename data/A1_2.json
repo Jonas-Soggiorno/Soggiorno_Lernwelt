@@ -16,132 +16,584 @@
       {
         "type": "vokabeln",
         "data": { 
-            "title": "Vokabeln",
-            "icon": "./src/images/Mund_für_Tippsprechblase.png",
-            "cards": [ 
-                { "q": "Reservierung", "a": "prenotazione" },
-                { "q": "Zimmer", "a": "camera" },
-                { "q": "Hotel", "a": "albergo" } 
-            ] 
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+             { "q": "das Einzelzimmer", "a": "una camera singola" },
+            { "q": "das Doppelzimmer", "a": "una camera matrimoniale" },
+            { "q": "die Buchung", "a": "la prenotazione" },
+            { "q": "Frühstück inklusive", "a": "la colazione compresa" },
+            { "q": "der Parkplatz", "a": "il parcheggio" },
+            { "q": "die Tiefgarage", "a": "il garage coperto" },
+            { "q": "eine Nacht", "a": "una notte" },
+            { "q": "ein Aufenthalt", "a": "un soggiorno" },
+            { "q": "Hunde erlaubt", "a": "cani ammessi" },
+            { "q": "kostenloses WLAN", "a": "Wi-Fi gratuito" },
+            { "q": "die Klimaanlage", "a": "l'aria condizionata" },
+            { "q": "die Heizung", "a": "il riscaldamento" },
+            { "q": "der Fernseher", "a": "la televisione" },
+            { "q": "der Aufzug", "a": "l'ascensore" },
+            { "q": "der Zimmerservice", "a": "il servizio in camera" },
+            { "q": "die Rezeption", "a": "la reception" },
+            { "q": "der Schlüssel", "a": "la chiave" },
+            { "q": "der Tag", "a": "il giorno" },
+            { "q": "die Nacht", "a": "la notte" },
+            { "q": "das Wochenende", "a": "il fine settimana" },
+            { "q": "die Woche", "a": "la settimana" },
+            { "q": "das Monat", "a": "il mese" },
+            { "q": "heute", "a": "oggi" },
+            { "q": "morgen", "a": "domani" },
+            { "q": "der Preis", "a": "il prezzo" },
+            { "q": "die Kreditkarte", "a": "la carta di credito" },
+            { "q": "das Bargeld", "a": "i contanti" },
+            { "q": "die Anzahlung", "a": "la caparra" },
+            { "q": "inklusive", "a": "incluso" },
+            { "q": "exklusive", "a": "escluso" }
+          ]
         }
       },
       {
         "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Wochentage", "text": "Die Wochentage auf Italienisch: lunedì, martedì, ...", "question": "Welcher Tag ist Montag?", "options": ["lunedì", "martedì", "mercoledì"], "correct": 0 } ] }
+        "data": { 
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Wochentage",
+              "text": "Die Wochentage auf Italienisch: lunedì, martedì, ...",
+              "question": "Welcher Tag ist Montag?",
+              "options": ["lunedì", "martedì", "mercoledì"],
+              "correct": 0
+            }
+          ]
+        }
       },
       {
         "type": "test",
-        "data": { "title": "Abschlusstest", "icon": "./src/images/Icon_Aufgabe.png", "questions": [ { "q": "Übersetze: Zimmer", "a": ["camera"] } ] }
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: Zimmer", "a": ["camera"] }
+          ]
+        }
       },
       {
         "type": "kultur",
-        "data": { "title": "Kultur-Einblick", "icon": "./src/images/Icon_Lerneffekt.png", "text": "Torino ist berühmt für seine barocke Architektur und Schokolade.", "image": "torino,city" }
+        "data": {
+          "title": "Kultur-Einblick",
+          "icon": "./src/images/Icon_Lerneffekt.png",
+          "text": "Torino ist berühmt für seine barocke Architektur und Schokolade.",
+          "image": "torino,city"
+        }
       },
       {
         "type": "geografie",
-        "data": { "title": "Geografie-Info", "icon": "./src/images/Location.png", "text": "Torino liegt am Po, umgeben von den Alpen.", "image": "torino,river" }
+        "data": {
+          "title": "Geografie-Info",
+          "icon": "./src/images/Location.png",
+          "text": "Torino liegt am Po, umgeben von den Alpen.",
+          "image": "torino,river"
+        }
       },
       {
         "type": "spiel",
-        "data": { "title": "Spielecke: Memory", "icon": "./src/images/Icon_Ziel.png", "pairs": ["Zimmer", "camera", "Hotel", "albergo"] }
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": ["Zimmer", "camera", "Hotel", "albergo"]
+        }
       }
     ],
     "asti": [
       {
         "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Schön", "a": "bello" }, { "q": "Sauber", "a": "pulito" }, { "q": "Bequem", "a": "comodo" } ] }
+        "data": { 
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "das Wohnzimmer", "a": "il soggiorno" },
+            { "q": "die Küche", "a": "la cucina" },
+            { "q": "das Schlafzimmer", "a": "la camera da letto" },
+            { "q": "das Bad", "a": "il bagno" },
+            { "q": "der Eingangsbereich", "a": "l'ingresso" },
+            { "q": "die Terrasse", "a": "il terrazzo" },
+            { "q": "der Balkon", "a": "il balcone" },
+            { "q": "die Schlafplätze", "a": "i posti letto" },
+            { "q": "eigener Eingang", "a": "l'ingresso indipendente" },
+            { "q": "das Bett", "a": "il letto" },
+            { "q": "der Sessel", "a": "la sedia" },
+            { "q": "der Tisch", "a": "il tavolo" },
+            { "q": "der Kleiderschrank", "a": "l'armadio" },
+            { "q": "die Lampe", "a": "la lampada" },
+            { "q": "der Polster", "a": "il cuscino" },
+            { "q": "die Decke", "a": "la coperta" },
+            { "q": "das Handtuch", "a": "l'asciugamano" },
+            { "q": "die Seife", "a": "il sapone" },
+            { "q": "der Koffer", "a": "la valigia" },
+            { "q": "der Haartrockner", "a": "l'asciugacapelli" },
+            { "q": "das Klopapier", "a": "la carta igienica" },
+            { "q": "bequem", "a": "comodo" },
+            { "q": "bequem", "a": "comoda" },
+            { "q": "hell", "a": "luminosa" },
+            { "q": "hell", "a": "luminoso" },
+            { "q": "geräumig", "a": "spazioso" },
+            { "q": "geräumig", "a": "spaziosa" },
+            { "q": "modern", "a": "moderna" },
+            { "q": "modern", "a": "moderno" },
+            { "q": "gut eingerichtet", "a": "ben arredato" },
+            { "q": "gastfreundlich", "a": "accogliente" },
+            { "q": "sauber", "a": "pulito" },
+            { "q": "sauber", "a": "pulita" },
+            { "q": "ordentlich", "a": "ordinato" },
+            { "q": "ordentlich", "a": "ordinata" },
+            { "q": "erster", "a": "primo" },
+            { "q": "erste", "a": "prima" },
+            { "q": "zweiter", "a": "secondo" },
+            { "q": "zweite", "a": "seconda" },
+            { "q": "dritter", "a": "terzo" },
+            { "q": "dritte", "a": "terza" },
+            { "q": "vierter", "a": "quarto" },
+            { "q": "vierte", "a": "quarta" },
+            { "q": "fünfter", "a": "quinto" },
+            { "q": "fünfte", "a": "quinta" },
+            { "q": "sechster", "a": "sesto" },
+            { "q": "sechste", "a": "sesta" },
+            { "q": "siebter", "a": "settimo" },
+            { "q": "siebte", "a": "settima" },
+            { "q": "achter", "a": "ottavo" },
+            { "q": "achte", "a": "ottava" },
+            { "q": "neunter", "a": "nono" },
+            { "q": "neunte", "a": "nona" },
+            { "q": "zehnter", "a": "decimo" },
+            { "q": "zehnte", "a": "decima" }
+          ]
+        }
       },
       {
         "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "C’è / Ci sono", "text": "C’è = es gibt (Singular), Ci sono = es gibt (Plural).", "question": "Welches benutzt man für mehrere Zimmer?", "options": ["C’è", "Ci sono"], "correct": 1 } ] }
+        "data": { 
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "C’è / Ci sono",
+              "text": "C’è = es gibt (Singular), Ci sono = es gibt (Plural).",
+              "question": "Welches benutzt man für mehrere Zimmer?",
+              "options": ["C’è", "Ci sono"],
+              "correct": 1
+            }
+          ]
+        }
       },
       {
         "type": "test",
-        "data": { "title": "Abschlusstest", "icon": "./src/images/Icon_Aufgabe.png", "questions": [ { "q": "Übersetze: sauber", "a": ["pulito"] } ] }
+        "data": {
+          "title": "Abschlusstest",
+          "icon": "./src/images/Icon_Aufgabe.png",
+          "questions": [
+            { "q": "Übersetze: sauber", "a": ["pulito"] }
+          ]
+        }
       },
       {
         "type": "kultur",
-        "data": { "title": "Kultur-Einblick", "icon": "./src/images/Icon_Lerneffekt.png", "text": "Asti ist berühmt für seinen Wein und das jährliche Palio-Rennen.", "image": "asti,city" }
+        "data": {
+          "title": "Kultur-Einblick",
+          "icon": "./src/images/Icon_Lerneffekt.png",
+          "text": "Asti ist berühmt für seinen Wein und das jährliche Palio-Rennen.",
+          "image": "asti,city"
+        }
       },
       {
         "type": "geografie",
-        "data": { "title": "Geografie-Info", "icon": "./src/images/Location.png", "text": "Asti liegt in der Region Piemont, umgeben von Weinbergen.", "image": "asti,hills" }
+        "data": {
+          "title": "Geografie-Info",
+          "icon": "./src/images/Location.png",
+          "text": "Asti liegt in der Region Piemont, umgeben von Weinbergen.",
+          "image": "asti,hills"
+        }
       },
       {
         "type": "spiel",
-        "data": { "title": "Spielecke: Memory", "icon": "./src/images/Icon_Ziel.png", "pairs": ["Schön", "bello", "Bequem", "comodo"] }
+        "data": {
+          "title": "Spielecke: Memory",
+          "icon": "./src/images/Icon_Ziel.png",
+          "pairs": ["Schön", "bello", "Bequem", "comodo"]
+        }
       }
     ],
     "alba": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Beschwerde", "a": "reclamo" }, { "q": "Problem", "a": "problema" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Preposizioni articolate", "text": "Präposition + bestimmter Artikel: z.B. di + il = del", "question": "Wie sagt man 'vom Hotel'?", "options": ["del hotel", "di la hotel", "da il hotel"], "correct": 0 } ] }
-      }
-    ],
-    "acqui_terme": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Januar", "a": "gennaio" }, { "q": "Sommer", "a": "estate" }, { "q": "Ferien", "a": "vacanze" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Regelmäßige Verben", "text": "z.B. parlare: io parlo, tu parli, lui parla", "question": "Wie konjugiert man 'lavorare' für 'io'?", "options": ["lavoro", "lavora", "lavori"], "correct": 0 } ] }
-      }
-    ],
-    "sanremo": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Ort", "a": "luogo" }, { "q": "Stadt", "a": "città" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Teilungsartikel im Plural", "text": "z.B. degli amici", "question": "Welcher Teilungsartikel passt zu 'amici'?", "options": ["dei", "degli", "delle"], "correct": 1 } ] }
-      }
-    ],
-    "imperia": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Markt", "a": "mercato" }, { "q": "Obst", "a": "frutta" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "molto / molta / molti / molte", "text": "Verwendung je nach Genus und Numerus", "question": "Wie sagt man 'viel Obst'?", "options": ["molto frutta", "molti frutta"], "correct": 0 } ] }
-      }
-    ],
-    "genova": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "Zug fahren", "a": "prendere il treno" }, { "q": "Reise", "a": "viaggio" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "dov’è / dove sono", "text": "Fragen nach Ort(e)", "question": "Wie fragt man 'Wo ist der Bahnhof?'", "options": ["Dov’è la stazione?", "Dove sono la stazione?"], "correct": 0 } ] }
-      }
-    ],
-    "camogli": [
-      {
-        "type": "vokabeln",
-        "data": { "title": "Vokabeln", "icon": "./src/images/Mund_für_Tippsprechblase.png", "cards": [ { "q": "gestern", "a": "ieri" }, { "q": "gegangen", "a": "andato" } ] }
-      },
-      {
-        "type": "grammatik",
-        "data": { "title": "Grammatik", "icon": "./src/images/Grammatik.png", "exercises": [ { "title": "Passato prossimo", "text": "Formen mit avere / essere", "question": "Wie sagt man 'Ich bin gegangen'?", "options": ["Io sono andato", "Io ho andato"], "correct": 0 } ] }
-      }
-    ],
-        "la_spezia": [
       {
         "type": "vokabeln",
         "data": {
           "title": "Vokabeln",
           "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
-            { "q": "Wetter", "a": "Il tempo" },
-            { "q": "Sonne", "a": "Sole" },
-            { "q": "Regnen", "a": "Piove" }
+            { "q": "fehlt", "a": "manca" },
+            { "q": "schließen", "a": "chiudere" },
+            { "q": "das Problem", "a": "il problema" },
+            { "q": "kaputt machen (es ist kaputt)", "a": "rompere (è rotto)" },
+            { "q": "öffnen", "a": "aprire" },
+            { "q": "schließen", "a": "chiudere" },
+            { "q": "der Markt", "a": "il mercato" },
+            { "q": "die Altstadt", "a": "il centro storico" },
+            { "q": "das Zimmer", "a": "la stanza" },
+            { "q": "der Hügel", "a": "le colline" },
+            { "q": "der Nachttisch", "a": "il comodino" },
+            { "q": "das Fenster", "a": "la finestra" },
+            { "q": "die Glühbirne", "a": "la lampadina" },
+            { "q": "das Türschloss", "a": "la serratura" },
+            { "q": "der Wasserhahn", "a": "il rubinetto" },
+            { "q": "noch", "a": "ancora" },
+            { "q": "freundlicherweise", "a": "gentilmente" },
+            { "q": "sofort", "a": "subito" },
+            { "q": "Es tut mir leid", "a": "mi dispiace" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Preposizioni articolate",
+              "text": "Präposition + bestimmter Artikel: z.B. di + il = del",
+              "question": "Wie sagt man 'vom Hotel'?",
+              "options": ["del hotel", "di la hotel", "da il hotel"],
+              "correct": 0
+            }
+          ]
+        }
+      }
+    ],
+    "acqui_terme": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Sommer", "a": "l'estate" },
+            { "q": "der Winter", "a": "l'inverno" },
+            { "q": "der Frühling", "a": "la primavera" },
+            { "q": "der Herbst", "a": "l'autunno" },
+            { "q": "das Meer", "a": "il mare" },
+            { "q": "der Berg", "a": "la montagna" },
+            { "q": "der See", "a": "il lago" },
+            { "q": "die Reise", "a": "il viaggio" },
+            { "q": "die Unterkunft", "a": "l'alloggio" },
+            { "q": "schreiben", "a": "scrivere" },
+            { "q": "Museen besuchen", "a": "visitare musei" },
+            { "q": "typisches Essen essen", "a": "mangiare cibo tipico" },
+            { "q": "Shoppen gehen", "a": "fare shopping" },
+            { "q": "Fotos machen", "a": "fare foto" },
+            { "q": "Fahrrad fahren", "a": "andare in bicicletta" },
+            { "q": "teuer", "a": "costoso" },
+            { "q": "teuer", "a": "costosa" },
+            { "q": "günstig", "a": "economico" },
+            { "q": "günstig", "a": "economica" },
+            { "q": "kurz", "a": "breve" },
+            { "q": "lang", "a": "lungo" },
+            { "q": "lang", "a": "lunga" },
+            { "q": "gut organisiert", "a": "ben organizzato" },
+            { "q": "ruhig", "a": "tranquillo" },
+            { "q": "ruhig", "a": "tranquilla" },
+            { "q": "zentral gelegen", "a": "centrale" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Regelmäßige Verben",
+              "text": "z.B. parlare: io parlo, tu parli, lui parla",
+              "question": "Wie konjugiert man 'lavorare' für 'io'?",
+              "options": ["lavoro", "lavora", "lavori"],
+              "correct": 0
+            }
+          ]
+        }
+      }
+    ],
+    "sanremo": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "alt antik", "a": "antico" },
+            { "q": "alt antik", "a": "antica" },
+            { "q": "typisch", "a": "tipico" },
+            { "q": "typisch", "a": "tipica" },
+            { "q": "großartig", "a": "magnifico" },
+            { "q": "großartig", "a": "magnifica" },
+            { "q": "historisch", "a": "storico" },
+            { "q": "historisch", "a": "storica" },
+            { "q": "künstlerisch", "a": "artistico" },
+            { "q": "künstlerisch", "a": "artistica" },
+            { "q": "romantisch", "a": "romantico" },
+            { "q": "romantisch", "a": "romantica" },
+            { "q": "sympathisch", "a": "simpatico" },
+            { "q": "sympathisch", "a": "simpatica" },
+            { "q": "lebendig, dynamisch", "a": "dinamico" },
+            { "q": "lebendig, dynamisch", "a": "dinamica" },
+            { "q": "die Promenade", "a": "il lungomare" },
+            { "q": "das Theater", "a": "il teatro" },
+            { "q": "die Kirche", "a": "la chiesa" },
+            { "q": "der botanische Garten", "a": "il giardino botanico" },
+            { "q": "das Viertel", "a": "il quartiere" },
+            { "q": "Stadtteil", "a": "il quartiere" },
+            { "q": "die Hauptstraße", "a": "la via principale" },
+            { "q": "der Hafen", "a": "il porto" },
+            { "q": "der Bahnhof", "a": "la stazione" },
+            { "q": "besichtigen", "a": "visitare" },
+            { "q": "spazieren", "a": "passeggiare" },
+            { "q": "kennen", "a": "conoscere" },
+            { "q": "kennenlernen", "a": "conoscere" },
+            { "q": "hineingehen", "a": "entrare" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Teilungsartikel im Plural",
+              "text": "z.B. degli amici",
+              "question": "Welcher Teilungsartikel passt zu 'amici'?",
+              "options": ["dei", "degli", "delle"],
+              "correct": 1
+            }
+          ]
+        }
+      }
+    ],
+    "imperia": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Markt", "a": "il mercato" },
+            { "q": "die Theke", "a": "il banco" },
+            { "q": "die Kassa", "a": "la cassa" },
+            { "q": "der Kassabon", "a": "lo scontrino" },
+            { "q": "der Einkaufswagen", "a": "il carrello" },
+            { "q": "der Einkaufskorb", "a": "il cestino" },
+            { "q": "die Waage", "a": "la bilancia" },
+            { "q": "der Preis", "a": "il prezzo" },
+            { "q": "das Angebot", "a": "l'offerta" },
+            { "q": "einige", "a": "qualche" },
+            { "q": "ein Kilo", "a": "un chilo" },
+            { "q": "100 Gramm", "a": "un etto" },
+            { "q": "eine Schachtel", "a": "una scatola" },
+            { "q": "Dose", "a": "una scatola" },
+            { "q": "eine Dose (Getränk)", "a": "una lattina" },
+            { "q": "ein Paket", "a": "un pacco" },
+            { "q": "ein Sackerl", "a": "una busta" },
+            { "q": "eine Scheibe", "a": "una fetta" },
+            { "q": "ein Stück", "a": "un pezzo" },
+            { "q": "kaufen", "a": "comprare" },
+            { "q": "verkaufen", "a": "vendere" },
+            { "q": "wiegen", "a": "pesare" },
+            { "q": "kosten", "a": "costare" },
+            { "q": "suchen", "a": "cercare" },
+            { "q": "auswählen", "a": "scegliere" },
+            { "q": "bestellen", "a": "ordinare" },
+            { "q": "tragen", "a": "portare" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "molto / molta / molti / molte",
+              "text": "Verwendung je nach Genus und Numerus",
+              "question": "Wie sagt man 'viel Obst'?",
+              "options": ["molto frutta", "molti frutta"],
+              "correct": 0
+            }
+          ]
+        }
+      }
+    ],
+    "genova": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "der Zug", "a": "il treno" },
+            { "q": "der Fahrkartenschalter", "a": "la biglietteria" },
+            { "q": "der Fahrplan", "a": "l'orario" },
+            { "q": "das Ticket", "a": "il biglietto" },
+            { "q": "das Gleis", "a": "il binario" },
+            { "q": "verspätet", "a": "in ritardo" },
+            { "q": "pünktlich", "a": "in orario" },
+            { "q": "pünktlich", "a": "puntuale" },
+            { "q": "die Abfahrt", "a": "la partenza" },
+            { "q": "die Ankunft", "a": "l'arrivo" },
+            { "q": "der Schaffner", "a": "il controllore" },
+            { "q": "abfahren", "a": "partire" },
+            { "q": "ankommen", "a": "arrivare" },
+            { "q": "umsteigen", "a": "cambiare treno" },
+            { "q": "einsteigen", "a": "salire" },
+            { "q": "aussteigen", "a": "scendere" },
+            { "q": "warten", "a": "aspettare" },
+            { "q": "geradeaus gehen", "a": "andare dritto" },
+            { "q": "rechts", "a": "a destra" },
+            { "q": "links", "a": "a sinistra" },
+            { "q": "die Kreuzung", "a": "l'incrocio" },
+            { "q": "vor", "a": "davanti a" },
+            { "q": "hinter", "a": "dietro a" },
+            { "q": "an der Ecke", "a": "all'angolo" },
+            { "q": "gegenüber", "a": "di fronte a" },
+            { "q": "das Aquarium", "a": "l'acquario" },
+            { "q": "der Leuchtturm", "a": "il faro" },
+            { "q": "der Hafen", "a": "il porto" },
+            { "q": "der historische Palast", "a": "il palazzo storico" },
+            { "q": "die Kathedrale", "a": "la cattedrale" },
+            { "q": "der Dom", "a": "il duomo" },
+            { "q": "der Aussichtspunkt", "a": "il punto panoramico" },
+            { "q": "die Strandpromenade", "a": "il lungomare" },
+            { "q": "das Fischgeschäft", "a": "la pescheria" },
+            { "q": "eine Focaccia-Bäckerei", "a": "una focacceria" },
+            { "q": "den ganzen Tag", "a": "tutto il giorno" },
+            { "q": "den ganze Vormittag", "a": "tutta la mattina" },
+            { "q": "alle Museen", "a": "tutti i musei" },
+            { "q": "alle Straßen", "a": "tutte le strade" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "dov’è / dove sono",
+              "text": "Fragen nach Ort(e)",
+              "question": "Wie fragt man 'Wo ist der Bahnhof?'",
+              "options": ["Dov’è la stazione?", "Dove sono la stazione?"],
+              "correct": 0
+            }
+          ]
+        }
+      }
+    ],
+    "camogli": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "gestern", "a": "ieri" },
+            { "q": "vorgestern", "a": "l'altro ieri" },
+            { "q": "heute früh", "a": "stamattina" },
+            { "q": "letzten Samstag", "a": "sabato scorso" },
+            { "q": "letzten Monat", "a": "il mese scorso" },
+            { "q": "letztes Jahr", "a": "l'anno scorso" },
+            { "q": "letzten Sommer", "a": "l'estate scorsa" },
+            { "q": "vor einigen Tagen", "a": "qualche giorno fa" },
+            { "q": "vor zwei Wochen", "a": "due settimane fa" },
+            { "q": "vor zehn Tagen", "a": "dieci giorno fa" },
+            { "q": "im Mai", "a": "a maggio" },
+            { "q": "die Sonne", "a": "il sole" },
+            { "q": "der Schatten", "a": "l'ombra" },
+            { "q": "der Himmel", "a": "il cielo" },
+            { "q": "die Wolke", "a": "la nuvola" },
+            { "q": "der Sand", "a": "la sabbia" },
+            { "q": "die Muschel", "a": "la conchiglia" },
+            { "q": "die Welle", "a": "l'onda" },
+            { "q": "sich sonnen", "a": "prendere il sole" },
+            { "q": "der Aussichtspunkt", "a": "il belvedere" },
+            { "q": "das Fischrestaurant", "a": "il ristorante di pesce" },
+            { "q": "ein Landgasthof", "a": "un agriturismo" },
+            { "q": "eine Postkarte", "a": "una cartolina" },
+            { "q": "Boot fahren", "a": "andare in barca" },
+            { "q": "Souvenirs kaufen", "a": "comprare souvenir" }
+          ]
+        }
+      },
+      {
+        "type": "grammatik",
+        "data": {
+          "title": "Grammatik",
+          "icon": "./src/images/Grammatik.png",
+          "exercises": [
+            {
+              "title": "Passato prossimo",
+              "text": "Formen mit avere / essere",
+              "question": "Wie sagt man 'Ich bin gegangen'?",
+              "options": ["Io sono andato", "Io ho andato"],
+              "correct": 0
+            }
+          ]
+        }
+      }
+    ],
+    "la_spezia": [
+      {
+        "type": "vokabeln",
+        "data": {
+          "title": "Vokabeln",
+          "icon": "./src/images/Mund_für_Tippsprechblase.png",
+          "cards": [
+            { "q": "warm", "a": "caldo" },
+            { "q": "heiß", "a": "caldo" },
+            { "q": "kalt", "a": "freddo" },
+            { "q": "schön", "a": "bello" },
+            { "q": "schlecht", "a": "brutto" },
+            { "q": "hässlich", "a": "brutto" },
+            { "q": "bewölkt", "a": "nuvoloso" },
+            { "q": "es regnet", "a": "piove" },
+            { "q": "es schneit", "a": "nevica" },
+            { "q": "die Sonne scheint", "a": "c'è il sole" },
+            { "q": "das Gewitter", "a": "il temporale" },
+            { "q": "der Wind", "a": "il vento" },
+            { "q": "der Nebel", "a": "la nebbia" },
+            { "q": "der Ausflug", "a": "l'escursione" },
+            { "q": "die Führung", "a": "la visita guidata" },
+            { "q": "die Vorstellung", "a": "lo spettacolo" },
+            { "q": "das Vergnügen", "a": "il divertimento" },
+            { "q": "die Kreuzfahrt", "a": "la crocera" },
+            { "q": "das Camping", "a": "il campeggio" },
+            { "q": "die Reise", "a": "il viaggio" },
+            { "q": "die Umgebung", "a": "i dintorni" },
+            { "q": "die Entspannung", "a": "il relax" },
+            { "q": "das Abenteuer", "a": "l'avventura" },
+            { "q": "der Morgen", "a": "la mattina" },
+            { "q": "der Nachmittag", "a": "il pomeriggio" },
+            { "q": "der Abend", "a": "la sera" },
+            { "q": "die Nacht", "a": "la notte" },
+            { "q": "am Morgengrauen", "a": "all'alba" },
+            { "q": "bei Sonnenuntergang", "a": "al tramonto" },
+            { "q": "tagsüber", "a": "di giorno" },
+            { "q": "nachts", "a": "di notte" },
+            { "q": "der schönste Moment", "a": "il momento più bello" },
+            { "q": "ein schöner Tag", "a": "una bella giornata" },
+            { "q": "es war unvergesslich", "a": "è stato indimenticabile" },
+            { "q": "wie heiß!", "a": "che caldo!" },
+            { "q": "was für ein Sonnenschein!", "a": "che sole!" }
           ]
         }
       },
@@ -195,15 +647,10 @@
         "data": {
           "title": "Spielecke: Memory",
           "icon": "./src/images/Icon_Ziel.png",
-          "pairs": [
-            "Sole", "Sonne",
-            "Piove", "Regnen",
-            "Il tempo", "Wetter"
-          ]
+          "pairs": ["Sole", "Sonne", "Piove", "Regnen", "Il tempo", "Wetter"]
         }
       }
     ],
-
     "riomaggiore": [
       {
         "type": "vokabeln",
@@ -211,9 +658,46 @@
           "title": "Vokabeln",
           "icon": "./src/images/Mund_für_Tippsprechblase.png",
           "cards": [
-            { "q": "Nie", "a": "Mai" },
-            { "q": "Sehr", "a": "Molto" },
-            { "q": "Superlativ", "a": "Superlativo" }
+            { "q": "niemand", "a": "nessuno" },
+            { "q": "nichts", "a": "niente" },
+            { "q": "zu viel", "a": "troppo" },
+            { "q": "genug, ziemlich", "a": "abbastanza" },
+            { "q": "viel", "a": "molto" },
+            { "q": "viel", "a": "tanto" },
+            { "q": "wenig", "a": "poco" },
+            { "q": "alles, die ganze ...", "a": "tutto" },
+            { "q": "alles, die ganze ...", "a": "tutta" },
+            { "q": "alle", "a": "tutti" },
+            { "q": "alle", "a": "tutte" },
+            { "q": "das Dorf", "a": "il borgo" },
+            { "q": "die Gasse", "a": "il vicolo" },
+            { "q": "die Treppe", "a": "la scalinata" },
+            { "q": "der Felsen", "a": "la roccia" },
+            { "q": "der Weg", "a": "il sentiero" },
+            { "q": "der Pfad", "a": "il sentiero" },
+            { "q": "das Panorama", "a": "il panorama" },
+            { "q": "die Aussicht", "a": "la vista" },
+            { "q": "die Küste", "a": "la costa" },
+            { "q": "der Aussichtspunkt", "a": "il belvedere" },
+            { "q": "wunderschön", "a": "bellissimo" },
+            { "q": "wunderschön", "a": "bellissima" },
+            { "q": "köstlich", "a": "buonissimo" },
+            { "q": "köstlich", "a": "buonissima" },
+            { "q": "sehr gut", "a": "buonissimo" },
+            { "q": "sehr gut", "a": "buonissima" },
+            { "q": "sehr einfach", "a": "facilissimo" },
+            { "q": "sehr einfach", "a": "facilissima" },
+            { "q": "sehr interessant", "a": "interessantissimo" },
+            { "q": "sehr interessant", "a": "interessantissima" },
+            { "q": "sehr lang", "a": "lunghissimo" },
+            { "q": "sehr lang", "a": "lunghissima" },
+            { "q": "sehr wenig", "a": "pochissimo" },
+            { "q": "sehr wenig", "a": "pochissima" },
+            { "q": "sehr glücklich", "a": "felicissimo" },
+            { "q": "sehr groß", "a": "grandissimo" },
+            { "q": "die Erinnerung", "a": "il ricordo" },
+            { "q": "der schönste Moment", "a": "il momento più bello" },
+            { "q": "unvergesslich", "a": "indimenticabile" }
           ]
         }
       },
@@ -267,11 +751,7 @@
         "data": {
           "title": "Spielecke: Memory",
           "icon": "./src/images/Icon_Ziel.png",
-          "pairs": [
-            "Mai", "Nie",
-            "Molto", "Sehr",
-            "Superlativo", "Superlativ"
-          ]
+          "pairs": ["Mai", "Nie", "Molto", "Sehr", "Superlativo", "Superlativ"]
         }
       }
     ]
