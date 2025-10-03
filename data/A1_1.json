@@ -1,14 +1,14 @@
 {
   "chapters": [
-      { "id": "trieste", "name": "Trieste", "pos": { "x": 295, "y": 71 }, "path": "M 295 71 L 278 50" },
-      { "id": "udine", "name": "Udine", "pos": { "x": 278, "y": 50 }, "path": "M 278 50 L 240 58" },
-      { "id": "valdobbiadene", "name": "Valdobbiadene", "pos": { "x": 240, "y": 58 }, "path": "M 240 58 L 230 64" },
-      { "id": "bassano_del_grappa", "name": "Bassano del Grappa", "pos": { "x": 230, "y": 64 }, "path": "M 230 64 L 250 79" },
-      { "id": "venezia", "name": "Venezia", "pos": { "x": 250, "y": 79 }, "path": "M 250 79 L 225 76" },
-      { "id": "vicenza", "name": "Vicenza", "pos": { "x": 225, "y": 76 }, "path": "M 225 76 L 203 78" },
-      { "id": "verona", "name": "Verona", "pos": { "x": 203, "y": 78 }, "path": "M 203 78 L 190 76" },
-      { "id": "sirmione", "name": "Sirmione", "pos": { "x": 190, "y": 76 }, "path": "M 190 76 L 141 66" },
-      { "id": "monza", "name": "Monza", "pos": { "x": 141, "y": 66 }, "path": "M 141 66 L 139 71" },
+      { "id": "trieste", "name": "Trieste", "pos": { "x": 295, "y": 71 }},
+      { "id": "udine", "name": "Udine", "pos": { "x": 278, "y": 50 }},
+      { "id": "valdobbiadene", "name": "Valdobbiadene", "pos": { "x": 240, "y": 58 }},
+      { "id": "bassano_del_grappa", "name": "Bassano del Grappa", "pos": { "x": 230, "y": 64 }},
+      { "id": "venezia", "name": "Venezia", "pos": { "x": 250, "y": 79 }},
+      { "id": "vicenza", "name": "Vicenza", "pos": { "x": 225, "y": 76 }},
+      { "id": "verona", "name": "Verona", "pos": { "x": 203, "y": 78 }},
+      { "id": "sirmione", "name": "Sirmione", "pos": { "x": 190, "y": 76 }},
+      { "id": "monza", "name": "Monza", "pos": { "x": 141, "y": 66 }},
       { "id": "milano", "name": "Milano", "pos": { "x": 139, "y": 71 } }
     ],
   "content": {

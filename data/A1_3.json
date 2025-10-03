@@ -1,14 +1,14 @@
 {
     "chapters": [
-        { "id": "torino", "name": "Torino", "pos": { "x": 90, "y": 98 }, "path": "M 90 100 L 105 110" },
-        { "id": "asti", "name": "Asti", "pos": { "x": 105, "y": 108 }, "path": "M 105 110 L 98 120" },
-        { "id": "alba", "name": "Alba", "pos": { "x": 98, "y": 118 }, "path": "M 98 120 L 114 121" },
-        { "id": "acqui_terme", "name": "Acqui Terme", "pos": { "x": 114, "y": 119 }, "path": "M 114 121 L 93 154" },
-        { "id": "sanremo", "name": "Sanremo", "pos": { "x": 93, "y": 152 }, "path": "M 93 154 L 104 150" },
-        { "id": "imperia", "name": "Imperia", "pos": { "x": 104, "y": 148 }, "path": "M 104 150 L 130 130" },
-        { "id": "genova", "name": "Genova", "pos": { "x": 130, "y": 126 }, "path": "M 130 130 L 142 133" },
-        { "id": "camogli", "name": "Camogli", "pos": { "x": 142, "y": 129 }, "path": "M 142 133 L 166 145" },
-        { "id": "la_spezia", "name": "La Spezia", "pos": { "x": 166, "y": 141 }, "path": "M 166 145 L 158 142" },
-        { "id": "riomaggiore", "name": "Riomaggiore", "pos": { "x": 158, "y": 140 } }
+        { "id": "parma", "name": "Parma", "pos": { "x": 180, "y": 110 }},
+        { "id": "ferrera", "name": "Ferrera", "pos": { "x": 220, "y": 109 }},
+        { "id": "bologna", "name": "Bologna", "pos": { "x": 210, "y": 122 }},
+        { "id": "rimini", "name": "Rimini", "pos": { "x": 255, "y": 145 }},
+        { "id": "san marino", "name": "San Marino", "pos": { "x": 245, "y": 152 }},
+        { "id": "arezzo", "name": "Arezzo", "pos": { "x": 230, "y": 180 }},
+        { "id": "firenze", "name": "Firenze", "pos": { "x": 217, "y": 173 }},
+        { "id": "montecatini terme", "name": "montecatini terme", "pos": { "x": 200, "y": 155 }},
+        { "id": "lucca", "name": "Lucca", "pos": { "x": 190, "y": 158 }},
+        { "id": "pisa", "name": "Pisa", "pos": { "x": 183, "y": 167 } }
     ]
 }

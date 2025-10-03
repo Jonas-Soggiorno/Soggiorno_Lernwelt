@@ -1,0 +1,14 @@
+{
+    "chapters": [
+        { "id": "napoli", "name": "Napoli", "pos": { "x": 317, "y": 294 }},
+        { "id": "pompei", "name": "Pompei", "pos": { "x": 325, "y": 296 }},
+        { "id": "capri", "name": "Capri", "pos": { "x": 315, "y": 308 }},
+        { "id": "positano", "name": "Positano", "pos": { "x": 325, "y": 304 }},
+        { "id": "salerno", "name": "Salerno", "pos": { "x": 335, "y": 301 }},
+        { "id": "castelmezzano", "name": "castelmezzano", "pos": { "x": 375, "y": 304 }},
+        { "id": "altamura", "name": "Altamura", "pos": { "x": 395, "y": 288 }},
+        { "id": "bari", "name": "Bari", "pos": { "x": 406, "y": 279 } },
+        { "id": "ostuni", "name": "Ostuni", "pos": { "x": 435, "y": 295 } },
+        { "id": "lecce", "name": "Lecce", "pos": { "x": 450, "y": 305 } }
+    ]
+}
