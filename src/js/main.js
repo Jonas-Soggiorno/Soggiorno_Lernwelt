@@ -2,7 +2,7 @@ import {worldData} from './world.js';
 
 //===GLOBALE VARIABLEN===
 const levelOrder = ["A1_1", "A1_2", "A1_3", "A2_1", "A2_2", "A2_3"];
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 let appState = {
     levels: {
         "A1_1": { 
@@ -994,8 +994,7 @@ function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = nu
                 inputEl.focus(); // Cursor direkt ins Feld setzen
             }
         }
-
-        // --- FUNKTION, UM DIE ERGEBNISSE AM ENDE ANZUZEIGEN ---
+        
         function showResults() {
             // Verstecke die Quiz-Elemente
             document.getElementById('quiz-card').style.display = 'none';
@@ -1006,18 +1005,15 @@ function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = nu
             let resultsHTML = '<h3>Ergebnisse</h3>';
 
             questions.forEach((question, index) => {
-                const userAnswer = userAnswers[index].trim().toLowerCase();
-                const correctAnswers = question.a;
-                let isCorrect = false; // Standardmäßig als falsch annehmen
+                const userAnswer = normalizeString(userAnswers[index].trim().toLowerCase());
+                const correctAnswers = normalizeString(question.a);
+                let isCorrect = false; 
 
-                // NEUE PRÜFUNG: Ist die richtige Antwort ein Array?
+
                 if (Array.isArray(correctAnswers)) {
-                    // Ja: Prüfe, ob die Nutzerantwort im Array enthalten ist
-                    // Wir normalisieren auch die korrekten Antworten zu Kleinbuchstaben
                     const lowerCaseCorrectAnswers = correctAnswers.map(ans => ans.toLowerCase());
                     isCorrect = lowerCaseCorrectAnswers.includes(userAnswer);
                 } else {
-                    // Nein (altes Format): Mache einen einfachen String-Vergleich
                     isCorrect = (userAnswer === correctAnswers.toLowerCase());
                 }
 
@@ -1044,16 +1040,13 @@ function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = nu
             
             resultsAreaEl.innerHTML = resultsHTML;
 
-            // Prüfen, ob der Test bestanden wurde
             if (correctCount === questions.length) {
                 resultsAreaEl.insertAdjacentHTML('afterbegin', '<p class="correct-feedback">Perfekt! Alles richtig.</p>');
-                // Lektion nach kurzer Verzögerung als abgeschlossen markieren
                 setTimeout(() => {
                     completeChapter(levelId, chapterId);
                 }, 2000);
             } else {
                 resultsAreaEl.insertAdjacentHTML('afterbegin', '<p class="incorrect-feedback">Schau dir die Fehler an und versuche es erneut!</p>');
-                // Optional: Button zum Wiederholen hinzufügen
                 const retryBtn = document.createElement('button');
                 retryBtn.textContent = 'Erneut versuchen';
                 retryBtn.className = 'action-button';
@@ -1064,27 +1057,21 @@ function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = nu
 
         // --- EVENT-LISTENER FÜR DEN "WEITER"-BUTTON ---
         nextBtn.addEventListener('click', () => {
-            // Speichere die aktuelle Antwort
             userAnswers.push(inputEl.value);
             
-            // Gehe zur nächsten Frage
             currentQuestionIndex++;
 
             if (currentQuestionIndex < questions.length) {
                 displayCurrentQuestion();
             } else {
-                // Quiz ist zu Ende
                 showResults();
             }
         });
         
         inputEl.addEventListener('keydown', (event) => {
-            // Prüfen, ob die Enter-Taste gedrückt wurde
             if (event.key === 'Enter') {
-                // Verhindert das Standardverhalten der Enter-Taste (z.B. Formular absenden)
                 event.preventDefault(); 
                 
-                // Simuliert einen Klick auf den "Weiter"-Button
                 nextBtn.click();
             }
         });
@@ -1115,66 +1102,76 @@ function renderExercise(levelId, chapterId, exerciseIndex, overrideExercise = nu
         }
 
         function setupWordCheck() {
-        const input = document.getElementById('tipptrainer-input');
-        const checkBtn = document.getElementById('tipptrainer-check');
-        if (!input || !checkBtn) return; // Sicherheits-Check
-        input.focus();
+            const input = document.getElementById('tipptrainer-input');
+            const checkBtn = document.getElementById('tipptrainer-check');
+            if (!input || !checkBtn) return; // Sicherheits-Check
+            input.focus();
 
         const checkAnswer = () => {
-
             input.removeEventListener('keydown', handleEnterForCheck);
 
-            const userAnswer = input.value.trim().toLowerCase();
-            const correctAnswer = words[currentWordIndex].a.toLowerCase();
+            const userAnswer = normalizeString(input.value.trim().toLowerCase());
+            const correctAnswer = normalizeString(words[currentWordIndex].a.toLowerCase());
             const feedbackEl = document.getElementById('tipptrainer-feedback');
             
             checkBtn.disabled = true;
             input.disabled = true;
 
-            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                feedbackEl.innerHTML = `<div class="feedback-box correct">Richtig! ✔</div>`;
-                setTimeout(()=> {
-                    goToNextWord();
-                }, 1000);
-            } else {
-                feedbackEl.innerHTML = `<div class="feedback-box incorrect">Leider falsch. Richtig ist: <strong>${words[currentWordIndex].a}</strong></div>`;
-            }
-
-            const nextBtn = document.createElement('button');
-            nextBtn.textContent = 'Weiter';
-            nextBtn.className = 'action-button';
-            feedbackEl.appendChild(nextBtn);
+            let autoAdvanceTimeout = null;
 
             const goToNextWord = () => {
+                if (autoAdvanceTimeout) {
+                    clearTimeout(autoAdvanceTimeout);
+                }
+
                 document.removeEventListener('keydown', handleEnterForNext); 
                 currentWordIndex++;
                 displayCurrentWord();
-                input.focus();
             };
 
-            nextBtn.addEventListener('click', goToNextWord);
-            
             const handleEnterForNext = (e) => {
                 if (e.key === 'Enter') {
                     goToNextWord();
                 }
             };
-            
-            setTimeout(() => {
-                document.addEventListener('keydown', handleEnterForNext);
-            }, 0);
-        };
 
-        const handleEnterForCheck = (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                checkAnswer();
+            if (userAnswer === correctAnswer) {
+                feedbackEl.innerHTML = `<div class="feedback-box correct">Richtig! ✔</div>`;
+                
+                autoAdvanceTimeout = setTimeout(goToNextWord, 700);
+
+                const nextBtn = document.createElement('button');
+                nextBtn.textContent = 'Weiter';
+                nextBtn.className = 'action-button';
+                nextBtn.disabled = true;
+                feedbackEl.appendChild(nextBtn);
+
+            } else {
+                feedbackEl.innerHTML = `<div class="feedback-box incorrect">Leider falsch. Richtig ist: <strong>${words[currentWordIndex].a}</strong></div>`;
+                
+                const nextBtn = document.createElement('button');
+                nextBtn.textContent = 'Weiter';
+                nextBtn.className = 'action-button';
+                feedbackEl.appendChild(nextBtn);
+
+                nextBtn.addEventListener('click', goToNextWord);
+                
+                setTimeout(() => {
+                    document.addEventListener('keydown', handleEnterForNext);
+                }, 0);
             }
         };
 
-        checkBtn.addEventListener('click', checkAnswer);
-        input.addEventListener('keydown', handleEnterForCheck);
-    }
+            const handleEnterForCheck = (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkAnswer();
+                }
+            };
+
+            checkBtn.addEventListener('click', checkAnswer);
+            input.addEventListener('keydown', handleEnterForCheck);
+        }
         
         displayCurrentWord();
     }
@@ -1358,4 +1355,10 @@ function updateCityDropdownSelection(cityIndex) {
         // Fallback, falls keine Stadt ausgewählt ist
         selectedDisplay.textContent = "Wähle eine Stadt...";
     }
+}
+
+function normalizeString(str){
+    if (!str) return '';
+
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
